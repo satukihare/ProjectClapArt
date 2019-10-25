@@ -1,4 +1,4 @@
-# Expression
+﻿# Expression
 # 指定のキャラの表情を変化させる
 
 # 引数
@@ -24,6 +24,16 @@ exp
 [Face]
 char
 face
+
+
+# Sound
+# 音声(ボイスor効果音)を再生する
+
+# 引数
+# sound - 再生する音声のID
+
+[Sound]
+sound
 
 
 # Speech
@@ -52,6 +62,9 @@ text
 
 [Expression]
 0
+0
+
+[Sound]
 0
 
 [Speech]

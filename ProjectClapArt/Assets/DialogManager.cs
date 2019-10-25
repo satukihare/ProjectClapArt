@@ -10,15 +10,29 @@ public class DialogManager : MonoBehaviour
     {
         "[Expression]",
         "[Face]",
+        "[Sound]",
         "[Speech]",
         "[End]"
+    };
+
+    enum CodeID
+    {
+        Expression = 0,
+        Face,
+        Sound,
+        Speech,
+        End
     };
     const float secsPerChar = 0.06f;
     TextAsset textAsset;
     string[] lines;
 
     [SerializeField]
-    Text showText;
+    Text textObject;
+    [SerializeField]
+    Image[] speechBubble;
+    [SerializeField]
+    Image[] characters;
     string text;
 
     int currentLine;
@@ -46,12 +60,12 @@ public class DialogManager : MonoBehaviour
             {
                 charTime += secsPerChar;
                 ++showLength;
-                showText.text = text.Substring(0, showLength);
+                textObject.text = text.Substring(0, showLength);
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                showText.text = text;
+                textObject.text = text;
                 showLength = maxLength;
             }
         }
@@ -69,20 +83,25 @@ public class DialogManager : MonoBehaviour
         while (true)
         {
             Debug.Log("parsing line: " + lines[currentLine]);
-            if (lines[currentLine] == codes[0])
+            if (lines[currentLine] == codes[(int)CodeID.Expression])
             {
                 ChangeExpression();
             }
-            else if (lines[currentLine] == codes[1])
+            else if (lines[currentLine] == codes[(int)CodeID.Face])
             {
                 ChangeFace();
             }
-            else if (lines[currentLine] == codes[2])
+            else if (lines[currentLine] == codes[(int)CodeID.Sound])
+            {
+                PlaySound();
+                break;
+            }
+            else if (lines[currentLine] == codes[(int)CodeID.Speech])
             {
                 ChangeText();
                 break;
             }
-            else if (lines[currentLine] == codes[3])
+            else if (lines[currentLine] == codes[(int)CodeID.End])
             {
                 End();
                 break;
@@ -129,11 +148,26 @@ public class DialogManager : MonoBehaviour
         //TODO
         Debug.Log("change face " + chara.ToString() + ' ' + face.ToString());
     }
-    
+
+    void PlaySound()
+    {
+        int sound;
+        sound = int.Parse(lines[++currentLine]);
+        //TODO
+        Debug.Log("play sound " + sound.ToString());
+    }
+
     void ChangeText()
     {
         int chara;
         chara = int.Parse(lines[++currentLine]);
+
+        speechBubble[chara  ].gameObject.SetActive(true);
+        speechBubble[chara^1].gameObject.SetActive(false);
+
+        characters[chara  ].color = Color.white;
+        characters[chara^1].color = Color.gray;
+
 
         text = "";
         while (lines[++currentLine][0] != '[')
