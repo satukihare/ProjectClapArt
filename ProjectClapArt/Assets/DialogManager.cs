@@ -68,7 +68,7 @@ public class DialogManager : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("parsing line: " + lines[currentLine]);
+            //Debug.Log("parsing line: " + lines[currentLine]);
             if (lines[currentLine] == codes[0])
             {
                 ChangeExpression();
@@ -94,7 +94,7 @@ public class DialogManager : MonoBehaviour
     public void LoadTextFile(string FilePath)
     {
         TextAsset loadAsset = (Resources.Load(FilePath, typeof(TextAsset)) as TextAsset);
-        Debug.Log("FilePath " + FilePath);
+        //Debug.Log("FilePath " + FilePath);
         //新しいテキストファイルが読み込まれたら更新
         if (loadAsset == null)
         {
@@ -117,7 +117,7 @@ public class DialogManager : MonoBehaviour
         chara = int.Parse(lines[++currentLine]);
         exp = int.Parse(lines[++currentLine]);
         //TODO
-        Debug.Log("change expression " + chara.ToString() + ' ' + exp.ToString());
+        //Debug.Log("change expression " + chara.ToString() + ' ' + exp.ToString());
     }
 
     void ChangeFace()
@@ -127,7 +127,7 @@ public class DialogManager : MonoBehaviour
         chara = int.Parse(lines[++currentLine]);
         face = int.Parse(lines[++currentLine]);
         //TODO
-        Debug.Log("change face " + chara.ToString() + ' ' + face.ToString());
+        //Debug.Log("change face " + chara.ToString() + ' ' + face.ToString());
     }
     
     void ChangeText()
@@ -144,7 +144,7 @@ public class DialogManager : MonoBehaviour
         showLength = 0;
         maxLength = text.Length;
 
-        Debug.Log("change text\n" + text);
+        //Debug.Log("change text\n" + text);
     }
 
     void End()
