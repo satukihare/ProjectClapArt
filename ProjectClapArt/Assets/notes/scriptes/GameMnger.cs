@@ -226,17 +226,9 @@ public class GameMnger : MonoBehaviour {
     /// </summary>
     void gameNoteTouch() {
 
-        //スペースが押されたのであれば判定する
-        //if (!Input.GetKey(KeyCode.Space))
-        //    return;
-
-
-        Debug.Log("Flick : " + track_pad_input.Flick.ToString());
-
         //トラックパッドを使用したとき
         if (!track_pad_input.Flick)
             return;
-        Debug.Log("Flick : " + track_pad_input.Flick.ToString());
 
         //押した時間
         int press_time = music_time_num;
@@ -246,40 +238,62 @@ public class GameMnger : MonoBehaviour {
 
         //判定
         foreach (Note note in notes) {
-            //クリックされていたら判定しない
+            //クリックされていたNoteは判定しない
             if (note.ClikFlg)
                 continue;
 
-            //差分を作成
-            int diff = note.PressTime - press_time;
-
-            //絶対値
-            diff = Mathf.Abs(diff);
+            //差分を取る
+            int diff = touchAbsDiffCal(press_time, note.PressTime);
 
             //誤差から判定する
-            //ベストタイミング
-            if (diff < good_diff_time_num) {
-                //クリックフラグを発火
-                note.ClikFlg = true;
-                Destroy(note.NoteInstance);
-                Debug.Log("good");
-                break;
-
-            }
-            //ちょっと惜しいとき
-            else if (diff < this.more_diff_num) {
-                //クリックフラグを発火
-                note.ClikFlg = true;
-                Destroy(note.NoteInstance);
-                Debug.Log("miss");
-                break;
-            }
-            //完全にタイミングを外した場合
-            //else if(more_diff_num < diff ) {
-            //    Debug.Log("out");
-            //    Destroy(note.NoteInstance);
-            //    break;
-            //}
+            judgeTouchTimming(diff, note);
         }
+    }
+
+    /// <summary>
+    /// 差分を取り絶対値を返す
+    /// </summary>
+    /// <param name="set_press_time">押下した時間</param>
+    /// <param name="set_note_press_time">noteのtouch時間</param>
+    /// <returns>Abs（押下ーnoteのtouch時間）</returns>
+    private int touchAbsDiffCal(int set_press_time , int set_note_press_time) {
+
+        //差分を作成
+        int diff = set_note_press_time - set_press_time;
+
+        //絶対値をとる
+        diff = Mathf.Abs(diff);
+
+        return diff;
+    }
+
+    /// <summary>
+    /// 差分を基に判定を行う
+    /// </summary>
+    /// <param name="set_diff">誤差</param>
+    /// <param name="set_target_note">判定する対象のNote</param>
+    private void judgeTouchTimming(int set_diff, Note set_target_note) {
+
+        //ベストタイミング
+        if (set_diff < good_diff_time_num) {
+            //クリックフラグを発火
+            set_target_note.ClikFlg = true;
+            Destroy(set_target_note.NoteInstance);
+            Debug.Log("good");
+
+        }
+        //ちょっと惜しいとき
+        else if (set_diff < more_diff_num) {
+            //クリックフラグを発火
+            set_target_note.ClikFlg = true;
+            Destroy(set_target_note.NoteInstance);
+            Debug.Log("miss");
+        }
+        //完全にタイミングを外した場合
+        //else if(more_diff_num < diff ) {
+        //    Debug.Log("out");
+        //    Destroy(note.NoteInstance);
+        //    break;
+        //}
     }
 }
