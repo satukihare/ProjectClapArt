@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bar : MonoBehaviour {
+public class Bar {
     //開始時間
     float startTime;
     //１小節の時間的長さ
@@ -12,10 +12,12 @@ public class Bar : MonoBehaviour {
 
     public float StartTime {
         get { return startTime; }
+        set { startTime = value; }
     }
 
     public float Lingth {
         get { return length; }
+        set { length = value; }
     }
 
     public List<Note> Notes {

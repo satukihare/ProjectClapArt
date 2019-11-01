@@ -87,11 +87,27 @@ public class GameMnger : MonoBehaviour {
         notes.Add(new Note(new Vector2(1,1)  ,2700,4300,Note.NOTE_TYPE.FLICK ));
 
         test_bar.Notes = notes;
+        test_bar.StartTime = 1000;
+        test_bar.Lingth = 3000;
 
         List<Bar> test_bars = new List<Bar>();
         test_bars.Add(test_bar);
 
         bars = test_bars;
+
+
+        Bar test_bar2 = new Bar();
+
+        List<Note> notes2 = new List<Note>(4);
+
+        notes2.Add(new Note(new Vector2(0, 0), 4700, 5900, Note.NOTE_TYPE.FLICK));
+        notes2.Add(new Note(new Vector2(1.5f, -1.5f), 5100, 6300, Note.NOTE_TYPE.FLICK));
+        notes2.Add(new Note(new Vector2(-1.5f, -1.5f), 5500, 6700, Note.NOTE_TYPE.FLICK));
+
+        test_bar2.Notes = notes2;
+        test_bar2.StartTime = 4500;
+
+        test_bars.Add(test_bar2);
 
     }
 
@@ -123,6 +139,10 @@ public class GameMnger : MonoBehaviour {
         }
         //イレギュラー値
         else { }
+
+        if (bar_counter < bars.Count)
+            if (music_time_num > bars[bar_counter].StartTime + bars[bar_counter].Lingth)
+                game_state = GAME_MODE.NOTE_SPAWN;
 
         //Debug.Log("music.time : " + music.time.ToString());
         //Debug.Log("music_time_num : " + music_time_num.ToString());
@@ -189,6 +209,10 @@ public class GameMnger : MonoBehaviour {
     /// </summary>
     void gameNoteSpawn() {
 
+        //小節の書き込みタイミングまでスキップ
+        if (bars[bar_counter].StartTime > music_time_num)
+            return;
+
         //スポーンする小節
         List<Note> notes = bars[bar_counter].Notes;
 
@@ -226,8 +250,11 @@ public class GameMnger : MonoBehaviour {
     /// </summary>
     void gameNoteTouch() {
 
-        //トラックパッドを使用したとき
-        if (!track_pad_input.Flick)
+        //トラックパッドがtouchされればTrue
+        bool flick_flg = track_pad_input.Tap | track_pad_input.Flick | track_pad_input.FlickStart | track_pad_input.FlickEnd;
+
+        //トラックパッドを使用したときのみ処理
+        if (!flick_flg)
             return;
 
         //押した時間
@@ -276,18 +303,18 @@ public class GameMnger : MonoBehaviour {
 
         //ベストタイミング
         if (set_diff < good_diff_time_num) {
-            //クリックフラグを発火
+            //フリックフラグを発火
             set_target_note.ClikFlg = true;
             Destroy(set_target_note.NoteInstance);
-            Debug.Log("good");
+            Debug.Log("good timming");
 
         }
         //ちょっと惜しいとき
         else if (set_diff < more_diff_num) {
-            //クリックフラグを発火
+            //フリックフラグを発火
             set_target_note.ClikFlg = true;
             Destroy(set_target_note.NoteInstance);
-            Debug.Log("miss");
+            Debug.Log("miss timming");
         }
         //完全にタイミングを外した場合
         //else if(more_diff_num < diff ) {
