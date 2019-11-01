@@ -62,7 +62,7 @@ public class InputManager : MonoBehaviour
             if (heldTime < maxTapTime)
             {
                 tap = true;
-                Debug.Log("detected as tap");
+                //Debug.Log("detected as tap");
             }
         }
 
@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour
             Debug.Log("flicking");
             if (mov.magnitude < flickDeadZone)
             {
-                Debug.Log("flick end");
+                //Debug.Log("flick end");
                 flick = false;
             }
         }
@@ -81,7 +81,7 @@ public class InputManager : MonoBehaviour
         {
             if (mov.magnitude > flickDeadZone)
             {
-                Debug.Log("flick start");
+                //Debug.Log("flick start");
                 flick = true;
             }
         }

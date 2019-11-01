@@ -56,6 +56,9 @@ public class GameMnger : MonoBehaviour {
     //goodタイミング
     [SerializeField]int good_diff_time_num = 10;
 
+    //入力Mnger
+    [SerializeField]InputManager track_pad_input = null;
+
     //
     [SerializeField] GameObject good_obj = null;
     [SerializeField] GameObject bad_obj = null;
@@ -174,7 +177,8 @@ public class GameMnger : MonoBehaviour {
     /// 待機状態
     /// </summary>
     void gameWait() {
-        if (Input.GetKey(KeyCode.J)) {
+        //ゲーム開始
+        if (track_pad_input.Tap ) {
             gameStart();
         }
 
@@ -223,8 +227,16 @@ public class GameMnger : MonoBehaviour {
     void gameNoteTouch() {
 
         //スペースが押されたのであれば判定する
-        if (!Input.GetKey(KeyCode.Space))
+        //if (!Input.GetKey(KeyCode.Space))
+        //    return;
+
+
+        Debug.Log("Flick : " + track_pad_input.Flick.ToString());
+
+        //トラックパッドを使用したとき
+        if (!track_pad_input.Flick)
             return;
+        Debug.Log("Flick : " + track_pad_input.Flick.ToString());
 
         //押した時間
         int press_time = music_time_num;

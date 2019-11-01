@@ -283,6 +283,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &545180212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5101407777861662667, guid: 10b68047a3fe7cc48b3f1290b6c74946,
+    type: 3}
+  m_PrefabInstance: {fileID: 2022000801}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33a7910967fb8a449570f01bf63ae4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &900855408
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +430,7 @@ MonoBehaviour:
     type: 3}
   more_diff_num: 80
   good_diff_time_num: 20
+  track_pad_input: {fileID: 545180212}
   good_obj: {fileID: 1670285633}
   bad_obj: {fileID: 141801608}
 --- !u!4 &900855411
