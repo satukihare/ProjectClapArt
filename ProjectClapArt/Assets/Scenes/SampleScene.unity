@@ -447,6 +447,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &916346956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 916346958}
+  - component: {fileID: 916346957}
+  m_Layer: 0
+  m_Name: JSONtest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &916346957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916346956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22e0741a746bbf4ab3bd6735b84e237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &916346958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916346956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.9263625, y: -0.1462679, z: -1.1136954}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1564412700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -544,6 +587,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5101407777861662667, guid: 10b68047a3fe7cc48b3f1290b6c74946,
+        type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5101407777861662666, guid: 10b68047a3fe7cc48b3f1290b6c74946,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -598,11 +646,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101407777861662667, guid: 10b68047a3fe7cc48b3f1290b6c74946,
-        type: 3}
-      propertyPath: debugMode
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5101407777330639458, guid: 10b68047a3fe7cc48b3f1290b6c74946,
         type: 3}

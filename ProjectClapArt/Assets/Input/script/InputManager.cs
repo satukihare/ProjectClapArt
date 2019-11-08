@@ -70,7 +70,7 @@ public class InputManager : MonoBehaviour
         prevFlick = flick;
         if (flick)
         {
-            Debug.Log("flicking");
+            //Debug.Log("flicking");
             if (mov.magnitude < flickDeadZone)
             {
                 //Debug.Log("flick end");
