@@ -8,7 +8,7 @@ public class Bar {
     //１小節の時間的長さ
     float length;
     //notesのリスト
-    List<Note> notes;
+    List<Note> notes = new List<Note>();
 
     public float StartTime {
         get { return startTime; }

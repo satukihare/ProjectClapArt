@@ -1,8 +1,0 @@
-{
-    "Bar" : [
-        {"NoteType" : 1 , "pos_x" : -1 , "pos_y" : -1 , "span_time" : 1500 , "press_time" : 3100 },
-        {"NoteType" : 1 , "pos_x" :  1 , "pos_y" : -1 , "span_time" : 1900 , "press_time" : 3500 },
-        {"NoteType" : 1 , "pos_x" : -1 , "pos_y" :  1 , "span_time" : 2300 , "press_time" : 3900 },
-        {"NoteType" : 1 , "pos_x" :  1 , "pos_y" :  1 , "span_time" : 2700 , "press_time" : 4300 }
-    ]
-}
