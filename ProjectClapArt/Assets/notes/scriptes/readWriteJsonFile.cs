@@ -36,7 +36,12 @@ public class readWriteJsonFile : MonoBehaviour {
         public float length;
         //notesのリスト
         public List<JsonNote> json_notes = new List<JsonNote>();
+    }
 
+    //JSONにListとして書き込めないため抽象化するためのクラス
+    [System.Serializable]
+    public class JsonBarList {
+        public List<JsonBar> json_bars = new List<JsonBar>();
     }
 
     //ゲームフォルダのパス
@@ -45,37 +50,18 @@ public class readWriteJsonFile : MonoBehaviour {
     //譜面データの相対パス
     [SerializeField] string notes_folder_path = @"NotesFileDate\";
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// 初期化
+    /// </summary>
     void Start() {
-        //JsonNote note = new JsonNote();
-        //note.position.x = 1.0f;
-        //note.position.y = 2.0f;
-        //note.press_time = 2000;
-        //note.spawn_time = 1000;
-        //note.note_type = 1;
-        //
-        //JsonBar bars = new JsonBar();
-        //
-        //bars.json_notes.Add (new JsonNote(new Vector2(-1, -1), 1500, 3100, 1));
-        //bars.json_notes.Add (new JsonNote(new Vector2(1, -1), 1900, 3500,  1));
-        //bars.json_notes.Add (new JsonNote(new Vector2(-1, 1), 2300, 3900,  1));
-
-
-        Bar bars = new Bar();
-        
-        bars.Notes.Add (new Note(new Vector2(-1, -1), 1500, 3100, Note.NOTE_TYPE.FLICK));
-        bars.Notes.Add (new Note(new Vector2(1, -1), 1900, 3500,  Note.NOTE_TYPE.FLICK));
-        bars.Notes.Add (new Note(new Vector2(-1, 1), 2300, 3900, Note.NOTE_TYPE.FLICK));
-
-        this.writeNotesFileDate("test.json", bars);
-
-        //Debug.Log(JsonUtility.ToJson(bars));
-
         //アプリケーションのデータパスを取得
         game_path = Application.dataPath;
     }
-    void Update() { }
 
+    /// <summary>
+    /// 更新
+    /// </summary>
+    void Update() { }
 
     /// <summary>
     /// ファイルへの譜面のJSON形式での書き込み
@@ -83,36 +69,54 @@ public class readWriteJsonFile : MonoBehaviour {
     /// <param name="set_write_file_name">書き込むファイル名</param>
     /// <param name="set_write_bar">書き込む譜面データ</param>
     /// <returns>成功したかどうか</returns>
-    public bool writeNotesFileDate(string set_write_file_name, Bar set_write_bar) {
+    public bool writeNotesFileDate(string set_write_file_name, List<Bar> set_write_bar_list) {
 
         bool write_seccses = false;
 
-        string file_path = game_path + notes_folder_path + set_write_file_name;
-        JsonBar json_bar = new JsonBar();
+        string file_path = game_path + "/" + notes_folder_path + set_write_file_name;
 
-        int LEHGTH = set_write_bar.Notes.Count;
+        //書き込むBarのリスト
+        List<JsonBar> write_bar_list = new List<JsonBar>(set_write_bar_list.Count);
+        //JsonBarのリストを抽象化するために最終的にこれに書き込む
+        JsonBarList json_bar_list = new JsonBarList();
 
-        for (int cnt = 0; cnt < LEHGTH; cnt++) {
-            JsonNote json_note = new JsonNote();
-            //座標
-            json_note.position = set_write_bar.Notes[cnt].Pos;
-            json_note.spawn_time = set_write_bar.Notes[cnt].SpawnTime;
-            json_note.press_time = set_write_bar.Notes[cnt].PressTime;
+        //Barのリストから情報を抜いていく
+        for (int bar_cnt = 0; bar_cnt< set_write_bar_list.Count; bar_cnt++) {
+            JsonBar json_bar = new JsonBar();
+            int NOTE_LEHGTH = set_write_bar_list[bar_cnt].Notes.Count;
 
-            if (set_write_bar.Notes[cnt].Type == Note.NOTE_TYPE.FLICK)
-                json_note.note_type = 0;
-            else if (set_write_bar.Notes[cnt].Type == Note.NOTE_TYPE.TOUCH)
-                json_note.note_type = 1;
-            else
-                json_note.note_type = -1;
+            //BarのNoteから情報を抜いていく
+            for(int note_cnt = 0;note_cnt < NOTE_LEHGTH; note_cnt++) {
+                JsonNote json_note = new JsonNote();
+                //座標
+                json_note.position = set_write_bar_list[bar_cnt].Notes[note_cnt].Pos;
+                json_note.spawn_time = set_write_bar_list[bar_cnt].Notes[note_cnt].SpawnTime;
+                json_note.press_time = set_write_bar_list[bar_cnt].Notes[note_cnt].PressTime;
 
-            //書き込み用Noteに追加
-            json_bar.json_notes.Add(json_note);
+                //Noteの種類（ENUMなので数値に変換している）
+                if (set_write_bar_list[bar_cnt].Notes[note_cnt].Type == Note.NOTE_TYPE.FLICK)
+                    json_note.note_type = 0;
+                else if (set_write_bar_list[bar_cnt].Notes[note_cnt].Type == Note.NOTE_TYPE.TOUCH)
+                    json_note.note_type = 1;
+                else
+                    json_note.note_type = -1;
+                //JsonBarに追加
+                json_bar.json_notes.Add(json_note);
+            }
+
+            json_bar_list.json_bars = write_bar_list;
+
+            //書き込み用リストに追加
+            write_bar_list.Add(json_bar);
         }
+        Debug.Log("Barの変換完了");
+
         // UTF-8のテキスト用
         using (System.IO.StreamWriter sw = new System.IO.StreamWriter(file_path)) {
             // ファイルへテキストデータを出力する
-            sw.Write(JsonUtility.ToJson(json_bar));
+            Debug.Log(JsonUtility.ToJson(json_bar_list));
+            //書き込んでる
+            sw.Write(JsonUtility.ToJson(json_bar_list));
             write_seccses = true;
         }
         return write_seccses;
@@ -124,10 +128,13 @@ public class readWriteJsonFile : MonoBehaviour {
     /// </summary>
     /// <param name="set_notes_file_name">ファイルネーム</param>
     /// <returns>Barのデータ</returns>
-    public Bar readNotesFileDate(string set_notes_file_name) {
+    public List<Bar> readNotesFileDate(string set_notes_file_name) {
 
-        string file_path = game_path + notes_folder_path + set_notes_file_name;
+        string file_path = game_path +"/"+ notes_folder_path + set_notes_file_name;
         FileStream fs = null;
+
+        //BarのListを抽象化するためのラッパークラス
+        JsonBarList json_bar_list = null;
         JsonBar json_bars = null;
 
         try {
@@ -137,9 +144,8 @@ public class readWriteJsonFile : MonoBehaviour {
 
             //ファイルを読み込む
             string all_string_date = reader.ReadToEnd();
-
-            //Debug.Log(JsonUtility.FromJson);
-            json_bars = JsonUtility.FromJson(all_string_date, typeof(JsonBar)) as JsonBar;
+            //JSONからクラスに復号
+            json_bar_list = JsonUtility.FromJson(all_string_date, typeof(JsonBarList)) as JsonBarList;
         }
         catch (Exception e) {
             Debug.Log("FileOpen Err");
@@ -158,33 +164,36 @@ public class readWriteJsonFile : MonoBehaviour {
         }
 
         //返すBarのinstance
-        Bar return_bar = new Bar();
+        List<Bar> return_bar_list = new List<Bar>();
+        int BAR_LIST_NUM = json_bar_list.json_bars.Count;
 
-        //曲データを収集
-        return_bar.StartTime = json_bars.startTime;
-        return_bar.Lingth = json_bars.length;
+        //Barの情報取得
+        for(int bar_cnt = 0; bar_cnt < BAR_LIST_NUM; bar_cnt++) {
+            JsonBar json_bar = json_bar_list.json_bars[bar_cnt];
+            Bar return_bar = new Bar();
 
-        //Noteデータを取得
-        int LENGTH = json_bars.json_notes.Count;
+            //Noteの情報取得
+            int NOTE_LENGTH = json_bar.json_notes.Count;
+            for(int note_cnt = 0; note_cnt< NOTE_LENGTH; note_cnt++) {
+                JsonNote json_note = json_bar.json_notes[note_cnt];
+                Note ret_note = null;
 
-        for (int cnt = 0; cnt < LENGTH; cnt++) {
-            JsonNote json_note = json_bars.json_notes[cnt];
-            Note ret_note = null;
-
-            if (json_note.note_type == 0) {
-                ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.FLICK);
+                //情報の抜き出し　Noteの種類をifで制御
+                if (json_note.note_type == 0) {
+                    ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.FLICK);
+                }
+                else if (json_note.note_type == 1) {
+                    ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.TOUCH);
+                }
+                else {
+                    ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.UNKNOWN);
+                }
+                //BarにNote情報を書き込む
+                return_bar.Notes.Add(ret_note);
             }
-            else if (json_note.note_type == 1) {
-                ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.TOUCH);
-            }
-            else {
-                ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.UNKNOWN);
-            }
-            //リストに追加
-            return_bar.Notes.Add(ret_note);
+            //Barのリストに情報を書き込む
+            return_bar_list.Add(return_bar);
         }
-
-        return return_bar;
+        return return_bar_list;
     }
-
 }

@@ -59,7 +59,13 @@ public class GameMnger : MonoBehaviour {
     //入力Mnger
     [SerializeField]InputManager track_pad_input = null;
 
-    //
+    //切り捨てる数値量
+    [SerializeField] int round_digits = 20;
+
+    //JSON形式の譜面データを読み込む
+    [SerializeField] readWriteJsonFile read_write_json_file = null;
+
+
     [SerializeField] GameObject good_obj = null;
     [SerializeField] GameObject bad_obj = null;
 
@@ -77,38 +83,9 @@ public class GameMnger : MonoBehaviour {
 
         music = this.GetComponent<AudioSource>();
 
-        Bar test_bar = new Bar();
+        if (read_write_json_file == null) Debug.Log("readWriteJsonFile nullptr !!");
 
-        List<Note> notes = new List<Note>(4);
-
-        notes.Add(new Note(new Vector2(-1,-1),1500,3100,Note.NOTE_TYPE.FLICK ));
-        notes.Add(new Note(new Vector2(1,-1) ,1900,3500,Note.NOTE_TYPE.FLICK ));
-        notes.Add(new Note(new Vector2(-1,1) ,2300,3900,Note.NOTE_TYPE.FLICK ));
-        notes.Add(new Note(new Vector2(1,1)  ,2700,4300,Note.NOTE_TYPE.FLICK ));
-
-        test_bar.Notes = notes;
-        test_bar.StartTime = 1000;
-        test_bar.Lingth = 3000;
-
-        List<Bar> test_bars = new List<Bar>();
-        test_bars.Add(test_bar);
-
-        bars = test_bars;
-
-
-        Bar test_bar2 = new Bar();
-
-        List<Note> notes2 = new List<Note>(4);
-
-        notes2.Add(new Note(new Vector2(0, 0), 4700, 5900, Note.NOTE_TYPE.FLICK));
-        notes2.Add(new Note(new Vector2(1.5f, -1.5f), 5100, 6300, Note.NOTE_TYPE.FLICK));
-        notes2.Add(new Note(new Vector2(-1.5f, -1.5f), 5500, 6700, Note.NOTE_TYPE.FLICK));
-
-        test_bar2.Notes = notes2;
-        test_bar2.StartTime = 4500;
-
-        test_bars.Add(test_bar2);
-
+        bars = read_write_json_file.readNotesFileDate("test.json");
     }
 
     /// <summary>
@@ -119,11 +96,8 @@ public class GameMnger : MonoBehaviour {
         //音のタイミング
         this.music_time_num = (int)(music.time * 1000.0f);
         //不要な桁の切り捨て
-        //music_time_num /= 10;
-        //music_time_num *= 10;
-
-        music_time_num /= 100;
-        music_time_num *= 100;
+        music_time_num /= round_digits;
+        music_time_num *= round_digits;
 
         //待機状態
         if (game_state == GAME_MODE.GAME_WAIT) {
@@ -143,11 +117,6 @@ public class GameMnger : MonoBehaviour {
         if (bar_counter < bars.Count)
             if (music_time_num > bars[bar_counter].StartTime + bars[bar_counter].Lingth)
                 game_state = GAME_MODE.NOTE_SPAWN;
-
-        //Debug.Log("music.time : " + music.time.ToString());
-        //Debug.Log("music_time_num : " + music_time_num.ToString());
-        //Debug.Log("Time.time : " + Time.time.ToString());
-
     }
 
     /// <summary>
