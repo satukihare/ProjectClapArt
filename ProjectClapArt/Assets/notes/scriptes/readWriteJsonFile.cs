@@ -130,7 +130,8 @@ public class readWriteJsonFile : MonoBehaviour {
     /// <returns>Barのデータ</returns>
     public List<Bar> readNotesFileDate(string set_notes_file_name) {
 
-        string file_path = game_path +"/"+ notes_folder_path + set_notes_file_name;
+        //string file_path = game_path +"/"+ notes_folder_path + set_notes_file_name;
+        string file_path = Application.dataPath + "/"+ notes_folder_path + set_notes_file_name;
         FileStream fs = null;
 
         //BarのListを抽象化するためのラッパークラス
