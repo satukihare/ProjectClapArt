@@ -6,20 +6,45 @@ using System;
 using System.Text;
 
 public class readWriteJsonFile : MonoBehaviour {
-
-    //JSONに読み書きするためだけのNoteクラス
+    /// <summary>
+    /// JSONに読み書きするためだけのNoteクラス
+    /// 外部では使わないでください
+    /// </summary>
     [System.Serializable]
     public class JsonNote {
+
+            /// <summary>
+            /// 座標
+            /// </summary>
         public Vector2 position = new Vector2(0.0f, 0.0f);
-        //スポーンタイミング
+
+        /// <summary>
+        ///スポーンタイミング
+        /// </summary>
         public int spawn_time = 10;
-        //押す下タイミング
+
+        /// <summary>
+        /// 押下タイミング
+        /// </summary>
         public int press_time = 0;
-        //タイプ
+
+        /// <summary>
+        /// notesの種類
+        /// </summary>
         public int note_type = 0;
 
-        //コンストラクタ
+        /// <summary>
+        /// デフォルトコンストラクタ
+        /// </summary>
         public JsonNote() { }
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="set_position">座標</param>
+        /// <param name="set_spawn_time">スポーンする時間</param>
+        /// <param name="set_press_time">押下するタイミング</param>
+        /// <param name="set_note_type">notesのタイプ</param>
         public JsonNote(Vector2 set_position, int set_spawn_time, int set_press_time, int set_note_type) {
             position = set_position;
             spawn_time = set_spawn_time;
@@ -27,7 +52,12 @@ public class readWriteJsonFile : MonoBehaviour {
             note_type = set_note_type;
         }
     }
-    //JSON に読み書きするためだけのBarクラス
+
+    /// <summary>
+    /// JSON に読み書きするためだけのBarクラス
+    /// 外部では使わないでください
+    /// スタートタイムと長さは現在使いみちがないです
+    /// </summary>
     [System.Serializable]
     public class JsonBar {
         //開始時間
@@ -38,14 +68,14 @@ public class readWriteJsonFile : MonoBehaviour {
         public List<JsonNote> json_notes = new List<JsonNote>();
     }
 
-    //JSONにListとして書き込めないため抽象化するためのクラス
+    /// <summary>
+    /// JSONにListとして書き込めないため抽象化するためのクラス
+    /// 外部では使わないので触らないでください
+    /// </summary>
     [System.Serializable]
     public class JsonBarList {
         public List<JsonBar> json_bars = new List<JsonBar>();
     }
-
-    //ゲームフォルダのパス
-    string game_path;
 
     //譜面データの相対パス
     [SerializeField] string notes_folder_path = @"NotesFileDate\";
@@ -53,10 +83,7 @@ public class readWriteJsonFile : MonoBehaviour {
     /// <summary>
     /// 初期化
     /// </summary>
-    void Start() {
-        //アプリケーションのデータパスを取得
-        game_path = Application.dataPath;
-    }
+    void Start() {}
 
     /// <summary>
     /// 更新
@@ -73,7 +100,7 @@ public class readWriteJsonFile : MonoBehaviour {
 
         bool write_seccses = false;
 
-        string file_path = game_path + "/" + notes_folder_path + set_write_file_name;
+        string file_path = Application.dataPath + "/" + notes_folder_path + set_write_file_name;
 
         //書き込むBarのリスト
         List<JsonBar> write_bar_list = new List<JsonBar>(set_write_bar_list.Count);
@@ -81,12 +108,14 @@ public class readWriteJsonFile : MonoBehaviour {
         JsonBarList json_bar_list = new JsonBarList();
 
         //Barのリストから情報を抜いていく
-        for (int bar_cnt = 0; bar_cnt< set_write_bar_list.Count; bar_cnt++) {
+        for (int bar_cnt = 0; bar_cnt < set_write_bar_list.Count; bar_cnt++)
+        {
             JsonBar json_bar = new JsonBar();
             int NOTE_LEHGTH = set_write_bar_list[bar_cnt].Notes.Count;
 
             //BarのNoteから情報を抜いていく
-            for(int note_cnt = 0;note_cnt < NOTE_LEHGTH; note_cnt++) {
+            for (int note_cnt = 0; note_cnt < NOTE_LEHGTH; note_cnt++)
+            {
                 JsonNote json_note = new JsonNote();
                 //座標
                 json_note.position = set_write_bar_list[bar_cnt].Notes[note_cnt].Pos;
@@ -112,7 +141,8 @@ public class readWriteJsonFile : MonoBehaviour {
         Debug.Log("Barの変換完了");
 
         // UTF-8のテキスト用
-        using (System.IO.StreamWriter sw = new System.IO.StreamWriter(file_path)) {
+        using (System.IO.StreamWriter sw = new System.IO.StreamWriter(file_path))
+        {
             // ファイルへテキストデータを出力する
             Debug.Log(JsonUtility.ToJson(json_bar_list));
             //書き込んでる
@@ -130,15 +160,15 @@ public class readWriteJsonFile : MonoBehaviour {
     /// <returns>Barのデータ</returns>
     public List<Bar> readNotesFileDate(string set_notes_file_name) {
 
-        //string file_path = game_path +"/"+ notes_folder_path + set_notes_file_name;
-        string file_path = Application.dataPath + "/"+ notes_folder_path + set_notes_file_name;
+        string file_path = Application.dataPath + "/" + notes_folder_path + set_notes_file_name;
         FileStream fs = null;
 
         //BarのListを抽象化するためのラッパークラス
         JsonBarList json_bar_list = null;
         JsonBar json_bars = null;
 
-        try {
+        try
+        {
             //読み込みで開く
             fs = File.Open(file_path, FileMode.Open, FileAccess.Read);
             StreamReader reader = new StreamReader(fs, Encoding.UTF8);
@@ -148,16 +178,21 @@ public class readWriteJsonFile : MonoBehaviour {
             //JSONからクラスに復号
             json_bar_list = JsonUtility.FromJson(all_string_date, typeof(JsonBarList)) as JsonBarList;
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
             Debug.Log("FileOpen Err");
             Debug.Log(e);
         }
-        finally {
-            if (fs != null) {
-                try {
+        finally
+        {
+            if (fs != null)
+            {
+                try
+                {
                     fs.Dispose();
                 }
-                catch (IOException ioe) {
+                catch (IOException ioe)
+                {
                     Debug.Log(ioe.Message);
                     fs = null;
                 }
@@ -169,24 +204,29 @@ public class readWriteJsonFile : MonoBehaviour {
         int BAR_LIST_NUM = json_bar_list.json_bars.Count;
 
         //Barの情報取得
-        for(int bar_cnt = 0; bar_cnt < BAR_LIST_NUM; bar_cnt++) {
+        for (int bar_cnt = 0; bar_cnt < BAR_LIST_NUM; bar_cnt++)
+        {
             JsonBar json_bar = json_bar_list.json_bars[bar_cnt];
             Bar return_bar = new Bar();
 
             //Noteの情報取得
             int NOTE_LENGTH = json_bar.json_notes.Count;
-            for(int note_cnt = 0; note_cnt< NOTE_LENGTH; note_cnt++) {
+            for (int note_cnt = 0; note_cnt < NOTE_LENGTH; note_cnt++)
+            {
                 JsonNote json_note = json_bar.json_notes[note_cnt];
                 Note ret_note = null;
 
                 //情報の抜き出し　Noteの種類をifで制御
-                if (json_note.note_type == 0) {
+                if (json_note.note_type == 0)
+                {
                     ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.FLICK);
                 }
-                else if (json_note.note_type == 1) {
+                else if (json_note.note_type == 1)
+                {
                     ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.TOUCH);
                 }
-                else {
+                else
+                {
                     ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.UNKNOWN);
                 }
                 //BarにNote情報を書き込む
