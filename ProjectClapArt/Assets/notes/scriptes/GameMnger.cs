@@ -43,7 +43,7 @@ public class GameMnger : MonoBehaviour
     //notesを入れる小節のリスト
     List<Bar> bars = null;
 
-    //現在読んでいるnotesのバーの番号
+    //現在読んでいるのバーの番号
     int bar_counter = 0;
 
     //現在読んでいるnoteの番号
