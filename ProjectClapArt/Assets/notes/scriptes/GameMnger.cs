@@ -54,14 +54,24 @@ public class GameMnger : MonoBehaviour {
     [SerializeField] int more_diff_num = 100;
 
     //goodタイミング
-    [SerializeField]int good_diff_time_num = 10;
+    [SerializeField] int good_diff_time_num = 10;
 
     //入力Mnger
-    [SerializeField]InputManager track_pad_input = null;
+    [SerializeField] InputManager track_pad_input = null;
 
     //
     [SerializeField] GameObject good_obj = null;
     [SerializeField] GameObject bad_obj = null;
+
+    [SerializeField] SpriteRenderer debugTap;
+    [SerializeField] bool Flag;
+
+    [SerializeField] int debugPCM;
+    [SerializeField] float debugTIME;
+
+    [SerializeField] int ElapsedTime = 0;
+    [SerializeField] float ElapsedTime_org = 0;
+    [SerializeField] int musictime;
 
     public float WholeNote {
         get { return whole_note; }
@@ -71,21 +81,24 @@ public class GameMnger : MonoBehaviour {
     /// 初期化
     /// </summary>
     void Start() {
+        Application.targetFrameRate = 60;
 
         //音符の長さを計測
         whole_note = (int)(60.0f / BPM * NOTE * 1000.0f);
 
         music = this.GetComponent<AudioSource>();
 
+      //  music.velocityUpdateMode = AudioVelocityUpdateMode.Fixed;
+
         Bar test_bar = new Bar();
 
         List<Note> notes = new List<Note>(4);
 
-        notes.Add(new Note(new Vector2(-1,-1),1500,3100,Note.NOTE_TYPE.FLICK ));
-        notes.Add(new Note(new Vector2(1,-1) ,1900,3500,Note.NOTE_TYPE.FLICK ));
-        notes.Add(new Note(new Vector2(-1,1) ,2300,3900,Note.NOTE_TYPE.FLICK ));
-        notes.Add(new Note(new Vector2(1,1)  ,2700,4300,Note.NOTE_TYPE.FLICK ));
-
+        notes.Add(new Note(new Vector2(-1,-1),2300,4290,Note.NOTE_TYPE.FLICK ));
+        notes.Add(new Note(new Vector2(1,-1) ,2800,4790,Note.NOTE_TYPE.FLICK ));
+        notes.Add(new Note(new Vector2(-1,1) ,3300,5290,Note.NOTE_TYPE.FLICK ));
+        notes.Add(new Note(new Vector2(1,1)  ,3800,5790,Note.NOTE_TYPE.FLICK ));
+        
         test_bar.Notes = notes;
 
         List<Bar> test_bars = new List<Bar>();
@@ -93,6 +106,7 @@ public class GameMnger : MonoBehaviour {
 
         bars = test_bars;
 
+        
     }
 
     /// <summary>
@@ -103,12 +117,28 @@ public class GameMnger : MonoBehaviour {
         //音のタイミング
         this.music_time_num = (int)(music.time * 1000.0f);
         //不要な桁の切り捨て
-        //music_time_num /= 10;
-        //music_time_num *= 10;
+
+        //デバッグ用
+        debugPCM = music.timeSamples;
+        debugTIME = debugPCM / (Time.time - start_game_time);
+
+        //一秒あたりのPMC
+        if (debugPCM != 0)
+            ElapsedTime = (int)(debugPCM / 44.1f) ;
+        
+        ElapsedTime_org = (Time.time - start_game_time);
+        musictime = (int)(music.time * 1000.0f);
+
+        //music_time_num /= 20;
+        //music_time_num *= 20;
+
+        music_time_num = ElapsedTime;
+
 
         music_time_num /= 100;
         music_time_num *= 100;
 
+       
         //待機状態
         if (game_state == GAME_MODE.GAME_WAIT) {
             gameWait();
@@ -140,6 +170,7 @@ public class GameMnger : MonoBehaviour {
         game_flg = true;
         //音楽再生
         music.Play();
+        
 
         //ゲームをスポーン状態へ
         game_state = GAME_MODE.NOTE_SPAWN;
@@ -153,7 +184,10 @@ public class GameMnger : MonoBehaviour {
         //予め多めの誤差にしておく
         int more_dff = 2 * 2;
 
-        int juge_time = (int)(music.time * 1000.0f);
+        //int juge_time = (int)(music.timeSamples * 1000.0f);
+
+        int juge_time = ElapsedTime;
+        
         //不要な桁の切り捨て
         juge_time /= 10;
         juge_time *= 10;
@@ -192,6 +226,7 @@ public class GameMnger : MonoBehaviour {
         //スポーンする小節
         List<Note> notes = bars[bar_counter].Notes;
 
+ 
         //スポーンする
         foreach (Note note in notes) {
             //対象のnoteまでスキップ
@@ -231,12 +266,14 @@ public class GameMnger : MonoBehaviour {
         //    return;
 
 
-        Debug.Log("Flick : " + track_pad_input.Flick.ToString());
+        //  Debug.Log("Flick : " + track_pad_input.Flick.ToString());
 
         //トラックパッドを使用したとき
-        if (!track_pad_input.Flick)
-            return;
-        Debug.Log("Flick : " + track_pad_input.Flick.ToString());
+       // if (!track_pad_input.Tap)
+         Flag = track_pad_input.Tap;
+      //  Flag = Input.GetKeyDown(KeyCode.Space);
+            //  return;
+       // Debug.Log("Flick : " + track_pad_input.Flick.ToString());
 
         //押した時間
         int press_time = music_time_num;
@@ -244,6 +281,10 @@ public class GameMnger : MonoBehaviour {
         //スポーンする小節リスト
         List<Note> notes = bars[bar_counter - 1].Notes;
 
+        if (debugTap.color != Color.white)
+        {
+            debugTap.color = Color.white;
+        }
         //判定
         foreach (Note note in notes) {
             //クリックされていたら判定しない
@@ -260,20 +301,33 @@ public class GameMnger : MonoBehaviour {
             //ベストタイミング
             if (diff < good_diff_time_num) {
                 //クリックフラグを発火
+                //デバッグ
+                debugTap.color = Color.green;
+
+                if (!Flag)
+                    continue;
+
                 note.ClikFlg = true;
                 Destroy(note.NoteInstance);
                 Debug.Log("good");
+
                 break;
 
             }
             //ちょっと惜しいとき
-            else if (diff < this.more_diff_num) {
+            else if (diff < this.more_diff_num){
                 //クリックフラグを発火
+                debugTap.color = Color.red;
+                if (!Flag)
+                    continue;
+
                 note.ClikFlg = true;
                 Destroy(note.NoteInstance);
                 Debug.Log("miss");
                 break;
             }
+
+
             //完全にタイミングを外した場合
             //else if(more_diff_num < diff ) {
             //    Debug.Log("out");
@@ -281,5 +335,7 @@ public class GameMnger : MonoBehaviour {
             //    break;
             //}
         }
+
+        
     }
 }

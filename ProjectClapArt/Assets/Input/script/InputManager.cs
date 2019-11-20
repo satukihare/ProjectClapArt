@@ -55,15 +55,18 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             pressTime = Time.time;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
+
             float heldTime = Time.time - pressTime;
             if (heldTime < maxTapTime)
             {
-                tap = true;
+              
                 //Debug.Log("detected as tap");
             }
+            tap = true;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+          
         }
 
         Vector2 mov = (Vector2)Input.mousePosition - curPos;
