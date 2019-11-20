@@ -100,7 +100,7 @@ public class readWriteJsonFile : MonoBehaviour {
 
         bool write_seccses = false;
 
-        string file_path = Application.dataPath + "/" + notes_folder_path + set_write_file_name;
+        string file_path = Application.dataPath + "/" + notes_folder_path + "/"+set_write_file_name;
 
         //書き込むBarのリスト
         List<JsonBar> write_bar_list = new List<JsonBar>(set_write_bar_list.Count);
@@ -160,7 +160,7 @@ public class readWriteJsonFile : MonoBehaviour {
     /// <returns>Barのデータ</returns>
     public List<Bar> readNotesFileDate(string set_notes_file_name) {
 
-        string file_path = Application.dataPath + "/" + notes_folder_path + set_notes_file_name;
+        string file_path = Application.dataPath + "/" + notes_folder_path +"/"+ set_notes_file_name;
         FileStream fs = null;
 
         //BarのListを抽象化するためのラッパークラス
@@ -229,6 +229,8 @@ public class readWriteJsonFile : MonoBehaviour {
                 {
                     ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.UNKNOWN);
                 }
+                //初期化しておく
+                ret_note.ClikFlg = false;
                 //BarにNote情報を書き込む
                 return_bar.Notes.Add(ret_note);
             }

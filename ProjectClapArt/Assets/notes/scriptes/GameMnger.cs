@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMnger : MonoBehaviour
-{
+public class GameMnger : MonoBehaviour {
 
     //ゲームモード
-    enum GAME_MODE
-    {
+    enum GAME_MODE {
         //待機状態
         GAME_WAIT = 0,
         //notes出現状態
         NOTE_SPAWN,
         //notesをtouch
         NOTE_TOUCH,
+        //ゲーム終了
+        GAME_END,
         //未定義
         UNKNOWN = -1,
     }
@@ -78,8 +78,7 @@ public class GameMnger : MonoBehaviour
     /// <summary>
     /// 初期化
     /// </summary>
-    void Start()
-    {
+    void Start() {
 
         //音符の長さを計測
         whole_note = (int)(60.0f / BPM * NOTE * 1000.0f);
@@ -95,28 +94,21 @@ public class GameMnger : MonoBehaviour
     /// <summary>
     /// 更新
     /// </summary>
-    void Update()
-    {
+    void Update() {
 
         //音のタイミング
         this.music_time_num = (int)(music.time * 1000.0f);
-        //不要な桁の切り捨て
-        //music_time_num /= round_digits;
-        //music_time_num *= round_digits;
 
         //待機状態
-        if (game_state == GAME_MODE.GAME_WAIT)
-        {
+        if (game_state == GAME_MODE.GAME_WAIT) {
             gameWait();
         }
         //スポーン状態
-        else if (game_state == GAME_MODE.NOTE_SPAWN)
-        {
+        else if (game_state == GAME_MODE.NOTE_SPAWN) {
             gameNoteSpawn();
         }
         //touch状態
-        else if (game_state == GAME_MODE.NOTE_TOUCH)
-        {
+        else if (game_state == GAME_MODE.NOTE_TOUCH) {
             gameNoteTouch();
         }
         //イレギュラー値
@@ -131,8 +123,7 @@ public class GameMnger : MonoBehaviour
     /// <summary>
     /// ゲーム開始
     /// </summary>
-    void gameStart()
-    {
+    void gameStart() {
         //ゲーム開始時間を記録
         this.start_game_time = Time.time;
         //ゲーム中に
@@ -145,42 +136,11 @@ public class GameMnger : MonoBehaviour
     }
 
     /// <summary>
-    /// 判定検出（未使用）
-    /// </summary>
-    void InputTimmingJudge()
-    {
-
-        //予め多めの誤差にしておく
-        int more_dff = 2 * 2;
-
-        int juge_time = (int)(music.time * 1000.0f);
-        //不要な桁の切り捨て
-        juge_time /= 10;
-        juge_time *= 10;
-
-        int diff = juge_time % whole_note;
-
-        diff = Mathf.Abs(diff);
-        Debug.Log(diff);
-
-        //判定が誤差範囲内なら
-        //if ( diff <= 100) {
-        //    GameObject good_ = new GameObject
-        //    //good_obj.SetActive(true);
-        //}
-        //else if (diff > 100 && diff <= 300) {
-        //    //bad_obj.SetActive(true);
-        //}
-    }
-
-    /// <summary>
     /// 待機状態
     /// </summary>
-    void gameWait()
-    {
+    void gameWait() {
         //ゲーム開始
-        if (track_pad_input.Tap)
-        {
+        if (track_pad_input.Tap) {
             gameStart();
         }
 
@@ -189,12 +149,11 @@ public class GameMnger : MonoBehaviour
     /// <summary>
     /// スポーン状態
     /// </summary>
-    void gameNoteSpawn()
-    {
+    void gameNoteSpawn() {
 
         //描画時の不要な桁の切り捨て
         int msc_time_rud_dgts = music_time_num / round_digits;
-        msc_time_rud_dgts = music_time_num * round_digits;
+        msc_time_rud_dgts = msc_time_rud_dgts * round_digits;
 
         //小節の書き込みタイミングまでスキップ
         if (bars[bar_counter].StartTime > msc_time_rud_dgts)
@@ -204,26 +163,22 @@ public class GameMnger : MonoBehaviour
         List<Note> notes = bars[bar_counter].Notes;
 
         //スポーンする
-        foreach (Note note in notes)
-        {
+        foreach (Note note in notes) {
             //対象のnoteまでスキップ
             if (notes[note_counter] != note)
                 continue;
 
             //スポーンするnotesがあればだす
-            if (msc_time_rud_dgts == note.SpawnTime)
-            {
+            if (msc_time_rud_dgts == note.SpawnTime) {
                 GameObject pop_notes = Instantiate(spawn_note_object, note.Pos, Quaternion.identity);
                 //notesにinstanceをセット
                 note.NoteInstance = pop_notes;
                 //カウント
                 note_counter++;
                 //最後のnotesか判定
-                if (note == notes[notes.Count - 1])
-                {
+                if (note == notes[notes.Count - 1]) {
                     //次の小節へ
                     bar_counter++;
-
                     //タッチモードへ
                     game_state = GAME_MODE.NOTE_TOUCH;
 
@@ -238,8 +193,7 @@ public class GameMnger : MonoBehaviour
     /// <summary>
     /// touch状態
     /// </summary>
-    void gameNoteTouch()
-    {
+    void gameNoteTouch() {
 
         //トラックパッドがtouchされればTrue
         bool flick_flg = track_pad_input.Tap | track_pad_input.Flick | track_pad_input.FlickStart | track_pad_input.FlickEnd;
@@ -255,8 +209,7 @@ public class GameMnger : MonoBehaviour
         List<Note> notes = bars[bar_counter - 1].Notes;
 
         //判定
-        foreach (Note note in notes)
-        {
+        foreach (Note note in notes) {
             //クリックされていたNoteは判定しない
             if (note.ClikFlg)
                 continue;
@@ -275,8 +228,7 @@ public class GameMnger : MonoBehaviour
     /// <param name="set_press_time">押下した時間</param>
     /// <param name="set_note_press_time">noteのtouch時間</param>
     /// <returns>Abs（押下ーnoteのtouch時間）</returns>
-    private int touchAbsDiffCal(int set_press_time, int set_note_press_time)
-    {
+    private int touchAbsDiffCal(int set_press_time, int set_note_press_time) {
 
         //差分を作成
         int diff = set_note_press_time - set_press_time;
@@ -292,12 +244,10 @@ public class GameMnger : MonoBehaviour
     /// </summary>
     /// <param name="set_diff">誤差</param>
     /// <param name="set_target_note">判定する対象のNote</param>
-    private void judgeTouchTimming(int set_diff, Note set_target_note)
-    {
+    private void judgeTouchTimming(int set_diff, Note set_target_note) {
 
         //ベストタイミング
-        if (set_diff < good_diff_time_num)
-        {
+        if (set_diff < good_diff_time_num) {
             //フリックフラグを発火
             set_target_note.ClikFlg = true;
             Destroy(set_target_note.NoteInstance);
@@ -305,8 +255,7 @@ public class GameMnger : MonoBehaviour
 
         }
         //ちょっと惜しいとき
-        else if (set_diff < more_diff_num)
-        {
+        else if (set_diff < more_diff_num) {
             //フリックフラグを発火
             set_target_note.ClikFlg = true;
             Destroy(set_target_note.NoteInstance);
