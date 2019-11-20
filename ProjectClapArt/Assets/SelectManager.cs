@@ -29,6 +29,12 @@ public class SelectManager : MonoBehaviour
             ChangeImage();
         }
         curPos = Input.mousePosition;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (selection != 0)
+                Transition.instance.ChangeScene("TutorialScene");
+        }
     }
 
     void ChangeImage ()

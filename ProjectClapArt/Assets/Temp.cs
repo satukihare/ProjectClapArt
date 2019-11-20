@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TitleManager : MonoBehaviour
+public class Temp : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Transition.instance.ChangeScene("SelectScene");
+            Transition.instance.ChangeScene("TitleScene");
         }
     }
 }
