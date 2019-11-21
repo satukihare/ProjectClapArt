@@ -16,6 +16,11 @@ public class Transition : MonoBehaviour
         get { return Instance; }
     }
 
+    public bool playing
+    {
+        get { return Instance.pd.state != PlayState.Paused; }
+    }
+
     private void Awake()
     {
         if (!Instance)
