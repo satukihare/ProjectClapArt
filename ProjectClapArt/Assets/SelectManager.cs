@@ -18,15 +18,18 @@ public class SelectManager : MonoBehaviour
     void Update()
     {
         Vector2 mov = (Vector2)Input.mousePosition - curPos;
-        if (mov.x > 10.0f)
+        if (!Transition.instance.playing)
         {
-            selection = 2;
-            ChangeImage();
-        }
-        else if (mov.x < -10.0f)
-        {
-            selection = 1;
-            ChangeImage();
+            if (mov.x > 10.0f)
+            {
+                selection = 2;
+                ChangeImage();
+            }
+            else if (mov.x < -10.0f)
+            {
+                selection = 1;
+                ChangeImage();
+            }
         }
         curPos = Input.mousePosition;
 
