@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class TitleManager : MonoBehaviour
 {
+    [SerializeField]
+    PlayableDirector Director;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,9 +16,16 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetMouseButtonDown(0))
         {
-            Transition.instance.ChangeScene("SelectScene");
+            if (Director.state != PlayState.Paused)
+            {
+                Director.time = Director.duration;
+            }
+            else
+            {
+                Transition.instance.ChangeScene("SelectScene");
+            }
         }
     }
 }
