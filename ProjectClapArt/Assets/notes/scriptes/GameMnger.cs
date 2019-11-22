@@ -12,6 +12,8 @@ public class GameMnger : MonoBehaviour {
         NOTE_SPAWN,
         //notesをtouch
         NOTE_TOUCH,
+        //次のBarに移行するタイミング
+        NEXT_BAR,
         //ゲーム終了
         GAME_END,
         //未定義
@@ -111,13 +113,17 @@ public class GameMnger : MonoBehaviour {
         else if (game_state == GAME_MODE.NOTE_TOUCH) {
             gameNoteTouch();
         }
+        //次のBarへ行く際の準備
+        else if(game_state == GAME_MODE.NEXT_BAR) {
+            gameNextBar();
+        }
         //イレギュラー値
         else { }
 
-        if (bars != null)
-            if (bar_counter < bars.Count)
-                if (music_time_num > bars[bar_counter].StartTime + bars[bar_counter].Lingth)
-                    game_state = GAME_MODE.NOTE_SPAWN;
+        //if (bars != null)
+        //    if (bar_counter < bars.Count)
+        //        if (music_time_num > bars[bar_counter].StartTime + bars[bar_counter].Lingth)
+        //            game_state = GAME_MODE.NOTE_SPAWN;
     }
 
     /// <summary>
@@ -177,8 +183,6 @@ public class GameMnger : MonoBehaviour {
                 note_counter++;
                 //最後のnotesか判定
                 if (note == notes[notes.Count - 1]) {
-                    //次の小節へ
-                    bar_counter++;
                     //タッチモードへ
                     game_state = GAME_MODE.NOTE_TOUCH;
 
@@ -194,6 +198,15 @@ public class GameMnger : MonoBehaviour {
     /// touch状態
     /// </summary>
     void gameNoteTouch() {
+        //スポーンした小節リスト
+        List<Note> notes = bars[(bar_counter <= 0 ? 0 : bar_counter )].Notes;
+
+        //notesをチェックする
+        notesTimingCheck(notes);
+
+        //全てのノードがクリックされているなら選択へ遷移する
+        if (checkNoteAllClick(notes))
+            return;
 
         //トラックパッドがtouchされればTrue
         bool flick_flg = track_pad_input.Tap | track_pad_input.Flick | track_pad_input.FlickStart | track_pad_input.FlickEnd;
@@ -204,9 +217,6 @@ public class GameMnger : MonoBehaviour {
 
         //押した時間
         int press_time = music_time_num;
-
-        //スポーンする小節リスト
-        List<Note> notes = bars[bar_counter - 1].Notes;
 
         //判定
         foreach (Note note in notes) {
@@ -219,6 +229,49 @@ public class GameMnger : MonoBehaviour {
 
             //誤差から判定する
             judgeTouchTimming(diff, note);
+        }
+    }
+
+    /// <summary>
+    /// 読んでいるBarのNotesが全てクリックされているなら
+    /// 次の遷移へ行く
+    /// </summary>
+    /// <param name="notes">NoteのList</param>
+    /// <returns>全てクリックされているならTrue</returns>
+    private bool checkNoteAllClick(List<Note> notes) {
+        bool note_click_ch = true;
+        //全てのノードがクリックされているか確認
+        foreach (Note note in notes) {
+            note_click_ch = note_click_ch & note.ClikFlg;
+        }
+
+        //一回でもくりっくされているなら選択へ遷移しない
+        if (note_click_ch) {
+            game_state = GAME_MODE.NEXT_BAR;
+        }
+        return note_click_ch;
+    }
+
+    /// <summary>
+    /// notesのタイミングをチェックしタイミングが通り過ぎたものにtrueを入れる
+    /// </summary>
+    /// <param name="notes">NoteのList</param>
+    private void notesTimingCheck(List<Note> notes) {
+        foreach (Note note in notes) {
+            if (note.ClikFlg)
+                continue;
+
+            //タイミングが過ぎているのでTrueをいれる
+            if (note.PressTime + 1000 < music_time_num) {
+                note.ClikFlg = true;
+                //
+                //今はタイミングが間違ってもnotesを消している
+                //nullならなにもしない
+                if (note.NoteInstance != null)
+                    Destroy(note.NoteInstance);
+                else
+                    Debug.Log("Note Instance is NullPtr ! ! ! ");
+            }
         }
     }
 
@@ -267,5 +320,13 @@ public class GameMnger : MonoBehaviour {
         //    Destroy(note.NoteInstance);
         //    break;
         //}
+    }
+
+    /// <summary>
+    /// 次のBarへ移行する準備
+    /// </summary>
+    void gameNextBar() {
+        bar_counter++;
+        game_state = GAME_MODE.NOTE_SPAWN;
     }
 }
