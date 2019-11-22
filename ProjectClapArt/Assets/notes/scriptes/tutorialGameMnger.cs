@@ -186,7 +186,7 @@ public class tutorialGameMnger : MonoBehaviour {
         List<Note> notes = bars[(bar_counter <= 0 ? 0 : bar_counter - 1)].Notes;
 
         //notesをチェックする
-        notesTimmingCheck(notes);
+        notesTimingCheck(notes);
 
         //全てのノードがクリックされているなら選択へ遷移する
         if (checkNoteAllClick( notes))
@@ -240,7 +240,7 @@ public class tutorialGameMnger : MonoBehaviour {
     /// notesのタイミングをチェックしタイミングが通り過ぎたものにtrueを入れる
     /// </summary>
     /// <param name="notes"></param>
-    private void notesTimmingCheck(List<Note> notes) {
+    private void notesTimingCheck(List<Note> notes) {
         foreach(Note note in notes) {
             if (note.ClikFlg)
                 continue;
