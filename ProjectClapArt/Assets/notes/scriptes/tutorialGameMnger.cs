@@ -132,10 +132,8 @@ public class tutorialGameMnger : MonoBehaviour {
         game_flg = true;
         //音楽再生
         music.Play();
-
         //ゲームをスポーン状態へ
         game_state = GAME_MODE.NOTE_SPAWN;
-
     }
 
     /// <summary>
@@ -190,6 +188,10 @@ public class tutorialGameMnger : MonoBehaviour {
         //notesをチェックする
         notesTimmingCheck(notes);
 
+        //全てのノードがクリックされているなら選択へ遷移する
+        if (checkNoteAllClick( notes))
+            return;
+
         //トラックパッドがtouchされればTrue
         bool flick_flg = track_pad_input_mng.Tap | track_pad_input_mng.Flick | track_pad_input_mng.FlickStart | track_pad_input_mng.FlickEnd;
 
@@ -208,19 +210,30 @@ public class tutorialGameMnger : MonoBehaviour {
 
             //差分を取る
             int diff = touchAbsDiffCal(press_time, note.PressTime);
-
             //誤差から判定する
             judgeTouchTimming(diff, note);
+        }
+    }
 
+    /// <summary>
+    /// 読んでいるBarのNotesが全てクリックされているなら
+    /// 次の遷移へ行く
+    /// </summary>
+    /// <param name="notes">NoteのList</param>
+    /// <returns>全てクリックされているならTrue</returns>
+    private bool checkNoteAllClick(List<Note> notes) {
+        bool note_click_ch = true;
+        //全てのノードがクリックされているか確認
+        foreach (Note note in notes) {
+            note_click_ch = note_click_ch & note.ClikFlg;
         }
 
-        foreach(Note note in notes) {
-            //一回でもくりっくされていないなら
-            if (note.ClikFlg) {
-                game_state = GAME_MODE.GAME_CHOSE;
-                break;
-            }
+        //一回でもくりっくされているなら選択へ遷移しない
+        if (note_click_ch) {
+            game_state = GAME_MODE.GAME_CHOSE;
         }
+
+        return note_click_ch;
     }
 
     /// <summary>
@@ -236,7 +249,7 @@ public class tutorialGameMnger : MonoBehaviour {
             if (note.PressTime + 1000 < music_time_num) {
                 note.ClikFlg = true;
                 //
-                //今は間違ってもnotesを消している
+                //今はタイミングが間違ってもnotesを消している
                 //
                 Destroy(note.NoteInstance);
             }
