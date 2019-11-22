@@ -238,7 +238,9 @@ public class tutorialGameMnger : MonoBehaviour {
                 //
                 //今は間違ってもnotesを消している
                 //
-                Destroy(note.NoteInstance);
+                Animator anim = note.NoteInstance.GetComponent<Animator>();
+                anim.SetTrigger("Despawn");
+                //Destroy(note.NoteInstance);
             }
         }
     }
