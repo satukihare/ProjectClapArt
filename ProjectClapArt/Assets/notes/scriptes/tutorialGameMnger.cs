@@ -177,7 +177,6 @@ public class tutorialGameMnger : MonoBehaviour {
         }
     }
 
-
     /// <summary>
     /// touch状態
     /// </summary>
@@ -209,7 +208,7 @@ public class tutorialGameMnger : MonoBehaviour {
                 continue;
 
             //差分を取る
-            int diff = touchAbsDiffCal(press_time, note.PressTime);
+            int diff = GameMngerLib.touchAbsDiffCal(press_time, note.PressTime);
             //誤差から判定する
             judgeTouchTimming(diff, note);
         }

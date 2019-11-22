@@ -225,7 +225,7 @@ public class GameMnger : MonoBehaviour {
                 continue;
 
             //差分を取る
-            int diff = touchAbsDiffCal(press_time, note.PressTime);
+            int diff = GameMngerLib.touchAbsDiffCal(press_time, note.PressTime);
 
             //誤差から判定する
             judgeTouchTimming(diff, note);
@@ -273,23 +273,6 @@ public class GameMnger : MonoBehaviour {
                     Debug.Log("Note Instance is NullPtr ! ! ! ");
             }
         }
-    }
-
-    /// <summary>
-    /// 差分を取り絶対値を返す
-    /// </summary>
-    /// <param name="set_press_time">押下した時間</param>
-    /// <param name="set_note_press_time">noteのtouch時間</param>
-    /// <returns>Abs（押下ーnoteのtouch時間）</returns>
-    private int touchAbsDiffCal(int set_press_time, int set_note_press_time) {
-
-        //差分を作成
-        int diff = set_note_press_time - set_press_time;
-
-        //絶対値をとる
-        diff = Mathf.Abs(diff);
-
-        return diff;
     }
 
     /// <summary>
