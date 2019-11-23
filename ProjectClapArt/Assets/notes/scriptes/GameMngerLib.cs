@@ -7,6 +7,24 @@ using UnityEngine;
 /// </summary>
 public class GameMngerLib {
 
+    //ゲームモード
+    public enum GAME_MODE {
+        //待機状態
+        GAME_WAIT = 0,
+        //notes出現状態
+        NOTE_SPAWN,
+        //notesをtouch
+        NOTE_TOUCH,
+        //次のBarに移行するタイミング
+        NEXT_BAR,
+        //選択モード
+        GAME_CHOSE,
+        //ゲーム終了
+        GAME_END,
+        //未定義
+        UNKNOWN = -1,
+    }
+
     /// <summary>
     /// 差分を取り絶対値を返す
     /// </summary>
@@ -23,5 +41,6 @@ public class GameMngerLib {
 
         return diff;
     }
+
 
 }

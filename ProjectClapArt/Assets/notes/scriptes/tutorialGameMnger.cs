@@ -7,24 +7,8 @@ using UnityEngine;
 /// </summary>
 public class tutorialGameMnger : MonoBehaviour {
 
-    //ゲームモード
-    enum GAME_MODE {
-        //待機状態
-        GAME_WAIT = 0,
-        //notes出現状態
-        NOTE_SPAWN,
-        //notesをtouch
-        NOTE_TOUCH,
-        //選択モード
-        GAME_CHOSE,
-        //ゲーム終了
-        GAME_END,
-        //未定義
-        UNKNOWN = -1,
-    }
-
     //ゲームの状態
-    GAME_MODE game_state = GAME_MODE.GAME_WAIT;
+    GameMngerLib.GAME_MODE game_state = GameMngerLib.GAME_MODE.GAME_WAIT;
 
     //ゲームの開始時間(ms)
     float start_game_time = 0;
@@ -87,30 +71,24 @@ public class tutorialGameMnger : MonoBehaviour {
         this.music_time_num = (int)(music.time * 1000.0f);
 
         //待機状態
-        if (game_state == GAME_MODE.GAME_WAIT) {
+        if (game_state == GameMngerLib.GAME_MODE.GAME_WAIT) {
             gameWait();
         }
         //notesスポーン
-        else if (game_state == GAME_MODE.NOTE_SPAWN) {
+        else if (game_state == GameMngerLib.GAME_MODE.NOTE_SPAWN) {
             gameNoteSpawn();
 
         } //touch状態
-        else if (game_state == GAME_MODE.NOTE_TOUCH) {
+        else if (game_state == GameMngerLib.GAME_MODE.NOTE_TOUCH) {
             gameNoteTouch();
         }
         //選択モード
-        else if(game_state == GAME_MODE.GAME_CHOSE) {
+        else if (game_state == GameMngerLib.GAME_MODE.GAME_CHOSE) {
             gameChose();
         }
           //イレギュラー値
-          else {
+          else
             Debug.Log("UNKNOWN");
-        }
-
-        //if (bars != null)
-        //    if (bar_counter < bars.Count)
-        //        if (music_time_num > bars[bar_counter].StartTime + bars[bar_counter].Lingth)
-        //            game_state = GAME_MODE.NOTE_SPAWN;
     }
 
     /// <summary>
@@ -133,7 +111,7 @@ public class tutorialGameMnger : MonoBehaviour {
         //音楽再生
         music.Play();
         //ゲームをスポーン状態へ
-        game_state = GAME_MODE.NOTE_SPAWN;
+        game_state = GameMngerLib.GAME_MODE.NOTE_SPAWN;
     }
 
     /// <summary>
@@ -149,7 +127,6 @@ public class tutorialGameMnger : MonoBehaviour {
         //小説のかきこみタイミングまでスキップ
         if (bars[bar_counter].StartTime > msc_time_rud_dgts)
             return;
-
         //スポーンする小節
         List<Note> notes = bars[bar_counter].Notes;
 
@@ -169,7 +146,7 @@ public class tutorialGameMnger : MonoBehaviour {
                 if (note == notes[notes.Count - 1]) {
                     //bar_counter++;
                     //タッチモードへ
-                    game_state = GAME_MODE.NOTE_TOUCH;
+                    game_state = GameMngerLib.GAME_MODE.NOTE_TOUCH;
                     note_counter = 0;
                 }
                 break;
@@ -229,7 +206,7 @@ public class tutorialGameMnger : MonoBehaviour {
 
         //一回でもくりっくされているなら選択へ遷移しない
         if (note_click_ch) {
-            game_state = GAME_MODE.GAME_CHOSE;
+            game_state = GameMngerLib.GAME_MODE.GAME_CHOSE;
         }
 
         return note_click_ch;
@@ -318,7 +295,7 @@ public class tutorialGameMnger : MonoBehaviour {
             bar_counter++;
 
             //スポーン状態へ
-            game_state = GAME_MODE.NOTE_SPAWN;
+            game_state = GameMngerLib.GAME_MODE.NOTE_SPAWN;
             //音楽を再生
             music.time = music_playback_pos;
             music.Play();
@@ -334,7 +311,7 @@ public class tutorialGameMnger : MonoBehaviour {
                 Destroy(note.NoteInstance);
             }
             //スポーン状態へ
-            game_state = GAME_MODE.NOTE_SPAWN;
+            game_state = GameMngerLib.GAME_MODE.NOTE_SPAWN;
             //音楽を指定の再生位置へ
             music.time = bars[bar_counter].StartTime;
             music.Play();

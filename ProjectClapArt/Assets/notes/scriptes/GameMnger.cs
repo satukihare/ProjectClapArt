@@ -4,23 +4,8 @@ using UnityEngine;
 
 public class GameMnger : MonoBehaviour {
 
-    //ゲームモード
-    enum GAME_MODE {
-        //待機状態
-        GAME_WAIT = 0,
-        //notes出現状態
-        NOTE_SPAWN,
-        //notesをtouch
-        NOTE_TOUCH,
-        //次のBarに移行するタイミング
-        NEXT_BAR,
-        //ゲーム終了
-        GAME_END,
-        //未定義
-        UNKNOWN = -1,
-    }
     //ゲームの状態
-    GAME_MODE game_state = GAME_MODE.GAME_WAIT;
+    GameMngerLib.GAME_MODE game_state = GameMngerLib.GAME_MODE.GAME_WAIT;
 
     [SerializeField] float BPM = 0;
 
@@ -69,10 +54,6 @@ public class GameMnger : MonoBehaviour {
     //JSON形式の譜面データを読み込む
     [SerializeField] readWriteJsonFile read_write_json_file = null;
 
-
-    [SerializeField] GameObject good_obj = null;
-    [SerializeField] GameObject bad_obj = null;
-
     public float WholeNote {
         get { return whole_note; }
     }
@@ -102,28 +83,23 @@ public class GameMnger : MonoBehaviour {
         this.music_time_num = (int)(music.time * 1000.0f);
 
         //待機状態
-        if (game_state == GAME_MODE.GAME_WAIT) {
+        if (game_state ==  GameMngerLib.GAME_MODE.GAME_WAIT) {
             gameWait();
         }
         //スポーン状態
-        else if (game_state == GAME_MODE.NOTE_SPAWN) {
+        else if (game_state == GameMngerLib.GAME_MODE.NOTE_SPAWN) {
             gameNoteSpawn();
         }
         //touch状態
-        else if (game_state == GAME_MODE.NOTE_TOUCH) {
+        else if (game_state == GameMngerLib.GAME_MODE.NOTE_TOUCH) {
             gameNoteTouch();
         }
         //次のBarへ行く際の準備
-        else if(game_state == GAME_MODE.NEXT_BAR) {
+        else if(game_state == GameMngerLib.GAME_MODE.NEXT_BAR) {
             gameNextBar();
         }
         //イレギュラー値
-        else { }
-
-        //if (bars != null)
-        //    if (bar_counter < bars.Count)
-        //        if (music_time_num > bars[bar_counter].StartTime + bars[bar_counter].Lingth)
-        //            game_state = GAME_MODE.NOTE_SPAWN;
+        else Debug.Log("UNKNOWN");
     }
 
     /// <summary>
@@ -136,9 +112,8 @@ public class GameMnger : MonoBehaviour {
         game_flg = true;
         //音楽再生
         music.Play();
-
         //ゲームをスポーン状態へ
-        game_state = GAME_MODE.NOTE_SPAWN;
+        game_state = GameMngerLib.GAME_MODE.NOTE_SPAWN;
     }
 
     /// <summary>
@@ -184,7 +159,7 @@ public class GameMnger : MonoBehaviour {
                 //最後のnotesか判定
                 if (note == notes[notes.Count - 1]) {
                     //タッチモードへ
-                    game_state = GAME_MODE.NOTE_TOUCH;
+                    game_state = GameMngerLib.GAME_MODE.NOTE_TOUCH;
 
                     //Counterをゼロに
                     note_counter = 0;
@@ -205,7 +180,7 @@ public class GameMnger : MonoBehaviour {
         notesTimingCheck(notes);
 
         //全てのノードがクリックされているなら選択へ遷移する
-        if (checkNoteAllClick(notes))
+        if ( checkNoteAllClick(notes))
             return;
 
         //トラックパッドがtouchされればTrue
@@ -247,7 +222,7 @@ public class GameMnger : MonoBehaviour {
 
         //一回でもくりっくされているなら選択へ遷移しない
         if (note_click_ch) {
-            game_state = GAME_MODE.NEXT_BAR;
+            game_state = GameMngerLib.GAME_MODE.NEXT_BAR;
         }
         return note_click_ch;
     }
@@ -310,6 +285,6 @@ public class GameMnger : MonoBehaviour {
     /// </summary>
     void gameNextBar() {
         bar_counter++;
-        game_state = GAME_MODE.NOTE_SPAWN;
+        game_state = GameMngerLib.GAME_MODE.NOTE_SPAWN;
     }
 }
