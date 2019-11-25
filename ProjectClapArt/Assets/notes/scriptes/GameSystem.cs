@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// GameMnger用のstaticのLibrary
+/// GameMnger用のスーパークラス
 /// </summary>
 public class GameSystem : MonoBehaviour {
 
@@ -81,6 +81,9 @@ public class GameSystem : MonoBehaviour {
 //--プロパティ--
     public float WholeNote {
         get { return whole_note; }
+    }
+    public float Bpm {
+        get { return BPM; }
     }
 
     /// <summary>
@@ -286,5 +289,4 @@ public class GameSystem : MonoBehaviour {
 
         return diff;
     }
-
 }
