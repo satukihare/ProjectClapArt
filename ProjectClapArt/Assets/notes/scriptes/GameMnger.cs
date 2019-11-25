@@ -2,61 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMnger : MonoBehaviour {
-
-    //ゲームの状態
-    GameMngerLib.GAME_MODE game_state = GameMngerLib.GAME_MODE.GAME_WAIT;
-
-    [SerializeField] float BPM = 0;
-
-    [SerializeField] float NOTE = 0;
-
-    //音符の長さ
-    [SerializeField] int whole_note;
-
-    //ゲーム開始時の時間(ms)
-    float start_game_time = 0;
-    //ゲーム中のフラグ
-    bool game_flg = false;
-    //オーディオマネージャ
-    [SerializeField] AudioSource music = null;
-
-    //ポップするときのSE
-    [SerializeField] AudioClip pop_se = null;
-
-    //スポーンさせるnotesオブジェクト
-    [SerializeField] GameObject spawn_note_object = null;
-
-    //notesを入れる小節のリスト
-    List<Bar> bars = null;
-
-    //現在読んでいるのバーの番号
-    int bar_counter = 0;
-
-    //現在読んでいるnoteの番号
-    int note_counter = 0;
-
-    //音楽の再生位置を1000倍したものが基準
-    int music_time_num = 0;
-
-    //タップの許容できる誤差
-    [SerializeField] int more_diff_num = 100;
-
-    //goodタイミング
-    [SerializeField] int good_diff_time_num = 10;
-
-    //入力Mnger
-    [SerializeField] InputManager track_pad_input = null;
-
-    //切り捨てる数値量
-    [SerializeField] int round_digits = 20;
-
-    //JSON形式の譜面データを読み込む
-    [SerializeField] readWriteJsonFile read_write_json_file = null;
-
-    public float WholeNote {
-        get { return whole_note; }
-    }
+public class GameMnger : GameSystem {
 
     /// <summary>
     /// 初期化

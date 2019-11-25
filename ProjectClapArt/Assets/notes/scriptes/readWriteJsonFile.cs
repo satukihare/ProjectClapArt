@@ -5,7 +5,7 @@ using System.IO;
 using System;
 using System.Text;
 
-public class readWriteJsonFile : MonoBehaviour {
+public class readWriteJsonFile : GameSystem {
     /// <summary>
     /// JSONに読み書きするためだけのNoteクラス
     /// 外部では使わないでください

@@ -5,51 +5,7 @@ using UnityEngine;
 /// <summary>
 /// チュートリアル用ゲームマネージャ
 /// </summary>
-public class tutorialGameMnger : MonoBehaviour {
-
-    //ゲームの状態
-    GameMngerLib.GAME_MODE game_state = GameMngerLib.GAME_MODE.GAME_WAIT;
-
-    //ゲームの開始時間(ms)
-    float start_game_time = 0;
-    //ゲーム中のフラグ
-    bool game_flg = false;
-
-    //オーディオマネージャ
-    [SerializeField] AudioSource music = null;
-
-    //ポップするときのSE
-    [SerializeField] AudioClip pop_se = null;
-
-    //スポーンさせるnotesオブジェクト
-    [SerializeField] GameObject spawn_note_object = null;
-
-    //notesを入れるリスト
-    List<Bar> bars = null;
-
-    //現在読んでいるBarの番号
-    int bar_counter = 0;
-
-    //現在読んでいるnoteの番号
-    int note_counter = 0;
-
-    //音楽の再生位置を1000倍したものが基準
-    int music_time_num = 0;
-
-    //タップで許容できる誤差
-    [SerializeField] int more_diff_num = 100;
-
-    //goodタイミング
-    [SerializeField] int good_diff_time_num = 10;
-
-    //入力マネージャ
-    [SerializeField] InputManager track_pad_input_mng = null;
-
-    //切り捨てる数値量
-    [SerializeField] int round_digits = 100;
-
-    //JSON読み込み用のクラス
-    [SerializeField] readWriteJsonFile read_write_json = null;
+public class tutorialGameMnger : GameSystem {
 
     /// <summary>
     /// 初期化
