@@ -100,6 +100,12 @@ public class GameSystem : MonoBehaviour {
         if (read_write_json_file == null) Debug.Log("readWriteJsonFile nullptr !!");
 
         bars = read_write_json_file.readNotesFileDate("test.json");
+        ResultData.total_notes = 0;
+        ResultData.hit_notes = 0;
+        foreach (Bar bar in bars)
+        {
+            ResultData.total_notes += bar.Notes.Count;
+        }
     }
 
     /// <summary>
@@ -259,7 +265,7 @@ public class GameSystem : MonoBehaviour {
             set_target_note.ClikFlg = true;
             Destroy(set_target_note.NoteInstance);
             Debug.Log("good timming");
-
+            ResultData.hit_notes += 1;
         }
         //ちょっと惜しいとき
         else if (set_diff < more_diff_num) {
@@ -267,6 +273,7 @@ public class GameSystem : MonoBehaviour {
             set_target_note.ClikFlg = true;
             Destroy(set_target_note.NoteInstance);
             Debug.Log("miss timming");
+            ResultData.hit_notes += 0.7f;
         }
         //完全にタイミングを外した場合
         else {
