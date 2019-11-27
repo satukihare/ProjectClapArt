@@ -236,8 +236,10 @@ public class GameSystem : MonoBehaviour {
 
                 //今はタイミングが間違ってもnotesを消している
                 //nullならなにもしない
-                if (note.NoteInstance != null)
-                    Destroy(note.NoteInstance);
+                if (note.NoteInstance != null) {
+                    Animator anim = note.NoteInstance.GetComponent<Animator>();
+                    anim.SetTrigger("Despawn");
+                }
                 else
                     Debug.Log("Note Instance is NullPtr ! ! ! ");
             }
