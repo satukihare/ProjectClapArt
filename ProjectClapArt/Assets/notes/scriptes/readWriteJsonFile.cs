@@ -16,7 +16,8 @@ public class readWriteJsonFile : MonoBehaviour {
             /// <summary>
             /// 座標
             /// </summary>
-        public Vector2 position = new Vector2(0.0f, 0.0f);
+        public Vector2 anchors_max = new Vector2(0.0f, 0.0f);
+        public Vector2 anchors_min = new Vector2(0.0f, 0.0f);
 
         /// <summary>
         ///スポーンタイミング
@@ -45,8 +46,9 @@ public class readWriteJsonFile : MonoBehaviour {
         /// <param name="set_spawn_time">スポーンする時間</param>
         /// <param name="set_press_time">押下するタイミング</param>
         /// <param name="set_note_type">notesのタイプ</param>
-        public JsonNote(Vector2 set_position, int set_spawn_time, int set_press_time, int set_note_type) {
-            position = set_position;
+        public JsonNote(Vector2 set_anchors_max , Vector2 set_anchors_min , int set_spawn_time, int set_press_time, int set_note_type) {
+            anchors_max = set_anchors_max;
+            anchors_min = set_anchors_min;
             spawn_time = set_spawn_time;
             press_time = set_press_time;
             note_type = set_note_type;
@@ -78,17 +80,7 @@ public class readWriteJsonFile : MonoBehaviour {
     }
 
     //譜面データの相対パス
-    [SerializeField] string notes_folder_path = @"NotesFileDate\";
-
-    /// <summary>
-    /// 初期化
-    /// </summary>
-    void Start() {}
-
-    /// <summary>
-    /// 更新
-    /// </summary>
-    void Update() { }
+    [SerializeField] string notes_folder_path = @"NotesFileDate/";
 
     /// <summary>
     /// ファイルへの譜面のJSON形式での書き込み
@@ -118,7 +110,8 @@ public class readWriteJsonFile : MonoBehaviour {
             {
                 JsonNote json_note = new JsonNote();
                 //座標
-                json_note.position = set_write_bar_list[bar_cnt].Notes[note_cnt].Pos;
+                json_note.anchors_max = set_write_bar_list[bar_cnt].Notes[note_cnt].Anchors_max;
+                json_note.anchors_min = set_write_bar_list[bar_cnt].Notes[note_cnt].Anchors_min;
                 json_note.spawn_time = set_write_bar_list[bar_cnt].Notes[note_cnt].SpawnTime;
                 json_note.press_time = set_write_bar_list[bar_cnt].Notes[note_cnt].PressTime;
 
@@ -219,15 +212,15 @@ public class readWriteJsonFile : MonoBehaviour {
                 //情報の抜き出し　Noteの種類をifで制御
                 if (json_note.note_type == 0)
                 {
-                    ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.FLICK);
+                    ret_note = new Note( json_note.anchors_min ,json_note.anchors_max, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.FLICK);
                 }
                 else if (json_note.note_type == 1)
                 {
-                    ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.TOUCH);
+                    ret_note = new Note(json_note.anchors_min, json_note.anchors_max, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.TOUCH);
                 }
                 else
                 {
-                    ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.UNKNOWN);
+                    ret_note = new Note(json_note.anchors_min, json_note.anchors_max, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.UNKNOWN);
                 }
                 //初期化しておく
                 ret_note.ClikFlg = false;

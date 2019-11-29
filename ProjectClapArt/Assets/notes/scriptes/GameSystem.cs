@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// GameMnger用のスーパークラス
@@ -44,9 +45,6 @@ public class GameSystem : MonoBehaviour {
 
     //オーディオマネージャ
     [SerializeField] protected AudioSource music = null;
-
-    //ポップするときのSE
-    [SerializeField] protected AudioClip pop_se = null;
 
     //スポーンさせるnotesオブジェクト
     [SerializeField] protected GameObject spawn_note_object = null;
@@ -94,8 +92,9 @@ public class GameSystem : MonoBehaviour {
         //音符の長さを計測
         whole_note = (int)(60.0f / BPM * NOTE * 1000.0f);
 
-        music = this.GetComponent<AudioSource>();
+        music = GetComponent<AudioSource>();
 
+        read_write_json_file = this.GetComponent<readWriteJsonFile>();
         //譜面の読み込み
         if (read_write_json_file == null) Debug.Log("readWriteJsonFile nullptr !!");
 
@@ -162,9 +161,20 @@ public class GameSystem : MonoBehaviour {
 
             //スポーンするnotesがあればだす
             if (msc_time_rud_dgts == note.SpawnTime) {
-                GameObject pop_notes = Instantiate(spawn_note_object, note.Pos, Quaternion.identity);
-                //notesにinstanceをセット
-                note.NoteInstance = pop_notes;
+                //生成
+                GameObject pop_notes = Instantiate(spawn_note_object, new Vector2(0.0f, 0.0f), Quaternion.identity)as GameObject;
+                GameObject anchors_rect = transform.GetChild(0).gameObject;
+                //子オブジェクトにする
+                pop_notes.transform.parent = anchors_rect.transform;
+
+                //イメージを抽出
+                Image image = pop_notes.GetComponent<Image>();
+                image.rectTransform.anchorMax = new Vector2(0.1f, 0.1f);//note.Anchors_max;
+                image.rectTransform.anchorMin = new Vector2(0.1f, 0.1f); //note.Anchors_min;
+                image.rectTransform.anchoredPosition = new Vector2(0, 1);
+
+                 //notesにinstanceをセット
+                 note.NoteInstance = pop_notes;
                 //カウント
                 note_counter++;
                 //最後のnotesか判定

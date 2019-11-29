@@ -13,7 +13,9 @@ public class Note {
     }
 
     //座標
-    Vector2 pos;
+    Vector2 anchors_min;
+    Vector2 anchors_max;
+
     //スポーンタイミング
     int spawnTime;
     //押す下タイミング
@@ -26,22 +28,27 @@ public class Note {
     GameObject note_instance = null;
 
     /// <summary>
-    /// パラメータ
+    /// コンストラクタ
     /// </summary>
-    /// <param name="set_pos">表示座標</param>
+    /// <param name="set_anchors_min">表示座標_min</param>
+    /// <param name="set_anchors_max">表示座標_max</param>
     /// <param name="span_time">スポーンタイム</param>
     /// <param name="press_time">押下タイム</param>
-    /// <param name="note_type">noteのタイプ</param>
-
-    public Note(Vector2 set_pos , int span_time , int press_time , NOTE_TYPE note_type) {
-        pos = set_pos;
+    /// <param name="note_type">noteのタイプ</par
+    public Note(Vector2 set_anchors_min, Vector2 set_anchors_max , int span_time , int press_time , NOTE_TYPE note_type) {
+        anchors_min = set_anchors_min;
+        anchors_max = set_anchors_max;
         spawnTime = span_time;
         pressTime = press_time;
         type = note_type;
     }
 
-    public Vector2 Pos {
-        get { return pos; }
+    public Vector2 Anchors_max {
+        get { return anchors_max; }
+    }
+
+    public Vector2 Anchors_min {
+        get { return anchors_min; }
     }
 
     public int SpawnTime {
