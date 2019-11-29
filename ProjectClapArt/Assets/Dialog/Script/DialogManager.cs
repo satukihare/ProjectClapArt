@@ -8,8 +8,10 @@ public class DialogManager : MonoBehaviour
 {
     static readonly string[] codes =
     {
+        "[Banner]",
         "[Expression]",
         "[Face]",
+        "[Fade]",
         "[Sound]",
         "[Speech]",
         "[End]"
@@ -17,8 +19,10 @@ public class DialogManager : MonoBehaviour
 
     enum CodeID
     {
-        Expression = 0,
+        Banner = 0,
+        Expression,
         Face,
+        Fade,
         Sound,
         Speech,
         End
@@ -33,12 +37,17 @@ public class DialogManager : MonoBehaviour
     Image[] speechBubble;
     [SerializeField]
     Image[] characters;
+    [SerializeField]
+    GameObject banner;
+    [SerializeField]
+    GameObject fade;
     string text;
 
     int currentLine;
     int showLength;
     int maxLength;
     float charTime;
+    bool waitForAnim = false;
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +78,7 @@ public class DialogManager : MonoBehaviour
                 showLength = maxLength;
             }
         }
-        else
+        else if (!waitForAnim)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -83,13 +92,23 @@ public class DialogManager : MonoBehaviour
         while (true)
         {
             Debug.Log("parsing line: " + lines[currentLine]);
-            if (lines[currentLine] == codes[(int)CodeID.Expression])
+            if (lines[currentLine] == codes[(int)CodeID.Banner])
+            {
+                CreateBanner();
+                break;
+            }
+            else if (lines[currentLine] == codes[(int)CodeID.Expression])
             {
                 ChangeExpression();
             }
             else if (lines[currentLine] == codes[(int)CodeID.Face])
             {
                 ChangeFace();
+            }
+            else if (lines[currentLine] == codes[(int)CodeID.Fade])
+            {
+                CreateFade();
+                break;
             }
             else if (lines[currentLine] == codes[(int)CodeID.Sound])
             {
@@ -129,6 +148,14 @@ public class DialogManager : MonoBehaviour
             }
         }
     }
+
+    void CreateBanner()
+    {
+        waitForAnim = true;
+        banner.SetActive(true);
+        banner.transform.GetChild(1).gameObject.GetComponent<Text>().text = lines[++currentLine];
+    }
+
     void ChangeExpression()
     {
         int chara;
@@ -147,6 +174,13 @@ public class DialogManager : MonoBehaviour
         face = int.Parse(lines[++currentLine]);
         //TODO
         Debug.Log("change face " + chara.ToString() + ' ' + face.ToString());
+    }
+
+    void CreateFade()
+    {
+        fade.SetActive(true);
+        int.Parse(lines[++currentLine]);
+        waitForAnim = true;
     }
 
     void PlaySound()
@@ -185,5 +219,14 @@ public class DialogManager : MonoBehaviour
     {
         //game.active = true;
         gameObject.SetActive(false);
+    }
+
+    public void AnimFinished()
+    {
+        if (waitForAnim)
+        {
+            waitForAnim = false;
+            AdvanceText();
+        }
     }
 }

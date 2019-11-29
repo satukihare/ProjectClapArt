@@ -1,0 +1,23 @@
+[Speech]
+0
+test banner
+
+[Banner]
+海は楽Sea
+
+[Speech]
+1
+test after banner
+
+[Speech]
+0
+test fade
+
+[Fade]
+0
+
+[Speech]
+1
+test after fade
+
+[End]
