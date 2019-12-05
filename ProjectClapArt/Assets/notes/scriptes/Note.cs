@@ -32,14 +32,13 @@ public class Note {
     /// <param name="span_time">スポーンタイム</param>
     /// <param name="press_time">押下タイム</param>
     /// <param name="note_type">noteのタイプ</param>
-
     public Note(Vector2 set_pos , int span_time , int press_time , NOTE_TYPE note_type) {
         pos = set_pos;
         spawnTime = span_time;
         pressTime = press_time;
         type = note_type;
     }
-
+//--プロパティ--
     public Vector2 Pos {
         get { return pos; }
     }
