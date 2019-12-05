@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// GameMnger用のスーパークラス
@@ -110,9 +111,25 @@ public class GameSystem : MonoBehaviour {
 
     /// <summary>
     /// 更新
+    /// </summary>
+    protected void Update() {
+        //更新
+        gameUpdate();
+
+        //ゲーム終了か確認
+        notesEndCheck(bars, bar_counter);
+
+        //ゲーム終了時の場合
+        if(game_state == GAME_MODE.GAME_END) {
+            gameEnd();
+        }
+    }
+
+    /// <summary>
+    /// 更新
     /// 抽象メソッド
     /// </summary>
-    protected virtual void Update() {}
+    protected virtual void gameUpdate() {}
 
     /// <summary>
     /// 待機状態
@@ -297,5 +314,27 @@ public class GameSystem : MonoBehaviour {
         diff = Mathf.Abs(diff);
 
         return diff;
+    }
+
+    /// <summary>
+    /// 譜面が読み終わったか確認する
+    /// </summary>
+    /// <param name="bars">Barクラスのリスト</param>
+    /// <param name="bar_counter">読んでいるBar</param>
+    /// <returns>終わったかを返す(Trueなら終わっている)</returns>
+    protected void notesEndCheck(List<Bar> bars , int bar_counter) {
+
+        //bar_counterがBarの個数を同一以上であれば終わり
+        if (bars.Count <= bar_counter)
+            game_state = GAME_MODE.GAME_END;
+    }
+
+    /// <summary>
+    /// ゲーム終了時演出
+    /// </summary>
+    protected virtual void gameEnd() {
+
+        if (Input.GetKey(KeyCode.P))
+            SceneManager.LoadScene(0);
     }
 }
