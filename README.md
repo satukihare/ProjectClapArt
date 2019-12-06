@@ -7,6 +7,7 @@
   <dt>作業環境</dt>
   <dd>windows10</dd>
   <dd>Unity2019.1.4f1</dd>
+  <dd>Cubism 4 SDK for Unity beta2</dd>
 </dl>
 ------
   
