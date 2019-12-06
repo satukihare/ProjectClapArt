@@ -1,23 +1,23 @@
-[Expression]
-0
-0
-
 [Speech]
 0
-test
+test banner
 
-[Expression]
-1
-1
-
-[Face]
-1
-2
+[Banner]
+海は楽Sea
 
 [Speech]
 1
-line1
-line2
-line3
+test after banner
+
+[Speech]
+0
+test fade
+
+[Fade]
+0
+
+[Speech]
+1
+test after fade
 
 [End]

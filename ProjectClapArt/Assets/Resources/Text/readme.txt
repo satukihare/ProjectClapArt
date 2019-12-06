@@ -1,4 +1,4 @@
-# Expression
+﻿# Expression
 # 指定のキャラの表情を変化させる
 
 # 引数
@@ -26,6 +26,16 @@ char
 face
 
 
+# Sound
+# 音声(ボイスor効果音)を再生する
+
+# 引数
+# sound - 再生する音声のID
+
+[Sound]
+sound
+
+
 # Speech
 # テキストを表示させる
 
@@ -40,6 +50,23 @@ text
 ...
 text
 
+# Banner
+# バーとテキストを表示させる
+
+# 引数
+# text - 表示するテキスト（1行）
+
+[Banner]
+text
+
+# Fade
+# フェード演出を再生させる
+
+# 引数
+# id - フェード演出の種類
+
+[Fade]
+id
 
 # End
 # ノベルパートを終了させる
@@ -52,6 +79,9 @@ text
 
 [Expression]
 0
+0
+
+[Sound]
 0
 
 [Speech]
