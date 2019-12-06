@@ -13,3 +13,5 @@
   
 2019年度HAL東京 未来創造展４０４チーム制作ゲーム
 
+Live2D UnitySDKURL https://www.live2d.com/download/cubism-sdk/download-unity/
+
