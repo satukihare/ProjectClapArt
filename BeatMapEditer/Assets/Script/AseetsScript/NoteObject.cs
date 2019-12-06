@@ -7,7 +7,7 @@ public class NoteObject : MonoBehaviour
 
     private Vector2 Pos;
     private Vector2 StartMax, StartMin;
-    [SerializeField] private Image obj = null;
+    [SerializeField] public Image obj = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,21 +26,21 @@ public class NoteObject : MonoBehaviour
     public void MoveRightPos(float num)
     {
         Pos.x = num;
-        if (obj.rectTransform.anchorMax.x < 0.5f)
-        {
+       // if (obj.rectTransform.anchorMax.x < 0.5f)
+        //{
             obj.rectTransform.anchorMin += Pos;
             obj.rectTransform.anchorMax += Pos;
-        }
+        //}
     }
 
     public void MoveLeftPos(float num)
     {
         Pos.x = num;
-        if (obj.rectTransform.anchorMin.x > 0)
-        {
+        //if (obj.rectTransform.anchorMin.x > 0)
+        //{
             obj.rectTransform.anchorMin -= Pos;
             obj.rectTransform.anchorMax -= Pos;
-        }
+        //}
     }
 
     public void ResetPos()

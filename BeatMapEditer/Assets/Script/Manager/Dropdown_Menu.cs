@@ -12,9 +12,8 @@ public class MenuMode
 
 public class NotesMode
 {
-    public static int None = 0;
-    public static int Put = 1;
-    public static int Delete = 2;
+    public static int Put = 0;
+    public static int Delete = 1;
 };
 
 public class Dropdown_Menu : MonoBehaviour
@@ -46,18 +45,14 @@ public class Dropdown_Menu : MonoBehaviour
 
     public void NotesMenuPick()
     {
-        if (NotesDropdown.value == NotesMode.None)
-        {
-        }
-
         if (NotesDropdown.value == NotesMode.Put)
         {
-            //jsonFile.writeNotesFileDate();
+            manager.EditMode = true;
         }
 
         if (NotesDropdown.value == NotesMode.Delete)
         {
-            //jsonFile.readNotesFileDate();
+            manager.EditMode = false;
         }
     }
 }

@@ -16,7 +16,7 @@ public class ToolManager : MonoBehaviour
     public float NowMusicTimer { set; get; }
     public float MusicTimer { set; get; }
     public float NotesTimer {set; get;}
-    private float Bar { set; get; }
+    public float Bar { set; get; }
 
     private bool herfflug, barflug;
     private float Correction = 0.0f;
