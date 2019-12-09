@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// GameMnger用のスーパークラス
@@ -78,6 +79,10 @@ public class GameSystem : MonoBehaviour {
 
     //JSON形式の譜面データを読み込む
     [SerializeField] protected readWriteJsonFile read_write_json_file = null;
+
+    protected int score = 0;
+
+    [SerializeField] protected Image score_image = null;
 
 //--プロパティ--
     public float WholeNote {
@@ -283,6 +288,14 @@ public class GameSystem : MonoBehaviour {
             Destroy(set_target_note.NoteInstance);
             Debug.Log("good timming");
             ResultData.hit_notes += 1;
+
+            if ((int)(ResultData.score_rate * 16) > score)
+            {
+                score = (int)(ResultData.score_rate * 16);
+
+                score_image.fillAmount = ResultData.score_rate;
+                //score_image.fillAmount = (float)(score) / 16;
+            }
         }
         //ちょっと惜しいとき
         else if (set_diff < more_diff_num) {
@@ -291,6 +304,14 @@ public class GameSystem : MonoBehaviour {
             Destroy(set_target_note.NoteInstance);
             Debug.Log("miss timming");
             ResultData.hit_notes += 0.7f;
+
+            if ((int)(ResultData.score_rate * 16) > score)
+            {
+                score = (int)(ResultData.score_rate * 16);
+
+                score_image.fillAmount = ResultData.score_rate;
+                //score_image.fillAmount = (float)(score) / 16;
+            }
         }
         //完全にタイミングを外した場合
         else {
