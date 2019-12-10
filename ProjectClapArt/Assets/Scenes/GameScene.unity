@@ -915,7 +915,7 @@ PrefabInstance:
     - target: {fileID: 2601639310941189335, guid: 17ff00bc0cbbdb8409e8cc8ad9309f14,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.52
+      value: 2.519989
       objectReference: {fileID: 0}
     - target: {fileID: 2601639310941189335, guid: 17ff00bc0cbbdb8409e8cc8ad9309f14,
         type: 3}
@@ -1031,5 +1031,10 @@ PrefabInstance:
       propertyPath: bad_obj
       value: 
       objectReference: {fileID: 141801608}
+    - target: {fileID: 7065323529093498039, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
+        type: 3}
+      propertyPath: more_pop_dif_num
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85d6d3880e4b8fa4cb8e39965e3b1210, type: 3}
