@@ -182,8 +182,8 @@ public class GameSystem : MonoBehaviour {
                 continue;
 
             //スポーンするnotesがあればだす
-            if ((note.SpawnTime - this.more_pop_dif_num <= msc_time_rud_dgts) &&
-                ( note.SpawnTime + this.more_pop_dif_num >= msc_time_rud_dgts)) {
+            if (( note.SpawnTime + bars[bar_counter].StartTime - this.more_pop_dif_num <= msc_time_rud_dgts) &&
+                ( note.SpawnTime + bars[bar_counter].StartTime + this.more_pop_dif_num >= msc_time_rud_dgts)) {
                 GameObject pop_notes = Instantiate(spawn_note_object, note.Pos, Quaternion.identity);
                 //notesにinstanceをセット
                 note.NoteInstance = pop_notes;
@@ -233,7 +233,7 @@ public class GameSystem : MonoBehaviour {
                 continue;
 
             //差分を取る
-            int diff = touchAbsDiffCal(press_time, note.PressTime);
+            int diff = touchAbsDiffCal(press_time, note.PressTime + bars[bar_counter].StartTime);
 
             //誤差から判定する
             judgeTouchTimming(diff, note);
@@ -259,7 +259,7 @@ public class GameSystem : MonoBehaviour {
                 continue;
 
             //タイミングが過ぎているのでTrueをいれる
-            if (note.PressTime + 1000 < music_time_num) {
+            if (bars[bar_counter].StartTime + note.PressTime + 1000 < music_time_num) {
                 note.ClikFlg = true;
 
                 //今はタイミングが間違ってもnotesを消している
