@@ -7,7 +7,6 @@ public class MenuMode
 {
     public static int Read = 0;
     public static int Save = 1;
-    public static int Output = 2;
 };
 
 public class NotesMode
@@ -18,8 +17,6 @@ public class NotesMode
 
 public class Dropdown_Menu : MonoBehaviour
 {
-
-
     [SerializeField] private Dropdown FileDropdown = null;
     [SerializeField] private Dropdown NotesDropdown = null;
     [SerializeField] private readWriteJsonFile jsonFile = null;
@@ -29,17 +26,14 @@ public class Dropdown_Menu : MonoBehaviour
     {
         if (FileDropdown.value == MenuMode.Read)
         {
-            //jsonFile.readNotesFileDate();
+            manager.Bars = jsonFile.readNotesFileDate("test.json");
+            Debug.Log("JSONを読み込みました");
         }
 
         if (FileDropdown.value == MenuMode.Save)
         {
-            //jsonFile.writeNotesFileDate();
-        }
-
-        if (FileDropdown.value == MenuMode.Output)
-        {
-            //jsonFile.readNotesFileDate();
+            jsonFile.writeNotesFileDate("test.json", manager.Bars);
+            Debug.Log("JSONに書き込みました");
         }
     }
 

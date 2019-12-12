@@ -9,8 +9,13 @@ public class LinePos : MonoBehaviour
     public  Vector2 pos ;
     public bool StartPosflug { set; get; }
     private Vector2 StartMax, StartMin;
+    private NoteObject note = null;
+
     [SerializeField] private Image Line = null;
+    [SerializeField] private AudioClip[] SE  = null;
+    [SerializeField] private AudioSource audios = null;
     [SerializeField] private ToolManager toolManager = null;
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +63,22 @@ public class LinePos : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+       note = collision.gameObject.GetComponent<NoteObject>();
+        switch (note.NOTE_TYPE)
+        {
+            case Note.NOTE_TYPE.UNKNOWN:
+                audios.clip = SE[0];
+                break;
+
+            case Note.NOTE_TYPE.FLICK:
+                audios.clip = SE[1];
+                break;
+
+            case Note.NOTE_TYPE.TOUCH:
+                audios.clip = SE[2];
+                break;
+        }
+
         Debug.Log("Hit Note time" + toolManager.NowMusicTimer);
     }
 }

@@ -8,6 +8,8 @@ public class NoteObject : MonoBehaviour
     private Vector2 Pos;
     private Vector2 StartMax, StartMin;
     [SerializeField] public Image obj = null;
+    public Note.NOTE_TYPE NOTE_TYPE = Note.NOTE_TYPE.UNKNOWN;
+
     // Start is called before the first frame update
     void Start()
     {

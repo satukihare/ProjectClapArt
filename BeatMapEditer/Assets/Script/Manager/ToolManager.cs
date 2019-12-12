@@ -10,13 +10,16 @@ public class ToolManager : MonoBehaviour
     [SerializeField] private NotesPage Nowpage= null;
     [SerializeField] private NotesPage Maxpage = null;
     [SerializeField] private float BPM = 120.0f;
+    [SerializeField] private EditManager editManager = null;
+
+
     public bool  flug { set; get; }
     public float MaxMusicTime { set; get; }
     public float PageEndMusicTimer { set; get; }
     public float NowMusicTimer { set; get; }
     public float MusicTimer { set; get; }
     public float NotesTimer {set; get;}
-    public float Bar { set; get; }
+    public float BarTime { set; get; }
 
     private bool herfflug, barflug;
     private float Correction = 0.0f;
@@ -29,7 +32,7 @@ public class ToolManager : MonoBehaviour
         MusicTimer = 0.0f;
         NotesTimer = 0.0f;
         PageEndMusicTimer = 0.0f;
-        Bar = Min / BPM * 4;
+        BarTime = Min / BPM * 4;
         Maxpage.setPage((int)audioSource.clip.length/4);
         MaxMusicTime = audioSource.clip.length;
 
@@ -53,7 +56,7 @@ public class ToolManager : MonoBehaviour
     {
 
         Debug.Log("Start Time" + MusicTimer);
-        Debug.Log("1Bar Time is" + Bar);
+        Debug.Log("1Bar Time is" + BarTime);
         flug = true;
         audioSource.Play();
         audioSource.time = MusicTimer;
@@ -76,13 +79,13 @@ public class ToolManager : MonoBehaviour
         Line.pos.x = NotesTimer/2 * (movement + Correction);
         //Line.pos.x = (NotesTimer / 2.4f) ;
 
-        if (NotesTimer >= Bar && herfflug == false)
+        if (NotesTimer >= BarTime && herfflug == false)
         {
             herfflug = true;
             Line.pos.x = 0.5f;
         }
 
-        if (NotesTimer >= (Bar * 2) && barflug == false)
+        if (NotesTimer >= (BarTime * 2) && barflug == false)
         {
             barflug = true;
             Line.pos.x = 1.0f;
@@ -98,6 +101,8 @@ public class ToolManager : MonoBehaviour
                 herfflug = barflug = false;
                 PageEndMusicTimer = audioSource.time;
                 Nowpage.NextPage();
+                editManager.Listindex+=1;
+                editManager.DataRestart();
                 Line.ResetPos();
                 NotesTimer = 0.0f;
                 Debug.Log(Nowpage.nowPage + "page time is" + PageEndMusicTimer);
