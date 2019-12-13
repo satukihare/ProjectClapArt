@@ -113,7 +113,6 @@ public class DialogManager : MonoBehaviour
             else if (lines[currentLine] == codes[(int)CodeID.Sound])
             {
                 PlaySound();
-                break;
             }
             else if (lines[currentLine] == codes[(int)CodeID.Speech])
             {
@@ -131,7 +130,7 @@ public class DialogManager : MonoBehaviour
 
     public void LoadTextFile(string FilePath)
     {
-        TextAsset loadAsset = (Resources.Load(FilePath, typeof(TextAsset)) as TextAsset);
+        TextAsset loadAsset = Resources.Load<TextAsset>(FilePath);
         Debug.Log("FilePath " + FilePath);
         //新しいテキストファイルが読み込まれたら更新
         if (loadAsset == null)
@@ -185,10 +184,12 @@ public class DialogManager : MonoBehaviour
 
     void PlaySound()
     {
-        int sound;
-        sound = int.Parse(lines[++currentLine]);
-        //TODO
-        Debug.Log("play sound " + sound.ToString());
+        string filename;
+        filename = lines[++currentLine];
+        AudioClip sound = Resources.Load<AudioClip>("Audio/" + filename);
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(sound, 1.0F);
+        Debug.Log("play sound " + filename);
     }
 
     void ChangeText()
