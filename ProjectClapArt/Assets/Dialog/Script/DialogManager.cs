@@ -52,7 +52,7 @@ public class DialogManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadTextFile("Text/test");
+        LoadTextFile(ScenarioData.text_filename);
         currentLine = 0;
         showLength = 0;
         charTime = secsPerChar;
