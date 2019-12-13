@@ -555,6 +555,7 @@ MonoBehaviour:
   pop_se: {fileID: 0}
   spawn_note_object: {fileID: 6448783694080322936, guid: 66cfdd9aa8be3b94d8974ec27a828f3c,
     type: 3}
+  more_pop_dif_num: 100
   more_diff_num: 200
   good_diff_time_num: 100
   track_pad_input: {fileID: 2131927934}
