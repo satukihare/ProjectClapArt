@@ -61,9 +61,9 @@ public class readWriteJsonFile : MonoBehaviour {
     [System.Serializable]
     public class JsonBar {
         //開始時間
-        public float startTime;
+        public int startTime;
         //１小節の時間的長さ
-        public float length;
+        public int length;
         //notesのリスト
         public List<JsonNote> json_notes = new List<JsonNote>();
     }
@@ -208,6 +208,10 @@ public class readWriteJsonFile : MonoBehaviour {
         {
             JsonBar json_bar = json_bar_list.json_bars[bar_cnt];
             Bar return_bar = new Bar();
+
+            //Barの諸情報を読み込み
+            return_bar.StartTime = json_bar.startTime;
+            return_bar.Lingth = json_bar.length;
 
             //Noteの情報取得
             int NOTE_LENGTH = json_bar.json_notes.Count;

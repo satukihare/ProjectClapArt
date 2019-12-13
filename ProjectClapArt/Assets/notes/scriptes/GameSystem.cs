@@ -64,6 +64,9 @@ public class GameSystem : MonoBehaviour {
     //音楽の再生位置を1000倍したものが基準
     protected int music_time_num = 0;
 
+    //ポップするときに許容できる誤差
+    [SerializeField] protected int more_pop_dif_num = 0;
+
     //タップで許容できる誤差
     [SerializeField] protected int more_diff_num = 100;
 
@@ -164,8 +167,9 @@ public class GameSystem : MonoBehaviour {
 
         //描画の不要な桁の切り捨て
         int msc_time_rud_dgts = 0;
-        msc_time_rud_dgts = music_time_num / round_digits;
-        msc_time_rud_dgts = msc_time_rud_dgts * round_digits;
+        //msc_time_rud_dgts = music_time_num / round_digits;
+        //msc_time_rud_dgts = msc_time_rud_dgts * round_digits;
+        msc_time_rud_dgts = music_time_num;
 
         //小節の書き込みタイミングまでスキップ
         if (bars[bar_counter].StartTime > msc_time_rud_dgts)
@@ -181,7 +185,8 @@ public class GameSystem : MonoBehaviour {
                 continue;
 
             //スポーンするnotesがあればだす
-            if (msc_time_rud_dgts == note.SpawnTime) {
+            if (( note.SpawnTime + bars[bar_counter].StartTime - this.more_pop_dif_num <= msc_time_rud_dgts) &&
+                ( note.SpawnTime + bars[bar_counter].StartTime + this.more_pop_dif_num >= msc_time_rud_dgts)) {
                 GameObject pop_notes = Instantiate(spawn_note_object, note.Pos, Quaternion.identity);
                 //notesにinstanceをセット
                 note.NoteInstance = pop_notes;
@@ -231,7 +236,7 @@ public class GameSystem : MonoBehaviour {
                 continue;
 
             //差分を取る
-            int diff = touchAbsDiffCal(press_time, note.PressTime);
+            int diff = touchAbsDiffCal(press_time, note.PressTime + bars[bar_counter].StartTime);
 
             //誤差から判定する
             judgeTouchTimming(diff, note);
@@ -257,7 +262,7 @@ public class GameSystem : MonoBehaviour {
                 continue;
 
             //タイミングが過ぎているのでTrueをいれる
-            if (note.PressTime + 1000 < music_time_num) {
+            if (bars[bar_counter].StartTime + note.PressTime + 1000 < music_time_num) {
                 note.ClikFlg = true;
 
                 //今はタイミングが間違ってもnotesを消している
