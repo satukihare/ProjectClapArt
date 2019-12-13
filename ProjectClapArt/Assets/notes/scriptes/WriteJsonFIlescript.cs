@@ -62,7 +62,7 @@ public class WriteJsonFIlescript : MonoBehaviour {
 
         if (rw_json_file != null) {
             //書き込み
-            rw_json_file.writeNotesFileDate(this.write_file_name, bars , "アスロック米倉.asroc");
+            rw_json_file.writeNotesFileDate(this.write_file_name, bars, "アスロック米倉.asroc");
         }
 
     }
