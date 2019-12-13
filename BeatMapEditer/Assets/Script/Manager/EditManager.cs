@@ -166,27 +166,6 @@ public class EditManager : MonoBehaviour
             //@object[num].MoveLeftPos(0.001f);
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            if (num < NoteObjects.Count-1)
-            {
-                num++;
-                SetEdit();
-                Debug.Log(num);
-            }
-            
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            if (num > 0)
-            {
-                num--;
-                SetEdit();
-                Debug.Log(num);
-            }
-        }
-
         if (Input.GetKeyDown(KeyCode.Return))
         {
             AddNote();
@@ -299,6 +278,7 @@ public class EditManager : MonoBehaviour
         //作成したデータをリストに追加
         NoteData.Lingth = (int)ToolManager.BarTime*1000;
         NoteData.Notes.Add(new Note(new Vector2 (gameObj.transform.position.x, gameObj.transform.position.y ), (int)(Spown * 1000), (int)(Press * 1000), NOTE_TYPE));
+        NoteData.Notes.Sort((a,b) => a.SpawnTime - b.SpawnTime );
     }
 
     private void SetEdit()

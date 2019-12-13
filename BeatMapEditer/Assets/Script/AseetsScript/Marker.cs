@@ -8,6 +8,7 @@ public class Marker : MonoBehaviour
     [SerializeField] public Image NoteObject = null ;
     //[SerializeField] public Image NoteObject { set; get; }
     [SerializeField] private Image marker = null;
+    [SerializeField] private GameObject Obj = null;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +27,7 @@ public class Marker : MonoBehaviour
 
     public void Active(bool flug)
     {
-        var obj = marker.GetComponent<GameObject>();
-        obj.SetActive(false);
+        Obj.SetActive(flug);
     }
 
 }
