@@ -79,6 +79,8 @@ public class GameSystem : MonoBehaviour {
     //JSON形式の譜面データを読み込む
     [SerializeField] protected readWriteJsonFile read_write_json_file = null;
 
+    [SerializeField] public string load_json_note_file = "";
+
 //--プロパティ--
     public float WholeNote {
         get { return whole_note; }
@@ -100,7 +102,8 @@ public class GameSystem : MonoBehaviour {
         //譜面の読み込み
         if (read_write_json_file == null) Debug.Log("readWriteJsonFile nullptr !!");
 
-        bars = read_write_json_file.readNotesFileDate("test.json");
+        //ファイルのロード
+        bars = read_write_json_file.readNotesFileDate(load_json_note_file);
         ResultData.total_notes = 0;
         ResultData.hit_notes = 0;
         foreach (Bar bar in bars)

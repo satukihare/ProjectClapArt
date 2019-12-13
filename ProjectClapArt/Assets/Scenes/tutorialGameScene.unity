@@ -206,6 +206,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6686420024360495738, guid: 4c648e0fb1e599b4eba172f5fba71dc1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6686420024360495748, guid: 4c648e0fb1e599b4eba172f5fba71dc1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -400,11 +405,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: -0.95999146
       objectReference: {fileID: 0}
-    - target: {fileID: 2601639311135179047, guid: 17ff00bc0cbbdb8409e8cc8ad9309f14,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5047267552925636163, guid: 17ff00bc0cbbdb8409e8cc8ad9309f14,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -414,6 +414,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.0024719238
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601639311135179047, guid: 17ff00bc0cbbdb8409e8cc8ad9309f14,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ff00bc0cbbdb8409e8cc8ad9309f14, type: 3}
@@ -550,11 +555,12 @@ MonoBehaviour:
   pop_se: {fileID: 0}
   spawn_note_object: {fileID: 6448783694080322936, guid: 66cfdd9aa8be3b94d8974ec27a828f3c,
     type: 3}
-  more_diff_num: 100
-  good_diff_time_num: 50
+  more_diff_num: 200
+  good_diff_time_num: 100
   track_pad_input: {fileID: 2131927934}
   round_digits: 100
   read_write_json_file: {fileID: 1940468536}
+  load_json_note_file: tutorialNotes.json
 --- !u!4 &1331969587
 Transform:
   m_ObjectHideFlags: 0

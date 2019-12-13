@@ -1021,5 +1021,10 @@ PrefabInstance:
       propertyPath: bad_obj
       value: 
       objectReference: {fileID: 141801608}
+    - target: {fileID: 7065323529093498039, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
+        type: 3}
+      propertyPath: load_json_note_file
+      value: test.json
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85d6d3880e4b8fa4cb8e39965e3b1210, type: 3}
