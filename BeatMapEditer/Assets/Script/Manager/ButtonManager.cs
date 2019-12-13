@@ -22,14 +22,14 @@ public class ButtonManager : MonoBehaviour
             toolManager.MusicTimer += PageTime;
             editManager.SaveList();
             editManager.Listindex += 1;
-            editManager.DataRestart();
-
+            editManager.DataRestart(false);
+            line.ResetPos();
         }
     }
 
     public void OnclickBeforePage()
     {
-        if(line.StartPosflug == false)
+        if(line.StartPosflug == false && notesPage.nowPage > 1)
         {
             notesPage.BeforePage();
 
@@ -37,7 +37,7 @@ public class ButtonManager : MonoBehaviour
             toolManager.MusicTimer -= PageTime;
             editManager.SaveList();
             editManager.Listindex -= 1;
-            editManager.DataRestart();
+            editManager.DataRestart(false);
             if (toolManager.MusicTimer <= 0)
             {
                 toolManager.MusicTimer = 0.0f;

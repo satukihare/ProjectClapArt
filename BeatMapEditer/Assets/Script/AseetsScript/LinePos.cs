@@ -64,21 +64,22 @@ public class LinePos : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
        note = collision.gameObject.GetComponent<NoteObject>();
+
         switch (note.NOTE_TYPE)
         {
             case Note.NOTE_TYPE.UNKNOWN:
-                audios.clip = SE[0];
+                //ノーツがでてくるSE
+                audios.PlayOneShot(SE[0]);
                 break;
 
             case Note.NOTE_TYPE.FLICK:
-                audios.clip = SE[1];
+                audios.PlayOneShot(SE[1]);
                 break;
 
             case Note.NOTE_TYPE.TOUCH:
-                audios.clip = SE[2];
+                audios.PlayOneShot(SE[2]);
                 break;
         }
-
         Debug.Log("Hit Note time" + toolManager.NowMusicTimer);
     }
 }

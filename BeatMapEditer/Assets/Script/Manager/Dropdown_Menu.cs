@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuMode
 {
-    public static int Read = 0;
-    public static int Save = 1;
+    public static int Read = 1;
+    public static int Save = 2;
 };
 
 public class NotesMode
@@ -17,6 +18,7 @@ public class NotesMode
 
 public class Dropdown_Menu : MonoBehaviour
 {
+    [SerializeField] private Dropdown TypeDropdown = null;
     [SerializeField] private Dropdown FileDropdown = null;
     [SerializeField] private Dropdown NotesDropdown = null;
     [SerializeField] private readWriteJsonFile jsonFile = null;
@@ -28,13 +30,15 @@ public class Dropdown_Menu : MonoBehaviour
         {
             manager.Bars = jsonFile.readNotesFileDate("test.json");
             Debug.Log("JSONを読み込みました");
+            manager.DataRestart(false);
         }
 
         if (FileDropdown.value == MenuMode.Save)
         {
-            jsonFile.writeNotesFileDate("test.json", manager.Bars);
+            jsonFile.writeNotesFileDate("Sub_Create.json", manager.Bars);
             Debug.Log("JSONに書き込みました");
         }
+        FocusOut();
     }
 
     public void NotesMenuPick()
@@ -48,5 +52,17 @@ public class Dropdown_Menu : MonoBehaviour
         {
             manager.EditMode = false;
         }
+        FocusOut();
+    }
+
+    public void PickType()
+    {
+      manager.Type = TypeDropdown.value;
+        FocusOut();
+    }
+
+    public void FocusOut()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class EditManager : MonoBehaviour
 {
     [SerializeField] private ToolManager ToolManager = null;
-    [SerializeField] private Dropdown Dropdown = null;
-    [SerializeField] private GameObject PlayObj = null;
+    [SerializeField] private GameObject PlayObject = null;
     [SerializeField] private GameObject NoteObject = null;
     [SerializeField] private GameObject gameObj = null;
 
     [SerializeField] private GameObject ExsampleParent = null;
     [SerializeField] private GameObject PlayParent = null;
     [SerializeField] private GameObject GameParent = null;
+
+    [SerializeField] private Marker marker = null;
 
     private List<GameObject> PlayObjects = new List<GameObject>();
     private List<GameObject> NoteObjects = new List<GameObject>();
@@ -52,7 +53,7 @@ public class EditManager : MonoBehaviour
         EditMode = true;
         NoteData = new Bar();
 
-        PlayObj.SetActive(true);
+        PlayObject.SetActive(true);
         NoteObject.SetActive(true);
         gameObj.SetActive(true);
 
@@ -60,17 +61,23 @@ public class EditManager : MonoBehaviour
         NoteObjects = new List<GameObject>();
         gameObjects = new List<GameObject>();
 
-        PlayObjects.Add(PlayObj);
-        NoteObjects.Add(NoteObject);
-        gameObjects.Add(gameObj);
+        //PlayObjects.Add(PlayObj);
+        //NoteObjects.Add(NoteObject);
+        //gameObjects.Add(gameObj);
         Bars.Add(NoteData);
 
         PlayLists.Add(PlayObjects);
         NoteLists.Add(NoteObjects);
         GameLists.Add(gameObjects);
 
-        EditObj = NoteObjects[num].GetComponent<NoteObject>();
-        FollowObj = PlayObjects[num].GetComponent<NoteObject>();
+        EditObj = NoteObject.GetComponent<NoteObject>();
+        FollowObj = PlayObject.GetComponent<NoteObject>();
+
+        //EditObj = NoteObjects[num].GetComponent<NoteObject>();
+        //FollowObj = PlayObjects[num].GetComponent<NoteObject>();
+
+        //EditObj.ResetPos();
+        //FollowObj.ResetPos();
     }
 
     private void UnInit()
@@ -101,15 +108,22 @@ public class EditManager : MonoBehaviour
         else
         {
             DeleteNotes();
+            SetMark();
         }
     }
 
-    public void DataRestart()
+    public void DataRestart( bool Playflug)
     {
         UnInit();
         if (Listindex == PlayLists.Count)
         {
             Init();
+            if (Playflug == true)
+            {
+                PlayObject.SetActive(false);
+                NoteObject.SetActive(false);
+                gameObj.SetActive(false);
+            }
         }
         else
         {
@@ -121,8 +135,11 @@ public class EditManager : MonoBehaviour
                 gameObjects[num].SetActive(true);
             }
             num = 0;
-            EditObj = NoteObjects[num].GetComponent<NoteObject>();
-            FollowObj = PlayObjects[num].GetComponent<NoteObject>();
+            //EditObj = NoteObjects[num].GetComponent<NoteObject>();
+            //FollowObj = PlayObjects[num].GetComponent<NoteObject>();
+
+            //EditObj.CreateInit();
+            //FollowObj.CreateInit();
         }
     }
 
@@ -170,7 +187,7 @@ public class EditManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             AddNote();
         }
@@ -183,8 +200,7 @@ public class EditManager : MonoBehaviour
             if (num < NoteObjects.Count - 1)
             {
                 num++;
-                EditObj = NoteObjects[num].GetComponent<NoteObject>();
-                FollowObj = PlayObjects[num].GetComponent<NoteObject>();
+                marker.NoteObject = NoteObjects[num].GetComponent<Image>();
                 Debug.Log(num);
             }
 
@@ -195,32 +211,59 @@ public class EditManager : MonoBehaviour
             if (num > 0)
             {
                 num--;
-                EditObj = NoteObjects[num].GetComponent<NoteObject>();
-                FollowObj = PlayObjects[num].GetComponent<NoteObject>();
+                marker.NoteObject = NoteObjects[num].GetComponent<Image>();
                 Debug.Log(num);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            NoteObjects[num].SetActive(false);
-            PlayObjects[num].SetActive(false);
-            gameObjects[num].SetActive(false);
+            //NoteObjects[num].SetActive(false);
+            //PlayObjects[num].SetActive(false);
+            //gameObjects[num].SetActive(false);
+            if (NoteObjects.Count >= 1)
+            {
+                GameObject.Destroy(NoteObjects[num]);
+                GameObject.Destroy(PlayObjects[num]);
+                GameObject.Destroy(gameObjects[num]);
 
-            PlayObjects.RemoveAt(num);
-            NoteObjects.RemoveAt(num);
-            gameObjects.RemoveAt(num);
+                PlayObjects.RemoveAt(num);
+                NoteObjects.RemoveAt(num);
+                gameObjects.RemoveAt(num);
+                NoteData.Notes.RemoveAt(num);
+
+                num = 0;
+
+                marker.NoteObject = NoteObjects[num].GetComponent<Image>();
+
+                Debug.Log("Index" + NoteObjects.Count);
+                Debug.Log("Index" + PlayObjects.Count);
+                Debug.Log("Index" + gameObjects.Count);
+            }
+
         }
+    }
+
+    public void SetMark()
+    {
+        if (EditMode == true)
+        {
+            marker.NoteObject = NoteObject.GetComponent<Image>();
+        }
+        else
+        {
+            marker.NoteObject = NoteObjects[num].GetComponent<Image>();
+        }  
     }
 
     private void AddNote()
     {
         SetNoteData();
-        //ノーツを複製してリストに追加、操作対象を新しいものに
         
-        NoteObjects.Add(Instantiate(NoteObjects[num]));
-        PlayObjects.Add(Instantiate(PlayObjects[num]));
-        gameObjects.Add(Instantiate(gameObjects[num]));
+        //ノーツを複製してリストに追加、操作対象を新しいものに
+        NoteObjects.Add(Instantiate(NoteObject));
+        PlayObjects.Add(Instantiate(PlayObject));
+        gameObjects.Add(Instantiate(gameObj));
 
         num = NoteObjects.Count - 1;
 
@@ -228,8 +271,8 @@ public class EditManager : MonoBehaviour
         PlayObjects[num].transform.SetParent(PlayParent.transform, false);
         gameObjects[num].transform.SetParent(GameParent.transform, false);
 
-        EditObj = NoteObjects[num].GetComponent<NoteObject>();
-        FollowObj = PlayObjects[num].GetComponent<NoteObject>();
+        //EditObj = NoteObjects[num].GetComponent<NoteObject>();
+        //FollowObj = PlayObjects[num].GetComponent<NoteObject>();
     }
 
     public void SaveList()
@@ -251,12 +294,11 @@ public class EditManager : MonoBehaviour
     private void SetNoteData()
     {
         //譜面データの作成
-        TypeSetter();
         var Spown = ToolManager.BarTime * EditObj.obj.rectTransform.anchorMin.x;
         var Press = ToolManager.BarTime * FollowObj.obj.rectTransform.anchorMin.x * 2;
         //作成したデータをリストに追加
-        NoteData.Lingth = ToolManager.BarTime;
-        NoteData.Notes.Add(new Note(new Vector2 (gameObjects[num].transform.position.x, gameObjects[num].transform.position.y ), (int)(Spown * 1000), (int)(Press * 1000), NOTE_TYPE));
+        NoteData.Lingth = (int)ToolManager.BarTime*1000;
+        NoteData.Notes.Add(new Note(new Vector2 (gameObj.transform.position.x, gameObj.transform.position.y ), (int)(Spown * 1000), (int)(Press * 1000), NOTE_TYPE));
     }
 
     private void SetEdit()
@@ -265,7 +307,7 @@ public class EditManager : MonoBehaviour
         FollowObj = PlayObjects[num].GetComponent<NoteObject>();
     }
 
-    private void TypeSetter()
+    public void TypeSetter()
     {
         switch (Type)
         {
@@ -278,20 +320,23 @@ public class EditManager : MonoBehaviour
                 FollowObj.NOTE_TYPE = Note.NOTE_TYPE.TOUCH;
                 break;
         }
+        FollowObj.ChangeColor();
     }
 
     public void EditEnd()
     {
-        NoteObjects[num].SetActive(false);
-        PlayObjects[num].SetActive(false);
-        gameObjects[num].SetActive(false);
+        NoteObject.SetActive(false);
+        PlayObject.SetActive(false);
+        gameObj.SetActive(false);
+        marker.Active(false);
     }
 
     public void EditStart()
     {
-        NoteObjects[num].SetActive(true);
-        PlayObjects[num].SetActive(true);
-        gameObjects[num].SetActive(true);
+        NoteObject.SetActive(true);
+        PlayObject.SetActive(true);
+        gameObj.SetActive(true);
+        marker.Active(true);
     }
 
 }
