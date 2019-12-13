@@ -60,10 +60,9 @@ public class WriteJsonFIlescript : MonoBehaviour {
             bars.Add(bar);
         }
 
-
         if (rw_json_file != null) {
             //書き込み
-            rw_json_file.writeNotesFileDate(this.write_file_name, bars);
+            rw_json_file.writeNotesFileDate(this.write_file_name, bars , "アスロック米倉.asroc");
         }
 
     }
