@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Bar {
     //開始時間
-    float startTime;
+    int startTime;
     //１小節の時間的長さ
-    float length;
+    int length;
     //notesのリスト
     List<Note> notes = new List<Note>();
 
-    public float StartTime {
+    public int StartTime {
         get { return startTime; }
         set { startTime = value; }
     }
 
-    public float Lingth {
+    public int Lingth {
         get { return length; }
         set { length = value; }
     }

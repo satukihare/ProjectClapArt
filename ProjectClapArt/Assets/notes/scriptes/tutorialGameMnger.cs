@@ -10,7 +10,7 @@ public class tutorialGameMnger : GameSystem {
     /// <summary>
     /// 更新
     /// </summary>
-     override protected void gameUpdate() {
+    override protected void gameUpdate() {
         //音のタイミング
         music_time_num = (int)(music.time * 1000.0f);
 
@@ -82,7 +82,7 @@ public class tutorialGameMnger : GameSystem {
             //もう一回だどん
             List<Note> notes = bars[bar_counter].Notes;
 
-            foreach(Note note in notes) {
+            foreach (Note note in notes) {
                 //クリックフラグを消す
                 note.ClikFlg = false;
                 Destroy(note.NoteInstance);
