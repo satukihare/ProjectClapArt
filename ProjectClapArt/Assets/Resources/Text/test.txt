@@ -1,30 +1,77 @@
-[Sound]
-Nagi/Voice _scenario_07_『すごいすごい！―』
-
-[Speech]
-0
-test sound
-
-[Speech]
-0
-test banner
-
 [Banner]
-海は楽Sea
+- 海 日中 - 
+
+[Sound]
+Kai/scenario1
 
 [Speech]
 1
-test after banner
+おーい！そこの人！
+
+[Sound]
+Nagi/Voice _scenario_01_『ちょっと―』
 
 [Speech]
 0
-test fade
+ちょっとこっちに来て！
 
 [Fade]
 0
 
+[Sound]
+Nagi/Voice _scenario_02_『はじめまして―』
+
+[Speech]
+0
+はじめまして！なーちゃんは、ナギっていうの！ＡＩアイドルなの！
+
+[Sound]
+Nagi/Voice _scenario_02_『こっちは―』
+
+[Speech]
+0
+こっちはお兄ちゃん！
+
+[Sound]
+Kai/scenario2
+
 [Speech]
 1
-test after fade
+俺はカイ。同じくＡＩアイドルでナギの兄だ。ナギに手を出したら容赦しないからよろしく頼む。
+
+[Sound]
+Nagi/Voice _scenario_04_『ナーちゃんたちね―』
+
+[Speech]
+0
+なーちゃんたちね、今日ここでライブするの！
+
+[Sound]
+Kai/scenario3
+
+[Speech]
+1
+大きなフェスでのライブだから絶対に失敗したくないんだ。
+
+[Sound]
+Nagi/Voice _scenario_05_『なーちゃんと―』
+
+[Speech]
+0
+なーちゃんとお兄ちゃんはＡＩだから、いつも舞台演出がうまくいかないんだよね…。
+
+[Sound]
+Kai/scenario4
+
+[Speech]
+1
+そこで今回は君に協力してもらいたいんだ。
+
+[Sound]
+Nagi/Voice _scenario_06_『さっそく―』
+
+[Speech]
+0
+早速ちょっと練習してみようよ！
 
 [End]
