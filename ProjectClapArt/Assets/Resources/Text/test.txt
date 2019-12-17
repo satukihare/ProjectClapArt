@@ -1,3 +1,10 @@
+[Sound]
+Nagi/Voice _scenario_07_『すごいすごい！―』
+
+[Speech]
+0
+test sound
+
 [Speech]
 0
 test banner
