@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7065323529093498037
+--- !u!1 &1738998658081099547
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,77 +8,78 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7065323529093498038}
-  - component: {fileID: 691574087381088681}
-  - component: {fileID: 7065323529093498039}
-  - component: {fileID: 7065323529093498036}
+  - component: {fileID: 1738998658081099544}
+  - component: {fileID: 3858716203386709483}
+  - component: {fileID: 1738998658081099545}
+  - component: {fileID: 1738998658081099546}
   m_Layer: 0
-  m_Name: GameMnger
+  m_Name: TutorialGameMnger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7065323529093498038
+--- !u!4 &1738998658081099544
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7065323529093498037}
+  m_GameObject: {fileID: 1738998658081099547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.3737402, y: 0.57181233, z: -3.2054594}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &691574087381088681
+--- !u!114 &3858716203386709483
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7065323529093498037}
+  m_GameObject: {fileID: 1738998658081099547}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b22e0741a746bbf4ab3bd6735b84e237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notes_folder_path: NotesFileDate/
---- !u!114 &7065323529093498039
+  notes_folder_path: NotesFileDate\
+--- !u!114 &1738998658081099545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7065323529093498037}
+  m_GameObject: {fileID: 1738998658081099547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bebae46f98cb06245a32d90b5ebd4a2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a63f218e5dce3147817c121fd6b4068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BPM: 120
-  NOTE: 1
+  BPM: 0
+  NOTE: 0
   whole_note: 0
-  music: {fileID: 0}
-  pop_se: {fileID: 0}
   spawn_note_object: {fileID: 6448783694080322936, guid: 66cfdd9aa8be3b94d8974ec27a828f3c,
     type: 3}
-  more_pop_dif_num: 0
-  more_diff_num: 80
-  good_diff_time_num: 20
+  more_pop_dif_num: 100
+  more_diff_num: 200
+  good_diff_time_num: 100
   track_pad_input: {fileID: 0}
-  round_digits: 20
-  read_write_json_file: {fileID: 0}
-  load_json_note_file: 
---- !u!82 &7065323529093498036
+  round_digits: 100
+  load_json_note_file: tutorialNotes.json
+  live_2d_models:
+  - {fileID: 0}
+  - {fileID: 0}
+  use_model_obj: -1
+--- !u!82 &1738998658081099546
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7065323529093498037}
+  m_GameObject: {fileID: 1738998658081099547}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
