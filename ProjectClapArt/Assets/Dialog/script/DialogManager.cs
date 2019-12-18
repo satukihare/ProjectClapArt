@@ -48,10 +48,12 @@ public class DialogManager : MonoBehaviour
     int maxLength;
     float charTime;
     bool waitForAnim = false;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         LoadTextFile(ScenarioData.text_filename);
         currentLine = 0;
         showLength = 0;
@@ -187,8 +189,8 @@ public class DialogManager : MonoBehaviour
         string filename;
         filename = lines[++currentLine];
         AudioClip sound = Resources.Load<AudioClip>("Audio/" + filename);
-        AudioSource audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(sound, 1.0F);
+        audioSource.clip = sound;
+        audioSource.Play();
         Debug.Log("play sound " + filename);
     }
 
