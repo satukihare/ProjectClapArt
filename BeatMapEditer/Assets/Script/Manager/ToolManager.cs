@@ -15,12 +15,13 @@ public class ToolManager : MonoBehaviour
 
     public bool  flug { set; get; }
     public float MaxMusicTime { set; get; }
-    public float PageEndMusicTimer { set; get; }
+    public List<float> PageEndMusicTimer = new List<float>();
     public float NowMusicTimer { set; get; }
     public float MusicTimer { set; get; }
     public float NotesTimer {set; get;}
     public float BarTime { set; get; }
 
+    public int index = 0;
     private bool herfflug, barflug;
     private float Correction = 0.0f;
     private static float Min = 60.0f; 
@@ -31,9 +32,17 @@ public class ToolManager : MonoBehaviour
         flug = herfflug = barflug = false;
         MusicTimer = 0.0f;
         NotesTimer = 0.0f;
-        PageEndMusicTimer = 0.0f;
         BarTime = Min / BPM * 4;
+
         Maxpage.setPage((int)audioSource.clip.length/4);
+
+        for(int num = 0; num < Maxpage.nowPage; num++)
+        {
+            //var time = 4 * num;
+            PageEndMusicTimer.Add(4 * num);
+        }
+        
+
         MaxMusicTime = audioSource.clip.length;
         if ((BPM/Min) % 3.0f == 0)
         {
@@ -63,7 +72,6 @@ public class ToolManager : MonoBehaviour
     public void PlayStop()
     {
         flug = false;
-        Line.ResetPos();
         MusicTimer = audioSource.time;
         audioSource.Stop();
         Debug.Log("Stop Time" + MusicTimer);
@@ -93,18 +101,19 @@ public class ToolManager : MonoBehaviour
 
         Line.SetPos();
 
-        if (Line.pos.x >= 1.0f)
+        if (NotesTimer >= BarTime*2)
         {
             if (audioSource.time < audioSource.clip.length)
             {
                 herfflug = barflug = false;
-                PageEndMusicTimer = audioSource.time;
+                PageEndMusicTimer.Add(audioSource.time);
+                index++;
                 Nowpage.NextPage();
                 editManager.Listindex+=1;
                 editManager.DataRestart(true);
                 Line.ResetPos();
                 NotesTimer = 0.0f;
-                Debug.Log(Nowpage.nowPage + "page time is" + PageEndMusicTimer);
+                Debug.Log(Nowpage.nowPage + "page time is" + PageEndMusicTimer[index]);
             }
             else
             {

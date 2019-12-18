@@ -33,10 +33,38 @@ public class Timer : MonoBehaviour
     public void addTime(float num)
     {
         seconds += num;
-        if(seconds <= 0)
+
+        if (seconds < 0)
         {
-            seconds = 0;
+            seconds = 60 + seconds;
+            if (minute > 0)
+            {
+                minute--;
+            }
+            else
+            {
+                seconds = 0;
+            }
         }
+
+        if (seconds >= 60f)
+        {
+            minute++;
+            seconds = seconds - 60;
+        }
+
+        
+        timerText.text = minute.ToString("00") + ":" + ((int)seconds).ToString("00");
+    }
+
+    public void SetPageTime(float num)
+    {
+        seconds = num;
+        if(seconds >= 60f)
+        {
+            seconds = seconds - 60;
+        }
+        minute = (int)(num/60);
         timerText.text = minute.ToString("00") + ":" + ((int)seconds).ToString("00");
     }
 
