@@ -10,6 +10,9 @@ public class tutorialGameMnger : GameSystem {
     [SerializeField]
     TutorialDialogManager dialog = null;
 
+    //一時停止中に音楽の再生位置を決めるもの
+    [SerializeField] float music_play_back_pos = 0.0f;
+
     /// <summary>
     /// 更新
     /// </summary>
@@ -66,13 +69,7 @@ public class tutorialGameMnger : GameSystem {
     /// 選択状態
     /// </summary>
     private void gameChose() {
-        //Live2Dのアニメーションを停止
-        this.live2dAnimatorStop();
-        //再生位置を保存
-        float music_playback_pos = music.time;
-
-        //音楽を止める
-        music.Stop();
+        gameStop();
 
         //左を選択
         if (Input.GetKey(KeyCode.A)) {
@@ -82,11 +79,7 @@ public class tutorialGameMnger : GameSystem {
 
             //スポーン状態へ
             game_state = GAME_MODE.NOTE_SPAWN;
-            //音楽を再生
-            music.time = music_playback_pos;
-            music.Play();
-            //Live2Dを再生
-            this.li2dAnimatorPlay();
+            gamePlay();
         }
         //右を選択
         else if (Input.GetKey(KeyCode.D)) {
@@ -101,18 +94,48 @@ public class tutorialGameMnger : GameSystem {
             //スポーン状態へ
             game_state = GAME_MODE.NOTE_SPAWN;
             //音楽を指定の再生位置へ
-            music.time = bars[bar_counter].StartTime;
-            music.Play();
-            //Live2Dを再生
-            this.li2dAnimatorPlay();
+            music_play_back_pos = bars[bar_counter].StartTime;
+            gamePlay();
         }
     }
 
+    /// <summary>
+    /// ゲーム開始
+    /// </summary>
+    protected void gamePlay() {
+
+        //音楽を再生
+        music.time = this.music_play_back_pos ;
+        music.Play();
+        //Live2Dを再生
+        this.li2dAnimatorPlay();
+    }
+
+    /// <summary>
+    /// ゲームを停止
+    /// </summary>
+    protected void gameStop() {
+
+        //Live2Dのアニメーションを停止
+        this.live2dAnimatorStop();
+        //再生位置を保存
+       this.music_play_back_pos = music.time;
+
+        //音楽を止める
+        music.Stop();
+    }
+
+    /// <summary>
+    /// Dialog関連
+    /// </summary>
     protected override void gameDialog()
     {
         dialog.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void resume()
     {
         if (game_state == GAME_MODE.GAME_DIALOG)
