@@ -7,7 +7,7 @@ public class GameMnger : GameSystem {
     /// <summary>
     /// 更新
     /// </summary>
-    override protected void Update() {
+    override protected void gameUpdate() {
 
         //音のタイミング
         music_time_num = (int)(music.time * 1000.0f);

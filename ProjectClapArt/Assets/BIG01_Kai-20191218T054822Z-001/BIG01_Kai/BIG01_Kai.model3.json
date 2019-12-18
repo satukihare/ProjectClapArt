@@ -1,0 +1,10 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "BIG01_Kai.moc3",
+		"Textures": [
+			"BIG01_Kai.2048/texture_00.png"
+		],
+		"DisplayInfo": "BIG01_Kai.cdi3.json"
+	}
+}

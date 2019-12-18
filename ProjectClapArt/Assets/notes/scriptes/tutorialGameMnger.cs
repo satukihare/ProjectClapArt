@@ -10,7 +10,7 @@ public class tutorialGameMnger : GameSystem {
     /// <summary>
     /// 更新
     /// </summary>
-     override protected void Update() {
+    override protected void gameUpdate() {
         //音のタイミング
         music_time_num = (int)(music.time * 1000.0f);
 
@@ -29,6 +29,10 @@ public class tutorialGameMnger : GameSystem {
         //選択モード
         else if (game_state == GAME_MODE.GAME_CHOSE) {
             gameChose();
+        }
+        //ゲームでのシナリオ再生
+        else if(game_state == GAME_MODE.GAME_DIALOG) {
+            gameDialog();
         }
           //イレギュラー値
           else Debug.Log("Unknown State");
@@ -59,6 +63,8 @@ public class tutorialGameMnger : GameSystem {
     /// 選択状態
     /// </summary>
     private void gameChose() {
+        //Live2Dのアニメーションを停止
+        this.live2dAnimatorStop();
         //再生位置を保存
         float music_playback_pos = music.time;
 
@@ -76,13 +82,15 @@ public class tutorialGameMnger : GameSystem {
             //音楽を再生
             music.time = music_playback_pos;
             music.Play();
+            //Live2Dを再生
+            this.li2dAnimatorPlay();
         }
         //右を選択
         else if (Input.GetKey(KeyCode.D)) {
             //もう一回だどん
             List<Note> notes = bars[bar_counter].Notes;
 
-            foreach(Note note in notes) {
+            foreach (Note note in notes) {
                 //クリックフラグを消す
                 note.ClikFlg = false;
                 Destroy(note.NoteInstance);
@@ -92,6 +100,8 @@ public class tutorialGameMnger : GameSystem {
             //音楽を指定の再生位置へ
             music.time = bars[bar_counter].StartTime;
             music.Play();
+            //Live2Dを再生
+            this.li2dAnimatorPlay();
         }
     }
 }
