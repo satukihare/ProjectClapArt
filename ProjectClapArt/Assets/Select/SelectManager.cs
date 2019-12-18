@@ -36,7 +36,10 @@ public class SelectManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (selection != 0)
+            {
                 Transition.instance.ChangeScene("TutorialScene");
+                SelectData.chara_select = selection - 1;
+            }
         }
     }
 
