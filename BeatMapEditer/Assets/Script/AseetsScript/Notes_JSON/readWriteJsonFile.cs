@@ -5,15 +5,13 @@ using System.IO;
 using System;
 using System.Text;
 
-public class readWriteJsonFile : MonoBehaviour
-{
+public class readWriteJsonFile : MonoBehaviour {
     /// <summary>
     /// JSONに読み書きするためだけのNoteクラス
     /// 外部では使わないでください
     /// </summary>
     [System.Serializable]
-    public class JsonNote
-    {
+    public class JsonNote {
 
         /// <summary>
         /// 座標
@@ -47,8 +45,7 @@ public class readWriteJsonFile : MonoBehaviour
         /// <param name="set_spawn_time">スポーンする時間</param>
         /// <param name="set_press_time">押下するタイミング</param>
         /// <param name="set_note_type">notesのタイプ</param>
-        public JsonNote(Vector2 set_position, int set_spawn_time, int set_press_time, int set_note_type)
-        {
+        public JsonNote(Vector2 set_position, int set_spawn_time, int set_press_time, int set_note_type) {
             position = set_position;
             spawn_time = set_spawn_time;
             press_time = set_press_time;
@@ -62,8 +59,7 @@ public class readWriteJsonFile : MonoBehaviour
     /// スタートタイムと長さは現在使いみちがないです
     /// </summary>
     [System.Serializable]
-    public class JsonBar
-    {
+    public class JsonBar {
         //開始時間
         public int startTime;
         //１小節の時間的長さ
@@ -77,8 +73,11 @@ public class readWriteJsonFile : MonoBehaviour
     /// 外部では使わないので触らないでください
     /// </summary>
     [System.Serializable]
-    public class JsonBarList
-    {
+    public class jsonNoteInformation {
+        public string music_file_name = "null";
+        /// <summary>
+        /// jsonに書き込んだり読み込んだりするnoteデータ
+        /// </summary>
         public List<JsonBar> json_bars = new List<JsonBar>();
     }
 
@@ -101,8 +100,7 @@ public class readWriteJsonFile : MonoBehaviour
     /// <param name="set_write_file_name">書き込むファイル名</param>
     /// <param name="set_write_bar">書き込む譜面データ</param>
     /// <returns>成功したかどうか</returns>
-    public bool writeNotesFileDate(string set_write_file_name, List<Bar> set_write_bar_list)
-    {
+    public bool writeNotesFileDate(string set_write_file_name, List<Bar> set_write_bar_list, string music_file_name) {
 
         bool write_seccses = false;
 
@@ -111,17 +109,19 @@ public class readWriteJsonFile : MonoBehaviour
         //書き込むBarのリスト
         List<JsonBar> write_bar_list = new List<JsonBar>(set_write_bar_list.Count);
         //JsonBarのリストを抽象化するために最終的にこれに書き込む
-        JsonBarList json_bar_list = new JsonBarList();
+        jsonNoteInformation json_note_info = new jsonNoteInformation();
+        //音楽ファイル名を入力
+        json_note_info.music_file_name = music_file_name;
 
         //Barのリストから情報を抜いていく
-        for (int bar_cnt = 0; bar_cnt < set_write_bar_list.Count; bar_cnt++)
-        {
+        for (int bar_cnt = 0; bar_cnt < set_write_bar_list.Count; bar_cnt++) {
             JsonBar json_bar = new JsonBar();
+            json_bar.startTime = set_write_bar_list[bar_cnt].StartTime;
+            json_bar.length = set_write_bar_list[bar_cnt].Lingth;
             int NOTE_LEHGTH = set_write_bar_list[bar_cnt].Notes.Count;
 
             //BarのNoteから情報を抜いていく
-            for (int note_cnt = 0; note_cnt < NOTE_LEHGTH; note_cnt++)
-            {
+            for (int note_cnt = 0; note_cnt < NOTE_LEHGTH; note_cnt++) {
                 JsonNote json_note = new JsonNote();
                 //座標
                 json_note.position = set_write_bar_list[bar_cnt].Notes[note_cnt].Pos;
@@ -139,7 +139,7 @@ public class readWriteJsonFile : MonoBehaviour
                 json_bar.json_notes.Add(json_note);
             }
 
-            json_bar_list.json_bars = write_bar_list;
+            json_note_info.json_bars = write_bar_list;
 
             //書き込み用リストに追加
             write_bar_list.Add(json_bar);
@@ -147,12 +147,11 @@ public class readWriteJsonFile : MonoBehaviour
         Debug.Log("Barの変換完了");
 
         // UTF-8のテキスト用
-        using (System.IO.StreamWriter sw = new System.IO.StreamWriter(file_path))
-        {
+        using (System.IO.StreamWriter sw = new System.IO.StreamWriter(file_path)) {
             // ファイルへテキストデータを出力する
-            Debug.Log(JsonUtility.ToJson(json_bar_list));
+            Debug.Log(JsonUtility.ToJson(json_note_info));
             //書き込んでる
-            sw.Write(JsonUtility.ToJson(json_bar_list));
+            sw.Write(JsonUtility.ToJson(json_note_info));
             write_seccses = true;
         }
         return write_seccses;
@@ -164,18 +163,15 @@ public class readWriteJsonFile : MonoBehaviour
     /// </summary>
     /// <param name="set_notes_file_name">ファイルネーム</param>
     /// <returns>Barのデータ</returns>
-    public List<Bar> readNotesFileDate(string set_notes_file_name)
-    {
+    public List<Bar> readNotesFileDate(string set_notes_file_name) {
 
         string file_path = Application.dataPath + "/" + notes_folder_path + "/" + set_notes_file_name;
         FileStream fs = null;
 
         //BarのListを抽象化するためのラッパークラス
-        JsonBarList json_bar_list = null;
-        JsonBar json_bars = null;
+        jsonNoteInformation json_note_info = null;
 
-        try
-        {
+        try {
             //読み込みで開く
             fs = File.Open(file_path, FileMode.Open, FileAccess.Read);
             StreamReader reader = new StreamReader(fs, Encoding.UTF8);
@@ -183,23 +179,15 @@ public class readWriteJsonFile : MonoBehaviour
             //ファイルを読み込む
             string all_string_date = reader.ReadToEnd();
             //JSONからクラスに復号
-            json_bar_list = JsonUtility.FromJson(all_string_date, typeof(JsonBarList)) as JsonBarList;
-        }
-        catch (Exception e)
-        {
+            json_note_info = JsonUtility.FromJson(all_string_date, typeof(jsonNoteInformation)) as jsonNoteInformation;
+        } catch (Exception e) {
             Debug.Log("FileOpen Err");
             Debug.Log(e);
-        }
-        finally
-        {
-            if (fs != null)
-            {
-                try
-                {
+        } finally {
+            if (fs != null) {
+                try {
                     fs.Dispose();
-                }
-                catch (IOException ioe)
-                {
+                } catch (IOException ioe) {
                     Debug.Log(ioe.Message);
                     fs = null;
                 }
@@ -208,12 +196,11 @@ public class readWriteJsonFile : MonoBehaviour
 
         //返すBarのinstance
         List<Bar> return_bar_list = new List<Bar>();
-        int BAR_LIST_NUM = json_bar_list.json_bars.Count;
+        int BAR_LIST_NUM = json_note_info.json_bars.Count;
 
         //Barの情報取得
-        for (int bar_cnt = 0; bar_cnt < BAR_LIST_NUM; bar_cnt++)
-        {
-            JsonBar json_bar = json_bar_list.json_bars[bar_cnt];
+        for (int bar_cnt = 0; bar_cnt < BAR_LIST_NUM; bar_cnt++) {
+            JsonBar json_bar = json_note_info.json_bars[bar_cnt];
             Bar return_bar = new Bar();
 
             //Barの諸情報を読み込み
@@ -222,22 +209,16 @@ public class readWriteJsonFile : MonoBehaviour
 
             //Noteの情報取得
             int NOTE_LENGTH = json_bar.json_notes.Count;
-            for (int note_cnt = 0; note_cnt < NOTE_LENGTH; note_cnt++)
-            {
+            for (int note_cnt = 0; note_cnt < NOTE_LENGTH; note_cnt++) {
                 JsonNote json_note = json_bar.json_notes[note_cnt];
                 Note ret_note = null;
 
                 //情報の抜き出し　Noteの種類をifで制御
-                if (json_note.note_type == 0)
-                {
+                if (json_note.note_type == 0) {
                     ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.FLICK);
-                }
-                else if (json_note.note_type == 1)
-                {
+                } else if (json_note.note_type == 1) {
                     ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.TOUCH);
-                }
-                else
-                {
+                } else {
                     ret_note = new Note(json_note.position, json_note.spawn_time, json_note.press_time, Note.NOTE_TYPE.UNKNOWN);
                 }
                 //初期化しておく
