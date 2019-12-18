@@ -12,6 +12,7 @@ public class LinePos : MonoBehaviour
     private NoteObject note = null;
 
     [SerializeField] private Image Line = null;
+    [SerializeField] private GameObject @object = null;
     [SerializeField] private AudioClip[] SE  = null;
     [SerializeField] private AudioSource audios = null;
     [SerializeField] private ToolManager toolManager = null;
@@ -59,6 +60,11 @@ public class LinePos : MonoBehaviour
         pos.y = 0.0f;
         Line.rectTransform.anchorMax = StartMax + pos;
         Line.rectTransform.anchorMin = StartMin + pos;
+    }
+
+    public void Active(bool flug)
+    {
+        @object.SetActive(flug);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

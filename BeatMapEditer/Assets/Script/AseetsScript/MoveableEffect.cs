@@ -12,6 +12,12 @@ public class MoveableEffect : MonoBehaviour, IDragHandler
     {
         flug = false;
         default_pos.x = default_pos.y = default_pos.z = 0.0f;
+        //default_pos = transform.position;
+        //transform.position = default_pos;
+    }
+
+    public void ResetPos()
+    {
         transform.position = default_pos;
     }
 

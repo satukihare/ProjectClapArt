@@ -1448,7 +1448,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 68fe8c61b8a5f724085ae559aae99594, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 10cb053ccb4d13a4f8eb6c840bdae46f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6275,6 +6275,8 @@ MonoBehaviour:
   Maxpage: {fileID: 160925941}
   BPM: 120
   editManager: {fileID: 1511567013}
+  PageEndMusicTimer: []
+  index: 0
 --- !u!1 &1687545686
 GameObject:
   m_ObjectHideFlags: 0
@@ -7750,8 +7752,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
   Line: {fileID: 2145670864}
+  object: {fileID: 2145670862}
   SE:
-  - {fileID: 8300000, guid: 682845a2662e52b40910567f2dd96004, type: 3}
+  - {fileID: 8300000, guid: dcc127cf37ab0224ea2d6186f4f90856, type: 3}
   - {fileID: 8300000, guid: 60404ee5eab1b1c4f83932b9f2d80f7b, type: 3}
   - {fileID: 8300000, guid: 1053e705f28c7934c9f8b830136157ce, type: 3}
   audios: {fileID: 1534769519}
@@ -7900,7 +7903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 1876517441550405974}
-  NOTE_TYPE: -1
+  NOTE_TYPE: 1
 --- !u!224 &1876517441550405976
 RectTransform:
   m_ObjectHideFlags: 0

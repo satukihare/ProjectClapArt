@@ -21,7 +21,8 @@ public class ButtonManager : MonoBehaviour
             timer.addTime(PageTime);
             toolManager.MusicTimer += PageTime;
             editManager.SaveList();
-            editManager.Listindex += 1;
+            editManager.Listindex++;
+            toolManager.index++;
             editManager.DataRestart(false);
             line.ResetPos();
         }
@@ -36,7 +37,8 @@ public class ButtonManager : MonoBehaviour
             timer.addTime(-PageTime);
             toolManager.MusicTimer -= PageTime;
             editManager.SaveList();
-            editManager.Listindex -= 1;
+            editManager.Listindex--;
+            toolManager.index--;
             editManager.DataRestart(false);
             if (toolManager.MusicTimer <= 0)
             {
@@ -46,7 +48,17 @@ public class ButtonManager : MonoBehaviour
         }
         else
         {
-            toolManager.MusicTimer = toolManager.PageEndMusicTimer;
+          if (notesPage.nowPage == 1)
+          {
+              timer.SetPageTime(0);
+          }
+          else
+          {
+              timer.SetPageTime(toolManager.PageEndMusicTimer[toolManager.index]);
+          }
+
+            toolManager.MusicTimer = toolManager.PageEndMusicTimer[editManager.Listindex];
+            toolManager.NotesTimer = 0;
             line.ResetPos();
         }
         
