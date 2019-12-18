@@ -30,6 +30,10 @@ public class tutorialGameMnger : GameSystem {
         else if (game_state == GAME_MODE.GAME_CHOSE) {
             gameChose();
         }
+        //ゲームでのシナリオ再生
+        else if(game_state == GAME_MODE.GAME_DIALOG) {
+            gameDialog();
+        }
           //イレギュラー値
           else Debug.Log("Unknown State");
     }
@@ -59,6 +63,8 @@ public class tutorialGameMnger : GameSystem {
     /// 選択状態
     /// </summary>
     private void gameChose() {
+        //Live2Dのアニメーションを停止
+        this.live2dAnimatorStop();
         //再生位置を保存
         float music_playback_pos = music.time;
 
@@ -76,6 +82,8 @@ public class tutorialGameMnger : GameSystem {
             //音楽を再生
             music.time = music_playback_pos;
             music.Play();
+            //Live2Dを再生
+            this.li2dAnimatorPlay();
         }
         //右を選択
         else if (Input.GetKey(KeyCode.D)) {
@@ -92,6 +100,8 @@ public class tutorialGameMnger : GameSystem {
             //音楽を指定の再生位置へ
             music.time = bars[bar_counter].StartTime;
             music.Play();
+            //Live2Dを再生
+            this.li2dAnimatorPlay();
         }
     }
 }

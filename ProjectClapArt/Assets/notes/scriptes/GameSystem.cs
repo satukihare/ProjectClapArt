@@ -24,7 +24,18 @@ public class GameSystem : MonoBehaviour {
         GAME_CHOSE,
         //ゲーム終了
         GAME_END,
+        //シナリオ再生
+        GAME_DIALOG,
         //未定義
+        UNKNOWN = -1,
+    }
+
+    /// <summary>
+    /// キャラ選択
+    /// </summary>
+    protected enum CHAR_MDOEL_ENUM{
+        NAGI = 0,
+        KAI,
         UNKNOWN = -1,
     }
 
@@ -44,10 +55,7 @@ public class GameSystem : MonoBehaviour {
     protected bool game_flg = false;
 
     //オーディオマネージャ
-    [SerializeField] protected AudioSource music = null;
-
-    //ポップするときのSE
-    [SerializeField] protected AudioClip pop_se = null;
+    protected AudioSource music = null;
 
     //スポーンさせるnotesオブジェクト
     [SerializeField] protected GameObject spawn_note_object = null;
@@ -76,15 +84,25 @@ public class GameSystem : MonoBehaviour {
     //入力Mnger
     [SerializeField] protected InputManager track_pad_input = null;
 
+    //サイリウムMnger
+    [SerializeField] protected PenlightManager penlight_mng = null;
+
     //切り捨てる数値量
     [SerializeField] protected int round_digits = 20;
 
     //JSON形式の譜面データを読み込む
-    [SerializeField] protected readWriteJsonFile read_write_json_file = null;
+    protected readWriteJsonFile read_write_json_file = null;
 
+    //読み込むJSONファイル名
     [SerializeField] public string load_json_note_file = "";
 
-//--プロパティ--
+    //Live2Dのモデルデータ
+    [SerializeField] protected GameObject[] live_2d_models = new GameObject[2];
+
+    //使用している使っているキャラのEnum
+    [SerializeField] protected CHAR_MDOEL_ENUM use_model_obj = CHAR_MDOEL_ENUM.UNKNOWN;
+
+    //--プロパティ--
     public float WholeNote {
         get { return whole_note; }
     }
@@ -100,11 +118,16 @@ public class GameSystem : MonoBehaviour {
         //音符の長さを計測
         whole_note = (int)(60.0f / BPM * NOTE * 1000.0f);
 
+        penlight_mng.SetBPM(BPM);
+
         music = this.GetComponent<AudioSource>();
 
+        read_write_json_file = GetComponent<readWriteJsonFile>();
         //譜面の読み込み
         if (read_write_json_file == null) Debug.Log("readWriteJsonFile nullptr !!");
 
+        //Live2Dでキャラ選択
+        live2dActive(use_model_obj);
         //ファイルのロード
         bars = read_write_json_file.readNotesFileDate(load_json_note_file);
         ResultData.total_notes = 0;
@@ -156,6 +179,9 @@ public class GameSystem : MonoBehaviour {
         game_flg = true;
         //音楽再生
         music.Play();
+
+        this.li2dAnimatorPlay();
+
         //ゲームをスポーン状態へ
         game_state = GAME_MODE.NOTE_SPAWN;
     }
@@ -344,5 +370,34 @@ public class GameSystem : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.P))
             SceneManager.LoadScene(0);
+    }
+
+    /// <summary>
+    /// ゲーム内でのDialogモード
+    /// </summary>
+    protected virtual void gameDialog() {}
+
+    /// <summary>
+    /// キャラ選択でアクティブにするキャラを選択する
+    /// </summary>
+    /// <param name="set_active_char">アクティブにしたいキャラ</param>
+    protected void live2dActive(CHAR_MDOEL_ENUM set_active_char) {
+        live_2d_models[(int)set_active_char].SetActive(true);
+    }
+
+    /// <summary>
+    /// Live２Dのアニメーションを再生
+    /// </summary>
+    protected void li2dAnimatorPlay() {
+        Animator anim = this.live_2d_models[(int)use_model_obj].GetComponent<Animator>();
+        anim.SetBool("Pause", false);
+    }
+
+    /// <summary>
+    /// live2dのアニメーションを停止
+    /// </summary>
+    protected void live2dAnimatorStop() {
+        Animator anim = this.live_2d_models[(int)use_model_obj].GetComponent<Animator>();
+        anim.SetBool("Pause", true);
     }
 }

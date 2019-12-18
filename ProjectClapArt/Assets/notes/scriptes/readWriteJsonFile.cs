@@ -82,7 +82,7 @@ public class readWriteJsonFile : MonoBehaviour {
     }
 
     //譜面データの相対パス
-    [SerializeField] string notes_folder_path = @"NotesFileDate\";
+    [SerializeField] string notes_folder_path = @"NotesFileDate/";
 
     /// <summary>
     /// 初期化
