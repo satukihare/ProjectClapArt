@@ -221,7 +221,10 @@ public class DialogManager : MonoBehaviour
     void End()
     {
         //game.active = true;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        string scene;
+        scene = lines[++currentLine];
+        Transition.instance.ChangeScene(scene);
     }
 
     public void AnimFinished()

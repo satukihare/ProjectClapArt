@@ -1,4 +1,4 @@
-[Banner]
+﻿[Banner]
 - 海 日中 - 
 
 [Sound]
@@ -75,3 +75,4 @@ Nagi/Voice _scenario_06_『さっそく―』
 早速ちょっと練習してみようよ！
 
 [End]
+tutorialGameScene
