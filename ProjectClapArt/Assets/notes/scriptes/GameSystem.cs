@@ -84,6 +84,9 @@ public class GameSystem : MonoBehaviour {
     //入力Mnger
     [SerializeField] protected InputManager track_pad_input = null;
 
+    //サイリウムMnger
+    [SerializeField] protected PenlightManager penlight_mng = null;
+
     //切り捨てる数値量
     [SerializeField] protected int round_digits = 20;
 
@@ -114,6 +117,8 @@ public class GameSystem : MonoBehaviour {
 
         //音符の長さを計測
         whole_note = (int)(60.0f / BPM * NOTE * 1000.0f);
+
+        penlight_mng.SetBPM(BPM);
 
         music = this.GetComponent<AudioSource>();
 
