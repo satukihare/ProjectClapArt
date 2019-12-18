@@ -369,7 +369,7 @@ public class GameSystem : MonoBehaviour {
     protected virtual void gameEnd() {
 
         if (Input.GetKey(KeyCode.P))
-            SceneManager.LoadScene(0);
+            Transition.instance.ChangeScene("DialogScene");
     }
 
     /// <summary>
