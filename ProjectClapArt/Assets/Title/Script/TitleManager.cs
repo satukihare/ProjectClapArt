@@ -24,7 +24,7 @@ public class TitleManager : MonoBehaviour
             }
             else
             {
-                Transition.instance.ChangeScene("SelectScene");
+                Transition.instance.ChangeScene("DialogScene");
             }
         }
     }
