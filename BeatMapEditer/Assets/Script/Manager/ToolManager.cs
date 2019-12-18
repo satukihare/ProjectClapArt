@@ -35,7 +35,6 @@ public class ToolManager : MonoBehaviour
         BarTime = Min / BPM * 4;
         Maxpage.setPage((int)audioSource.clip.length/4);
         MaxMusicTime = audioSource.clip.length;
-        
         if ((BPM/Min) % 3.0f == 0)
         {
             Debug.Log("補正オン");
@@ -56,7 +55,6 @@ public class ToolManager : MonoBehaviour
     {
         Debug.Log("Start Time" + MusicTimer);
         Debug.Log("1Bar Time is" + BarTime);
-        
         flug = true;
         audioSource.Play();
         audioSource.time = MusicTimer;
@@ -65,7 +63,7 @@ public class ToolManager : MonoBehaviour
     public void PlayStop()
     {
         flug = false;
-       
+        Line.ResetPos();
         MusicTimer = audioSource.time;
         audioSource.Stop();
         Debug.Log("Stop Time" + MusicTimer);
