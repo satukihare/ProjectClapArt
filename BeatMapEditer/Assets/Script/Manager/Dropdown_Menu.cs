@@ -23,7 +23,7 @@ public class Dropdown_Menu : MonoBehaviour
     [SerializeField] private Dropdown NotesDropdown = null;
     [SerializeField] private readWriteJsonFile jsonFile = null;
     [SerializeField] private EditManager manager = null;
-
+    [SerializeField] private AudioSource source = null;
     public void MenuPick()
     {
         if (FileDropdown.value == MenuMode.Read)
@@ -35,7 +35,7 @@ public class Dropdown_Menu : MonoBehaviour
 
         if (FileDropdown.value == MenuMode.Save)
         {
-            jsonFile.writeNotesFileDate("Sub_Create.json", manager.Bars);
+            jsonFile.writeNotesFileDate("Sub_Create.json", manager.Bars, source.clip.name);
             Debug.Log("JSONに書き込みました");
         }
         FocusOut();

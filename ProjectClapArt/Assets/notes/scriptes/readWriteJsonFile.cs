@@ -116,6 +116,8 @@ public class readWriteJsonFile : MonoBehaviour {
         //Barのリストから情報を抜いていく
         for (int bar_cnt = 0; bar_cnt < set_write_bar_list.Count; bar_cnt++) {
             JsonBar json_bar = new JsonBar();
+            json_bar.startTime = set_write_bar_list[bar_cnt].StartTime;
+            json_bar.length = set_write_bar_list[bar_cnt].Lingth;
             int NOTE_LEHGTH = set_write_bar_list[bar_cnt].Notes.Count;
 
             //BarのNoteから情報を抜いていく
