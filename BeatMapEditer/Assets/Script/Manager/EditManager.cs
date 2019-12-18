@@ -244,6 +244,8 @@ public class EditManager : MonoBehaviour
         PlayObjects.Add(Instantiate(PlayObject));
         gameObjects.Add(Instantiate(gameObj));
 
+        var script = gameObj.GetComponent<MoveableEffect>();
+        script.ResetPos();
         num = NoteObjects.Count - 1;
 
         NoteObjects[num].transform.SetParent(ExsampleParent.transform, false);
