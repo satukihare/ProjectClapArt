@@ -118,7 +118,7 @@ public class GameSystem : MonoBehaviour {
         //音符の長さを計測
         whole_note = (int)(60.0f / BPM * NOTE * 1000.0f);
 
-        penlight_mng.SetBPM(BPM);
+      //  penlight_mng.SetBPM(BPM);
 
         music = this.GetComponent<AudioSource>();
 
