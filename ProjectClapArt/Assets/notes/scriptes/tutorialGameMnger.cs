@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class tutorialGameMnger : GameSystem {
 
+    [SerializeField]
+    TutorialDialogManager dialog = null;
+
     /// <summary>
     /// 更新
     /// </summary>
@@ -102,6 +105,19 @@ public class tutorialGameMnger : GameSystem {
             music.Play();
             //Live2Dを再生
             this.li2dAnimatorPlay();
+        }
+    }
+
+    protected override void gameDialog()
+    {
+        dialog.gameObject.SetActive(true);
+    }
+
+    public void resume()
+    {
+        if (game_state == GAME_MODE.GAME_DIALOG)
+        {
+            game_state = GAME_MODE.NOTE_SPAWN;
         }
     }
 }
