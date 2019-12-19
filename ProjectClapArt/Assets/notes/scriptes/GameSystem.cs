@@ -213,7 +213,9 @@ public class GameSystem : MonoBehaviour {
             //スポーンするnotesがあればだす
             if (( note.SpawnTime + bars[bar_counter].StartTime - this.more_pop_dif_num <= msc_time_rud_dgts) &&
                 ( note.SpawnTime + bars[bar_counter].StartTime + this.more_pop_dif_num >= msc_time_rud_dgts)) {
+
                 GameObject pop_notes = Instantiate(spawn_note_object, note.Pos, Quaternion.identity);
+                
                 //notesにinstanceをセット
                 note.NoteInstance = pop_notes;
                 //カウント
