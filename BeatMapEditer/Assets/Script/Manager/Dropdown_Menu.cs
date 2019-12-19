@@ -24,6 +24,8 @@ public class Dropdown_Menu : MonoBehaviour
     [SerializeField] private readWriteJsonFile jsonFile = null;
     [SerializeField] private EditManager manager = null;
     [SerializeField] private AudioSource source = null;
+
+
     public void MenuPick()
     {
         if (FileDropdown.value == MenuMode.Read)

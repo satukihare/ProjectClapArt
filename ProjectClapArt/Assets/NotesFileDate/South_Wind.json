@@ -1,6 +1,30 @@
 {
   "json_bars": [
     {
+      "startTime": 16000,
+      "length": 0,
+      "json_notes": [
+        {
+          "position": {
+            "x": 0.9132537841796875,
+            "y": 3.524386405944824
+          },
+          "spawn_time": 496,
+          "press_time": 2496,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -1.402037262916565,
+            "y": -0.025726258754730225
+          },
+          "spawn_time": 1487,
+          "press_time": 2975,
+          "note_type": 1
+        }
+      ]
+    },
+    {
       "startTime": 20000,
       "length": 0,
       "json_notes": [
@@ -10,8 +34,8 @@
             "y": 3.2156805992126465
           },
           "spawn_time": 496,
-          "press_time": 992,
-          "note_type": -1
+          "press_time": 2496,
+          "note_type": 1
         },
         {
           "position": {
@@ -20,7 +44,7 @@
           },
           "spawn_time": 1487,
           "press_time": 2975,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -35,7 +59,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -43,8 +67,8 @@
             "y": 0.6431353092193604
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -58,8 +82,8 @@
             "y": 2.0580358505249023
           },
           "spawn_time": 496,
-          "press_time": 992,
-          "note_type": -1
+          "press_time": 2496,
+          "note_type": 1
         },
         {
           "position": {
@@ -67,8 +91,8 @@
             "y": 2.0580358505249023
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -82,8 +106,8 @@
             "y": 0.8489388227462769
           },
           "spawn_time": 496,
-          "press_time": 992,
-          "note_type": -1
+          "press_time": 2496,
+          "note_type": 1
         },
         {
           "position": {
@@ -91,8 +115,8 @@
             "y": 0.8489388227462769
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -107,7 +131,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -115,8 +139,8 @@
             "y": 2.8040738105773926
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -131,7 +155,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -140,7 +164,7 @@
           },
           "spawn_time": 1487,
           "press_time": 2975,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -154,8 +178,8 @@
             "y": 0
           },
           "spawn_time": 496,
-          "press_time": 992,
-          "note_type": -1
+          "press_time": 2496,
+          "note_type": 1
         },
         {
           "position": {
@@ -164,7 +188,7 @@
           },
           "spawn_time": 1487,
           "press_time": 2975,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -179,7 +203,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -188,7 +212,7 @@
           },
           "spawn_time": 1487,
           "press_time": 2975,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -203,7 +227,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -212,7 +236,7 @@
           },
           "spawn_time": 1495,
           "press_time": 2991,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -227,7 +251,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -236,7 +260,7 @@
           },
           "spawn_time": 1495,
           "press_time": 2991,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -251,7 +275,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -260,7 +284,7 @@
           },
           "spawn_time": 1495,
           "press_time": 2991,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -275,7 +299,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -283,8 +307,8 @@
             "y": -0.3858828544616699
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -298,8 +322,8 @@
             "y": 3.524386405944824
           },
           "spawn_time": 496,
-          "press_time": 992,
-          "note_type": -1
+          "press_time": 2496,
+          "note_type": 1
         },
         {
           "position": {
@@ -308,7 +332,7 @@
           },
           "spawn_time": 1495,
           "press_time": 2991,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -323,7 +347,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -332,7 +356,7 @@
           },
           "spawn_time": 1487,
           "press_time": 2975,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -347,7 +371,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -355,8 +379,8 @@
             "y": 2.8040738105773926
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -371,7 +395,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -380,7 +404,7 @@
           },
           "spawn_time": 1495,
           "press_time": 2991,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -395,7 +419,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -404,7 +428,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -413,7 +437,7 @@
           },
           "spawn_time": 736,
           "press_time": 1472,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -427,8 +451,8 @@
             "y": 0
           },
           "spawn_time": 496,
-          "press_time": 992,
-          "note_type": -1
+          "press_time": 2496,
+          "note_type": 1
         },
         {
           "position": {
@@ -436,8 +460,8 @@
             "y": 0
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -452,7 +476,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -460,8 +484,8 @@
             "y": 0
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -476,7 +500,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -485,7 +509,7 @@
           },
           "spawn_time": 1495,
           "press_time": 2991,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -500,7 +524,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -509,7 +533,7 @@
           },
           "spawn_time": 1495,
           "press_time": 2991,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -523,8 +547,8 @@
             "y": -0.437333881855011
           },
           "spawn_time": 496,
-          "press_time": 992,
-          "note_type": -1
+          "press_time": 2496,
+          "note_type": 1
         },
         {
           "position": {
@@ -532,8 +556,8 @@
             "y": -0.4630589485168457
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -548,7 +572,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -557,7 +581,7 @@
           },
           "spawn_time": 1487,
           "press_time": 2975,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -572,7 +596,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -581,7 +605,7 @@
           },
           "spawn_time": 1495,
           "press_time": 2991,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -596,7 +620,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -605,7 +629,7 @@
           },
           "spawn_time": 1495,
           "press_time": 2991,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -619,8 +643,8 @@
             "y": -0.4887846112251282
           },
           "spawn_time": 496,
-          "press_time": 992,
-          "note_type": -1
+          "press_time": 2496,
+          "note_type": 1
         },
         {
           "position": {
@@ -629,7 +653,7 @@
           },
           "spawn_time": 1495,
           "press_time": 2991,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -644,7 +668,7 @@
           },
           "spawn_time": 492,
           "press_time": 984,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -652,8 +676,8 @@
             "y": 2.701171636581421
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -668,7 +692,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -677,7 +701,7 @@
           },
           "spawn_time": 1487,
           "press_time": 2975,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -692,7 +716,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -700,8 +724,8 @@
             "y": -8.940696716308594e-7
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -715,8 +739,8 @@
             "y": -8.940696716308594e-7
           },
           "spawn_time": 496,
-          "press_time": 992,
-          "note_type": -1
+          "press_time": 2496,
+          "note_type": 1
         },
         {
           "position": {
@@ -724,8 +748,8 @@
             "y": 2.701171636581421
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
@@ -740,7 +764,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -749,7 +773,7 @@
           },
           "spawn_time": 1487,
           "press_time": 2975,
-          "note_type": -1
+          "note_type": 1
         }
       ]
     },
@@ -764,7 +788,7 @@
           },
           "spawn_time": 488,
           "press_time": 976,
-          "note_type": -1
+          "note_type": 1
         },
         {
           "position": {
@@ -772,8 +796,8 @@
             "y": -1.6207048892974854
           },
           "spawn_time": 1491,
-          "press_time": 2983,
-          "note_type": -1
+          "press_time": 3491,
+          "note_type": 1
         }
       ]
     },
