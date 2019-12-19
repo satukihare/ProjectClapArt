@@ -48,6 +48,7 @@ public class DialogManager : MonoBehaviour
     int maxLength;
     float charTime;
     bool waitForAnim = false;
+    bool advance = false;
     AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -82,8 +83,14 @@ public class DialogManager : MonoBehaviour
         }
         else if (!waitForAnim)
         {
+            if (!audioSource.isPlaying)
+            {
+                advance = true;
+                Invoke("AdvanceText", 1.0f);
+            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                advance = true;
                 AdvanceText();
             }
         }
@@ -91,6 +98,8 @@ public class DialogManager : MonoBehaviour
 
     void AdvanceText()
     {
+        if (!advance) return;
+        advance = false;
         while (true)
         {
             Debug.Log("parsing line: " + lines[currentLine]);

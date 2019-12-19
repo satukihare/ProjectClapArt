@@ -36,6 +36,7 @@ public class TutorialDialogManager : MonoBehaviour
     int maxLength;
     float charTime;
     AudioSource audioSource;
+    bool advance = false;
 
     [SerializeField]
     tutorialGameMnger manager = null;
@@ -70,14 +71,25 @@ public class TutorialDialogManager : MonoBehaviour
                 showLength = maxLength;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        else
         {
-            AdvanceText();
+            if (!audioSource.isPlaying)
+            {
+                advance = true;
+                Invoke("AdvanceText", 1.0f);
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                advance = true;
+                AdvanceText();
+            }
         }
     }
 
     void AdvanceText()
     {
+        if (!advance) return;
+        advance = false;
         while (true)
         {
             Debug.Log("parsing line: " + lines[currentLine]);
