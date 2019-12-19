@@ -45,8 +45,8 @@ public class EditManager : MonoBehaviour
     {
         Type = 1;
         Listindex = 0;
-        //TypeSetter();
         Init();
+        TypeSetter();
     }
 
     private void Init()
