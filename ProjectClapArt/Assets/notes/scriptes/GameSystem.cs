@@ -94,8 +94,18 @@ public class GameSystem : MonoBehaviour {
     //JSON形式の譜面データを読み込む
     protected readWriteJsonFile read_write_json_file = null;
 
+    //スコアデータ
     protected int score = 0;
 
+    //丁度いい時のスコア加算量
+    [SerializeField] float best_timing_add_score = 1.0f;
+
+    //惜しい時のスコア加算量
+    [SerializeField] float normal_timing_add_score = 0.7f;
+
+    [SerializeField] float always_add_score = 0.01f;
+
+    //スコア用イメージ？
     [SerializeField] protected Image score_image = null;
 
     //読み込むJSONファイル名
@@ -149,6 +159,9 @@ public class GameSystem : MonoBehaviour {
     protected void Update() {
         //更新
         gameUpdate();
+
+        //フリーアピール
+        freeTouchDetection();
 
         //ゲーム終了か確認
         notesEndCheck(bars, bar_counter);
@@ -409,7 +422,7 @@ public class GameSystem : MonoBehaviour {
     }
 
     /// <summary>
-    /// Live２Dのアニメーションを再生
+    /// Live2Dのアニメーションを再生
     /// </summary>
     protected void li2dAnimatorPlay() {
         Animator anim = this.live_2d_models[(int)use_model_obj].GetComponent<Animator>();
@@ -422,5 +435,16 @@ public class GameSystem : MonoBehaviour {
     protected void live2dAnimatorStop() {
         Animator anim = this.live_2d_models[(int)use_model_obj].GetComponent<Animator>();
         anim.SetBool("Pause", true);
+    }
+
+    /// <summary>
+    /// フリーtouch検出
+    /// </summary>
+    protected void freeTouchDetection() {
+        //flickかタップされれば実行される
+        bool input_flg = track_pad_input.Tap | track_pad_input.Flick;
+        if (!input_flg) return;
+
+        //加点システムはここに
     }
 }
