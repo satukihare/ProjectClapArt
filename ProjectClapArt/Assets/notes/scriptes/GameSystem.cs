@@ -441,10 +441,16 @@ public class GameSystem : MonoBehaviour {
     /// フリーtouch検出
     /// </summary>
     protected void freeTouchDetection() {
+        //ゲームが開始されているか
+        if (!game_flg) return;
+
         //flickかタップされれば実行される
         bool input_flg = track_pad_input.Tap | track_pad_input.Flick;
         if (!input_flg) return;
 
+        int a = 0x44;
         //加点システムはここに
+
+        //パーティクルとかの生成もここで
     }
 }

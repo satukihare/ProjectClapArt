@@ -1688,6 +1688,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &327166856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2348952232775579885, guid: 65f20f4dce3d4cc46bcfe4deede03482,
+    type: 3}
+  m_PrefabInstance: {fileID: 2120720311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &374293080
 Mesh:
   m_ObjectHideFlags: 0
@@ -7171,7 +7177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1728096909
 GameObject:
@@ -9509,6 +9515,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4878772085884940789, guid: 65f20f4dce3d4cc46bcfe4deede03482,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65f20f4dce3d4cc46bcfe4deede03482, type: 3}
 --- !u!1001 &2131927933
@@ -9723,7 +9734,7 @@ PrefabInstance:
         type: 3}
       propertyPath: live_2d_models.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 327166856}
     - target: {fileID: 1738998658081099545, guid: d20d53cdc7dbd7748a490269f40687f1,
         type: 3}
       propertyPath: use_model_obj
@@ -9734,6 +9745,11 @@ PrefabInstance:
       propertyPath: dialog
       value: 
       objectReference: {fileID: 1906888163}
+    - target: {fileID: 1738998658081099545, guid: d20d53cdc7dbd7748a490269f40687f1,
+        type: 3}
+      propertyPath: live_2d_models.Array.data[1]
+      value: 
+      objectReference: {fileID: 327166856}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d20d53cdc7dbd7748a490269f40687f1, type: 3}
 --- !u!114 &1738998656753348908 stripped
