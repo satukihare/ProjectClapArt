@@ -9,6 +9,9 @@ public class ResultManager : MonoBehaviour
     [SerializeField]
     PlayableDirector Director;
 
+    [SerializeField]
+    AudioClip[] voices;
+
     bool ScoreVoice = false;
 
     // Start is called before the first frame update
@@ -26,8 +29,20 @@ public class ResultManager : MonoBehaviour
             {
                 ScoreVoice = true;
 
+                int chara = SelectData.chara_select;
+                int score_rank = ResultData.rank;
 
+                AudioSource source = gameObject.GetComponent<AudioSource>();
 
+                //      ボイスID対照表
+                //
+                //       | スコアランク
+                //キャラ |   C B A S
+                //-------+--------------
+                //ナギ   |   0 1 2 3
+                //カイ   |   4 5 6 7
+                source.clip = voices[chara * 4 + score_rank];
+                source.Play();
             }
         }
 
