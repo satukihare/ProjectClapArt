@@ -17,6 +17,24 @@ public class DialogManager : MonoBehaviour
         "[End]"
     };
 
+    static readonly float[] FaceVecter_X=
+    {
+      0f,
+      0f,
+      1f,
+      -1f,
+      0f
+    };
+    static readonly float[] FaceVecter_Y =
+   {
+     0f,
+     1f,
+     0f,
+     0f,
+     -1f
+    };
+
+
     enum CodeID
     {
         Banner = 0,
@@ -27,6 +45,8 @@ public class DialogManager : MonoBehaviour
         Speech,
         End
     };
+
+
     const float secsPerChar = 0.06f;
     TextAsset textAsset;
     string[] lines;
@@ -36,7 +56,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField]
     Image[] speechBubble;
     [SerializeField]
-    Image[] characters;
+    GameObject[] characters;
     [SerializeField]
     GameObject banner;
     [SerializeField]
@@ -183,6 +203,10 @@ public class DialogManager : MonoBehaviour
         int face;
         chara = int.Parse(lines[++currentLine]);
         face = int.Parse(lines[++currentLine]);
+
+        BlendExpression blendExpression =  characters[chara].GetComponent<BlendExpression>();
+        blendExpression.ChangeFace(FaceVecter_X[face], FaceVecter_Y[face]);
+
         //TODO
         Debug.Log("change face " + chara.ToString() + ' ' + face.ToString());
     }
@@ -212,8 +236,8 @@ public class DialogManager : MonoBehaviour
         speechBubble[chara  ].gameObject.SetActive(true);
         speechBubble[chara^1].gameObject.SetActive(false);
 
-        characters[chara  ].color = Color.white;
-        characters[chara^1].color = Color.gray;
+      //  characters[chara  ].color = Color.white;
+      //  characters[chara^1].color = Color.gray;
 
 
         text = "";

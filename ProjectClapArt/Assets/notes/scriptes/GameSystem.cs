@@ -169,7 +169,7 @@ public class GameSystem : MonoBehaviour {
         freeTouchDetection();
 
         //ゲーム終了か確認
-        notesEndCheck(bars, bar_counter);
+        notesEndCheck(bars, bar_counter+1);
 
         //ゲーム終了時の場合
         if(game_state == GAME_MODE.GAME_END) {
@@ -186,7 +186,7 @@ public class GameSystem : MonoBehaviour {
     /// <summary>
     /// 待機状態
     /// </summary>
-    protected void gameWait() {
+    virtual protected void gameWait() {
         if (track_pad_input.Tap) {
             gameStart();
         }
