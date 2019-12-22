@@ -20,4 +20,8 @@ public static class ResultData
             return hit_notes / total_notes;
         }
     }
+
+    public static int bonus_score = 0;
+
+    public static int bonus_max = 40;
 }

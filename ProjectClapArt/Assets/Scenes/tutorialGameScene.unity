@@ -1688,12 +1688,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &327166856 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2348952232775579885, guid: 65f20f4dce3d4cc46bcfe4deede03482,
-    type: 3}
-  m_PrefabInstance: {fileID: 2120720311}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &374293080
 Mesh:
   m_ObjectHideFlags: 0
@@ -9522,6 +9516,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65f20f4dce3d4cc46bcfe4deede03482, type: 3}
+--- !u!1 &2120720312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3430357675019908866, guid: 65f20f4dce3d4cc46bcfe4deede03482,
+    type: 3}
+  m_PrefabInstance: {fileID: 2120720311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2131927933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9734,7 +9734,7 @@ PrefabInstance:
         type: 3}
       propertyPath: live_2d_models.Array.data[0]
       value: 
-      objectReference: {fileID: 327166856}
+      objectReference: {fileID: 2120720312}
     - target: {fileID: 1738998658081099545, guid: d20d53cdc7dbd7748a490269f40687f1,
         type: 3}
       propertyPath: use_model_obj
@@ -9749,7 +9749,13 @@ PrefabInstance:
         type: 3}
       propertyPath: live_2d_models.Array.data[1]
       value: 
-      objectReference: {fileID: 327166856}
+      objectReference: {fileID: 2120720312}
+    - target: {fileID: 1738998658081099545, guid: d20d53cdc7dbd7748a490269f40687f1,
+        type: 3}
+      propertyPath: free_particle
+      value: 
+      objectReference: {fileID: 4793942322832330980, guid: 3e5bf90efc44ea04b89d64d31ccf0857,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d20d53cdc7dbd7748a490269f40687f1, type: 3}
 --- !u!114 &1738998656753348908 stripped

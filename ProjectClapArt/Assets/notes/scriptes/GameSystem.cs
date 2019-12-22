@@ -117,6 +117,9 @@ public class GameSystem : MonoBehaviour {
     //使用している使っているキャラのEnum
     [SerializeField] protected CHAR_MDOEL_ENUM use_model_obj = CHAR_MDOEL_ENUM.UNKNOWN;
 
+    //Particleのオブジェクト
+    [SerializeField] protected GameObject free_particle;
+
     //--プロパティ--
     public float WholeNote {
         get { return whole_note; }
@@ -147,6 +150,7 @@ public class GameSystem : MonoBehaviour {
         bars = read_write_json_file.readNotesFileDate(load_json_note_file);
         ResultData.total_notes = 0;
         ResultData.hit_notes = 0;
+        ResultData.bonus_score = 0;
         foreach (Bar bar in bars)
         {
             ResultData.total_notes += bar.Notes.Count;
@@ -445,12 +449,16 @@ public class GameSystem : MonoBehaviour {
         if (!game_flg) return;
 
         //flickかタップされれば実行される
-        bool input_flg = track_pad_input.Tap | track_pad_input.Flick;
+        bool input_flg = track_pad_input.Tap;// | track_pad_input.Flick;
         if (!input_flg) return;
 
         int a = 0x44;
         //加点システムはここに
+        if (ResultData.bonus_score < ResultData.bonus_max)
+        ResultData.bonus_score++;
 
         //パーティクルとかの生成もここで
+        Vector2 pos = Camera.main.ScreenToWorldPoint((Vector2)Input.mousePosition);
+        Instantiate(free_particle, pos, Quaternion.identity);
     }
 }
