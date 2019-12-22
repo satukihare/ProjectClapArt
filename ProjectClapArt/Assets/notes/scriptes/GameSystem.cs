@@ -94,8 +94,18 @@ public class GameSystem : MonoBehaviour {
     //JSON形式の譜面データを読み込む
     protected readWriteJsonFile read_write_json_file = null;
 
+    //スコアデータ
     protected int score = 0;
 
+    //丁度いい時のスコア加算量
+    [SerializeField] float best_timing_add_score = 1.0f;
+
+    //惜しい時のスコア加算量
+    [SerializeField] float normal_timing_add_score = 0.7f;
+
+    [SerializeField] float always_add_score = 0.01f;
+
+    //スコア用イメージ？
     [SerializeField] protected Image score_image = null;
 
     //読み込むJSONファイル名
@@ -106,6 +116,9 @@ public class GameSystem : MonoBehaviour {
 
     //使用している使っているキャラのEnum
     [SerializeField] protected CHAR_MDOEL_ENUM use_model_obj = CHAR_MDOEL_ENUM.UNKNOWN;
+
+    //Particleのオブジェクト
+    [SerializeField] protected GameObject free_particle;
 
     //--プロパティ--
     public float WholeNote {
@@ -138,6 +151,7 @@ public class GameSystem : MonoBehaviour {
         bars = read_write_json_file.readNotesFileDate(load_json_note_file);
         ResultData.total_notes = 0;
         ResultData.hit_notes = 0;
+        ResultData.bonus_score = 0;
         foreach (Bar bar in bars)
         {
             ResultData.total_notes += bar.Notes.Count;
@@ -150,6 +164,9 @@ public class GameSystem : MonoBehaviour {
     protected void Update() {
         //更新
         gameUpdate();
+
+        //フリーアピール
+        freeTouchDetection();
 
         //ゲーム終了か確認
         notesEndCheck(bars, bar_counter);
@@ -411,7 +428,7 @@ public class GameSystem : MonoBehaviour {
     }
 
     /// <summary>
-    /// Live２Dのアニメーションを再生
+    /// Live2Dのアニメーションを再生
     /// </summary>
     protected void li2dAnimatorPlay() {
         if (!live_2d_models[(int)use_model_obj])
@@ -429,5 +446,26 @@ public class GameSystem : MonoBehaviour {
             return;
         Animator anim = this.live_2d_models[(int)use_model_obj].GetComponent<Animator>();
         anim.SetBool("Pause", true);
+    }
+
+    /// <summary>
+    /// フリーtouch検出
+    /// </summary>
+    protected void freeTouchDetection() {
+        //ゲームが開始されているか
+        if (!game_flg) return;
+
+        //flickかタップされれば実行される
+        bool input_flg = track_pad_input.Tap;// | track_pad_input.Flick;
+        if (!input_flg) return;
+
+        int a = 0x44;
+        //加点システムはここに
+        if (ResultData.bonus_score < ResultData.bonus_max)
+        ResultData.bonus_score++;
+
+        //パーティクルとかの生成もここで
+        Vector2 pos = Camera.main.ScreenToWorldPoint((Vector2)Input.mousePosition);
+        Instantiate(free_particle, pos, Quaternion.identity);
     }
 }
