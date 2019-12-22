@@ -168,7 +168,7 @@ public class GameSystem : MonoBehaviour {
     /// <summary>
     /// 待機状態
     /// </summary>
-    protected void gameWait() {
+    virtual protected void gameWait() {
         if (track_pad_input.Tap) {
             gameStart();
         }

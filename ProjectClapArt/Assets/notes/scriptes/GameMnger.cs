@@ -7,14 +7,21 @@ public class GameMnger : GameSystem {
     /// <summary>
     /// 更新
     /// </summary>
+    /// 
+
+    [SerializeField]
+    Animator Animation;
+
     override protected void gameUpdate() {
 
         //音のタイミング
         music_time_num = (int)(music.time * 1000.0f);
 
+
+
         //待機状態
         if (game_state ==  GAME_MODE.GAME_WAIT) {
-            gameWait();
+            GameStand_By();
         }
         //スポーン状態
         else if (game_state == GAME_MODE.NOTE_SPAWN) {
@@ -30,6 +37,46 @@ public class GameMnger : GameSystem {
         }
         //イレギュラー値
         else Debug.Log("Unknown State");
+
+
+    }
+
+    /// <summary>
+    /// GameWaitの代わり
+    /// Gameが始まるまでのやつ
+    /// </summary>
+    /// <param name="notes">NoteのList</param>
+    /// <returns>全てクリックされているならTrue</returns>
+    void GameStand_By()
+    {
+
+        gameStart();
+
+        Invoke("StageLightUp",4f);
+        Invoke("DanceStart", 8f);
+
+    }
+
+    /// <summary>
+    /// GameWaitの代わり
+    /// Gameが始まるまでのやつ
+    /// </summary>
+    /// <param name="notes">NoteのList</param>
+    /// <returns>全てクリックされているならTrue</returns>
+    void StageLightUp()
+    {
+        Animation.SetBool("DanceStart", true);
+    }
+
+    /// <summary>
+    /// GameWaitの代わり
+    /// Gameが始まるまでのやつ
+    /// </summary>
+    /// <param name="notes">NoteのList</param>
+    /// <returns>全てクリックされているならTrue</returns>
+    void DanceStart()
+    {
+        Animation.SetBool("DanceStart", true);
     }
 
     /// <summary>
