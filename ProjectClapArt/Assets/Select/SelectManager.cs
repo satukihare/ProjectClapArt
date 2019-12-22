@@ -37,7 +37,7 @@ public class SelectManager : MonoBehaviour
         {
             if (selection != 0)
             {
-                Transition.instance.ChangeScene("TutorialScene");
+                Transition.instance.ChangeScene("GameScene");
                 SelectData.chara_select = selection - 1;
             }
         }
