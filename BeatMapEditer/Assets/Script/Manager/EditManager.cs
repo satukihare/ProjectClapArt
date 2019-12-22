@@ -43,8 +43,10 @@ public class EditManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Type = 1;
         Listindex = 0;
         Init();
+        TypeSetter();
     }
 
     private void Init()
@@ -278,9 +280,9 @@ public class EditManager : MonoBehaviour
         var Spown = ToolManager.BarTime * EditObj.obj.rectTransform.anchorMin.x;
         var Press = Spown + ToolManager.BarTime;
         //作成したデータをリストに追加
-        NoteData.StartTime = (int)(ToolManager.BarTime* Listindex) ;
+        NoteData.StartTime = (int)(ToolManager.BarTime*Listindex*1000) ;
         NoteData.Lingth = (int)ToolManager.BarTime*1000;
-        NoteData.Notes.Add(new Note(new Vector2(gameObj.transform.position.x, gameObj.transform.position.y), (int)(Spown * 1000), (int)(Press * 1000), NOTE_TYPE));
+        NoteData.Notes.Add(new Note(new Vector2(gameObj.transform.position.x, gameObj.transform.position.y), (int)(Spown * 1000), (int)(Press * 1000),FollowObj.NOTE_TYPE));
         NoteData.Notes.Sort((a,b) => a.SpawnTime - b.SpawnTime );
     }
 
