@@ -59,6 +59,7 @@ public class DialogManager : MonoBehaviour
         currentLine = 0;
         showLength = 0;
         charTime = secsPerChar;
+        advance = true;
         AdvanceText();
     }
 

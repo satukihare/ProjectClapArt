@@ -123,7 +123,8 @@ public class GameSystem : MonoBehaviour {
         //音符の長さを計測
         whole_note = (int)(60.0f / BPM * NOTE * 1000.0f);
 
-        penlight_mng.SetBPM(BPM);
+        if (penlight_mng)
+            penlight_mng.SetBPM(BPM);
 
         music = this.GetComponent<AudioSource>();
 
@@ -405,21 +406,27 @@ public class GameSystem : MonoBehaviour {
     /// </summary>
     /// <param name="set_active_char">アクティブにしたいキャラ</param>
     protected void live2dActive(CHAR_MDOEL_ENUM set_active_char) {
-        live_2d_models[(int)set_active_char].SetActive(true);
+        if(live_2d_models[(int)set_active_char])
+            live_2d_models[(int)set_active_char].SetActive(true);
     }
 
     /// <summary>
     /// Live２Dのアニメーションを再生
     /// </summary>
     protected void li2dAnimatorPlay() {
-        Animator anim = this.live_2d_models[(int)use_model_obj].GetComponent<Animator>();
+        if (!live_2d_models[(int)use_model_obj])
+            return;
+            Animator anim = this.live_2d_models[(int)use_model_obj].GetComponent<Animator>();
         anim.SetBool("Pause", false);
     }
 
     /// <summary>
     /// live2dのアニメーションを停止
     /// </summary>
-    protected void live2dAnimatorStop() {
+    protected void live2dAnimatorStop()
+    {
+        if (!live_2d_models[(int)use_model_obj])
+            return;
         Animator anim = this.live_2d_models[(int)use_model_obj].GetComponent<Animator>();
         anim.SetBool("Pause", true);
     }

@@ -45,10 +45,11 @@ public class TutorialDialogManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        LoadTextFile(ScenarioData.text_filename);
+        LoadTextFile("Text/tutorial");
         currentLine = 0;
         showLength = 0;
         charTime = secsPerChar;
+        advance = true;
         AdvanceText();
     }
 
@@ -92,6 +93,10 @@ public class TutorialDialogManager : MonoBehaviour
         advance = false;
         while (true)
         {
+            if (currentLine >= lines.Length)
+            {
+                break;
+            }
             Debug.Log("parsing line: " + lines[currentLine]);
             if (lines[currentLine] == codes[(int)CodeID.Sound])
             {
@@ -105,7 +110,6 @@ public class TutorialDialogManager : MonoBehaviour
             else if (lines[currentLine] == codes[(int)CodeID.Pause])
             {
                 Pause();
-                break;
             }
             else if (lines[currentLine] == codes[(int)CodeID.End])
             {
@@ -176,6 +180,7 @@ public class TutorialDialogManager : MonoBehaviour
 
     void End()
     {
+        Debug.Log("end");
         //game.active = true;
         //gameObject.SetActive(false);
         string scene;

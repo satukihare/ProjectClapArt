@@ -78,8 +78,7 @@ public class tutorialGameMnger : GameSystem {
             bar_counter++;
 
             //スポーン状態へ
-            game_state = GAME_MODE.NOTE_SPAWN;
-            gamePlay();
+            game_state = GAME_MODE.GAME_DIALOG;
         }
         //右を選択
         else if (Input.GetKey(KeyCode.D)) {
@@ -141,6 +140,7 @@ public class tutorialGameMnger : GameSystem {
         if (game_state == GAME_MODE.GAME_DIALOG)
         {
             game_state = GAME_MODE.NOTE_SPAWN;
+            gamePlay();
         }
     }
 }

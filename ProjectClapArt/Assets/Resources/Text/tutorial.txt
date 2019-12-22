@@ -1,0 +1,12 @@
+[Speech]
+0
+test 11111111111111
+
+[Pause]
+
+[Speech]
+1
+test 2222222222222
+
+[End]
+SelectScene
