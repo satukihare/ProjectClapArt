@@ -22,6 +22,10 @@ Nagi/Voice _scenario_01_『ちょっと―』
 [Fade]
 0
 
+[Face]
+1
+0
+
 [Sound]
 Nagi/Voice _scenario_02_『はじめまして―』
 
@@ -67,6 +71,10 @@ Kai/scenario3
 1
 大きなフェスでのライブだから絶対に失敗したくないんだ。
 
+[Face]
+0
+3
+
 [Sound]
 Nagi/Voice _scenario_05_『なーちゃんと―』
 
@@ -77,13 +85,11 @@ Nagi/Voice _scenario_05_『なーちゃんと―』
 [Sound]
 Kai/scenario4
 
-[Face]
-0
-1
-
 [Speech]
 1
 そこで今回は君に協力してもらいたいんだ。
+
+
 
 [Sound]
 Nagi/Voice _scenario_06_『さっそく―』

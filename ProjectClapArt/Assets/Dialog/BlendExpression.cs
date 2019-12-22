@@ -16,7 +16,8 @@ public class BlendExpression : MonoBehaviour
     float Emotion_Diff_X, Emotion_Diff_Y;
 
     [SerializeField, Range(0f, 60f)]
-    float Diff_Frame;
+    private float Diff_Frame = 20;
+    private float Diff_count;
 
     [SerializeField, Range(0f, 1f)]
     public float ExpressionWeight = 1f;
@@ -39,17 +40,18 @@ public class BlendExpression : MonoBehaviour
             return;
         }
 
-        if (!(FaceEmotion_X == Blending_x && FaceEmotion_Y == Blending_y))
+        if (Diff_count >0)
         {
             //フレームごとの補間処理
             FaceEmotion_X += Emotion_Diff_X;
             FaceEmotion_Y += Emotion_Diff_Y;
-            
+
+            Diff_count--;
         }
 
         //Setting Blend Param and Weights.
-        _blendTree.SetFloat("Emotion_X",Blending_x);
-        _blendTree.SetFloat("Emotion_Y",Blending_y);
+        _blendTree.SetFloat("Emotion_X",FaceEmotion_X);
+        _blendTree.SetFloat("Emotion_Y",FaceEmotion_Y);
 
         if (_expressionIndex != -1)
             _blendTree.SetLayerWeight(_expressionIndex, ExpressionWeight);
@@ -63,5 +65,7 @@ public class BlendExpression : MonoBehaviour
 
         Emotion_Diff_X = (  Blending_x - FaceEmotion_X) / Diff_Frame;
         Emotion_Diff_Y = (  Blending_y - FaceEmotion_Y) / Diff_Frame;
+
+        Diff_count = Diff_Frame;
     }
 }

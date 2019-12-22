@@ -74,8 +74,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: ' Emotion_X'
     m_Mirror: 0
-  m_BlendParameter: ' Emotion_X'
-  m_BlendParameterY: ' Emotion_Y'
+  m_BlendParameter: Emotion_X
+  m_BlendParameterY: Emotion_Y
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -112,18 +112,18 @@ AnimatorController:
   m_Name: Kai_Face
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: ' Emotion_X'
+  - m_Name: Emotion_X
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: ' Emotion_Y'
+    m_Controller: {fileID: 0}
+  - m_Name: Emotion_Y
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Face
