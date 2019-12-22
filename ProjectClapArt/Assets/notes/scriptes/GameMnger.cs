@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMnger : GameSystem {
 
@@ -12,12 +13,26 @@ public class GameMnger : GameSystem {
     [SerializeField]
     Animator Animation;
 
+    [SerializeField]
+    Image Fade;
+
+    float Fade_alpha = 128;
+
+    protected enum LIGHT_MODE
+    {
+        NONE,
+        LIGHT_UP,
+        LIGHT_DOWN
+    }
+
+    LIGHT_MODE light_state;
+
     override protected void gameUpdate() {
 
         //音のタイミング
         music_time_num = (int)(music.time * 1000.0f);
 
-
+        Light();
 
         //待機状態
         if (game_state ==  GAME_MODE.GAME_WAIT) {
@@ -58,6 +73,22 @@ public class GameMnger : GameSystem {
     }
 
     /// <summary>
+    /// Game終了処理
+    /// Gameが始まるまでのやつ
+    /// </summary>
+    /// <param name="notes">NoteのList</param>
+    /// <returns>全てクリックされているならTrue</returns>
+    protected override void gameEnd()
+    {
+        light_state = LIGHT_MODE.LIGHT_DOWN;
+        Animation.SetBool("MusicEnd", true);
+
+        //ここにInvokeでTransition呼び出し
+
+
+    }
+
+    /// <summary>
     /// GameWaitの代わり
     /// Gameが始まるまでのやつ
     /// </summary>
@@ -65,8 +96,44 @@ public class GameMnger : GameSystem {
     /// <returns>全てクリックされているならTrue</returns>
     void StageLightUp()
     {
-        Animation.SetBool("DanceStart", true);
+        light_state = LIGHT_MODE.LIGHT_UP;
     }
+
+    /// <summary>
+    /// 照明的なヤツ
+    /// Gameが始まるまでのやつ
+    /// </summary>
+    /// <param name="notes">NoteのList</param>
+    /// <returns>全てクリックされているならTrue</returns>
+    void Light()
+    {
+        if (light_state == LIGHT_MODE.LIGHT_UP)
+        {
+            Fade_alpha -= .5f;
+            if (Fade_alpha <= 0)
+            {
+                Fade_alpha = 0f;
+                light_state = LIGHT_MODE.NONE;
+            }
+           Fade.color = new Color(0f,0f,0f, Fade_alpha/ 255.0f); 
+
+        }
+        else if (light_state == LIGHT_MODE.LIGHT_DOWN)
+        {
+            Fade_alpha += .75f;
+            if (Fade_alpha >= 128)
+            {
+                Fade_alpha = 128f;
+                light_state = LIGHT_MODE.NONE;
+
+              
+            }
+            Fade.color = new Color(0f, 0f, 0f, Fade_alpha / 255.0f);
+        }
+       
+
+    }
+
 
     /// <summary>
     /// GameWaitの代わり

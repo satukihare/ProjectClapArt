@@ -151,7 +151,7 @@ public class GameSystem : MonoBehaviour {
         gameUpdate();
 
         //ゲーム終了か確認
-        notesEndCheck(bars, bar_counter);
+        notesEndCheck(bars, bar_counter+1);
 
         //ゲーム終了時の場合
         if(game_state == GAME_MODE.GAME_END) {
