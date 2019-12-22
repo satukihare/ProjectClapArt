@@ -4,6 +4,10 @@
 [Sound]
 Kai/scenario1
 
+[Face]
+1
+4
+
 [Speech]
 1
 おーい！そこの人！
@@ -36,6 +40,10 @@ Nagi/Voice _scenario_02_『こっちは―』
 [Sound]
 Kai/scenario2
 
+[Face]
+1
+1
+
 [Speech]
 1
 俺はカイ。同じくＡＩアイドルでナギの兄だ。
@@ -51,6 +59,10 @@ Nagi/Voice _scenario_04_『ナーちゃんたちね―』
 [Sound]
 Kai/scenario3
 
+[Face]
+1
+2
+
 [Speech]
 1
 大きなフェスでのライブだから絶対に失敗したくないんだ。
@@ -64,6 +76,10 @@ Nagi/Voice _scenario_05_『なーちゃんと―』
 
 [Sound]
 Kai/scenario4
+
+[Face]
+0
+1
 
 [Speech]
 1
