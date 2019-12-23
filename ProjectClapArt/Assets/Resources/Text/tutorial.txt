@@ -1,12 +1,12 @@
 [Speech]
 0
-test 11111111111111
+リズムに合わせて叩いてね！
 
 [Pause]
 
 [Speech]
 1
-test 2222222222222
+これなら大丈夫だな。
 
 [End]
 SelectScene

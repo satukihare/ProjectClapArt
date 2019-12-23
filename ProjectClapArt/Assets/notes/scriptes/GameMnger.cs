@@ -131,7 +131,7 @@ public class GameMnger : GameSystem {
             Fade.color = new Color(0f, 0f, 0f, Fade_alpha / 255.0f);
         }
        
-
+        
     }
 
 

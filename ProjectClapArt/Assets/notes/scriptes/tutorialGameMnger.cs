@@ -22,7 +22,9 @@ public class tutorialGameMnger : GameSystem {
 
         //待機状態
         if (game_state == GAME_MODE.GAME_WAIT) {
-            gameWait();
+            // gameWait();
+            game_state = GAME_MODE.GAME_DIALOG;
+            gameDialog();
         }
         //notesスポーン
         else if (game_state == GAME_MODE.NOTE_SPAWN) {
