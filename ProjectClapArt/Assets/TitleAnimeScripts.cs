@@ -16,20 +16,16 @@ public class TitleAnimeScripts : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    void GroupLogoAnnounce()
-    {
-        audioSource.PlayOneShot(GroupLogo_Announce);
+    //void GroupLogoAnnounce()
+    //{
+    //   audioSource.PlayOneShot(GroupLogo_Announce);
 
-
-        TitleBGM.PlayDelayed(1.5f);
-        TitleBGM.Play();
-
-        audioSource.clip = Title_Announce;
-        audioSource.PlayDelayed(2.5f);
-        audioSource.Play();
+    //  audioSource.clip = Title_Announce;
+    //  audioSource.PlayDelayed(2.5f);
+    //  audioSource.Play();
 
  
-    }
+    //}
 
    
 }

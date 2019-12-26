@@ -936,7 +936,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 7d39b13b9bf686b4dba4f5da3213b430, type: 2}
   m_InitialState: 1
-  m_WrapMode: 2
+  m_WrapMode: 1
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -956,8 +956,17 @@ PlayableDirector:
     value: {fileID: 54896720}
   - key: {fileID: -5598651770460693319, guid: 7d39b13b9bf686b4dba4f5da3213b430, type: 2}
     value: {fileID: 607176216}
+  - key: {fileID: -4849627984647513578, guid: 7d39b13b9bf686b4dba4f5da3213b430, type: 2}
+    value: {fileID: 1946024993}
+  - key: {fileID: 7267895436637559156, guid: 7d39b13b9bf686b4dba4f5da3213b430, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7916558131533673252, guid: 7d39b13b9bf686b4dba4f5da3213b430, type: 2}
+    value: {fileID: 54727795}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 7c944316e05175f49b88662bf11709e4: {fileID: 0}
+    - ba6ec5fdfd910654fbb8a3faa37a5093: {fileID: 0}
+    - 216f52b6ba729564c91429fcd3ae6af7: {fileID: 1698191985}
 --- !u!1 &1198250093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,7 +1457,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

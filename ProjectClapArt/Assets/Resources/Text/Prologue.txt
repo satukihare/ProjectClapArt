@@ -15,6 +15,10 @@ Kai/scenario1
 [Sound]
 Nagi/Voice _scenario_01_『ちょっと―』
 
+[Face]
+0
+2
+
 [Speech]
 0
 ちょっとこっちに来て！
