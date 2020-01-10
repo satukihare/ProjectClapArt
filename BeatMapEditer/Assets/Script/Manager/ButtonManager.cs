@@ -11,12 +11,14 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] private NotesPage MaxPage = null;
     [SerializeField] private LinePos line = null;
 
-    static int PageTime = 4;
+    static float PageTime = 4;
 
     public void OnclickNextPage()
     {
         if (notesPage.nowPage < MaxPage.nowPage)
         {
+            PageTime = toolManager.BarTime;
+
             notesPage.NextPage();
             timer.addTime(PageTime);
             toolManager.MusicTimer += PageTime;
@@ -32,6 +34,8 @@ public class ButtonManager : MonoBehaviour
     {
         if(line.StartPosflug == false && notesPage.nowPage > 1)
         {
+            PageTime = toolManager.BarTime;
+
             notesPage.BeforePage();
 
             timer.addTime(-PageTime);

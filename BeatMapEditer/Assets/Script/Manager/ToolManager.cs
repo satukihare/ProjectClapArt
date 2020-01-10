@@ -32,22 +32,24 @@ public class ToolManager : MonoBehaviour
         flug = herfflug = barflug = false;
         MusicTimer = 0.0f;
         NotesTimer = 0.0f;
-        BarTime = Min / BPM * 4;
+        BarTime = (Min / BPM) * 4;
 
-        Maxpage.setPage((int)audioSource.clip.length/4);
-
-        for(int num = 0; num < Maxpage.nowPage; num++)
+        Maxpage.setPage( (int)(audioSource.clip.length/(BarTime*2)) );
+        Debug.Log(BarTime);
+        for (int num = 0; num < Maxpage.nowPage; num++)
         {
-            //var time = 4 * num;
-            PageEndMusicTimer.Add(4 * num);
+            PageEndMusicTimer.Add((BarTime*2) * num);
         }
         
-
         MaxMusicTime = audioSource.clip.length;
-        if ((BPM/Min) % 3.0f == 0)
+        if (BPM > 180)
         {
             Debug.Log("補正オン");
-            Correction = 0.08f;
+            Correction = 0.11f;
+        }
+        else
+        {
+            Debug.Log("補正オフ");
         }
     }
 

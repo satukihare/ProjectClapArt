@@ -1,13 +1,38 @@
 {
+  "music_file_name": "South_Wind",
   "json_bars": [
     {
-      "startTime": 16000,
-      "length": 0,
+      "startTime": 8000,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": 0.9132537841796875,
-            "y": 3.524386405944824
+            "x": -1.1705082654953003,
+            "y": 3.241405963897705
+          },
+          "spawn_time": 488,
+          "press_time": 2488,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": 0.9389787912368774,
+            "y": 1.697879433631897
+          },
+          "spawn_time": 1491,
+          "press_time": 3491,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 10000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": -1.1447829008102417,
+            "y": 1.414899230003357
           },
           "spawn_time": 496,
           "press_time": 2496,
@@ -15,152 +40,224 @@
         },
         {
           "position": {
-            "x": -1.402037262916565,
-            "y": -0.025726258754730225
+            "x": 1.0418809652328491,
+            "y": 3.112779140472412
           },
-          "spawn_time": 1487,
-          "press_time": 3487,
+          "spawn_time": 1491,
+          "press_time": 3491,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 12000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 1.1705081462860107,
+            "y": -0.7460391521453857
+          },
+          "spawn_time": 496,
+          "press_time": 2496,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -1.1962337493896484,
+            "y": -0.7717645168304443
+          },
+          "spawn_time": 1495,
+          "press_time": 3495,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 14000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 1.0418809652328491,
+            "y": 2.135211944580078
+          },
+          "spawn_time": 496,
+          "press_time": 2496,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -1.1447829008102417,
+            "y": 1.2605464458465576
+          },
+          "spawn_time": 1495,
+          "press_time": 3495,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 16000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 1.0161552429199219,
+            "y": -1.209097146987915
+          },
+          "spawn_time": 496,
+          "press_time": 2496,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -1.0676064491271973,
+            "y": 3.472935676574707
+          },
+          "spawn_time": 1495,
+          "press_time": 3495,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 18000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": -0.19294090569019318,
+            "y": 1.1061936616897583
+          },
+          "spawn_time": 496,
+          "press_time": 2496,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": 1.1962335109710693,
+            "y": 3.0098772048950195
+          },
+          "spawn_time": 1495,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
     },
     {
       "startTime": 20000,
-      "length": 0,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": -1.582115650177002,
-            "y": 3.2156805992126465
+            "x": -1.1705082654953003,
+            "y": -1.8007824420928955
           },
-          "spawn_time": 496,
-          "press_time": 2496,
+          "spawn_time": 488,
+          "press_time": 2488,
           "note_type": 1
         },
         {
           "position": {
-            "x": 1.3505862951278687,
-            "y": 1.9551336765289307
+            "x": -1.0418809652328491,
+            "y": 3.267132043838501
           },
-          "spawn_time": 1487,
-          "press_time": 3487,
+          "spawn_time": 1495,
+          "press_time": 3495,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 22000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 1.1962335109710693,
+            "y": -1.3377246856689453
+          },
+          "spawn_time": 488,
+          "press_time": 2488,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": 1.1447827816009521,
+            "y": 3.42148494720459
+          },
+          "spawn_time": 1495,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
     },
     {
       "startTime": 24000,
-      "length": 0,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": 1.6335663795471191,
-            "y": 3.112779140472412
+            "x": -0.8103518486022949,
+            "y": 1.1061936616897583
           },
-          "spawn_time": 496,
-          "press_time": 2496,
+          "spawn_time": 488,
+          "press_time": 2488,
           "note_type": 1
         },
         {
           "position": {
-            "x": -1.402037262916565,
-            "y": 0.6431353092193604
+            "x": 1.0161552429199219,
+            "y": -1.0290191173553467
           },
-          "spawn_time": 1491,
-          "press_time": 3491,
+          "spawn_time": 1495,
+          "press_time": 3495,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 26000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 1.119057059288025,
+            "y": -0.7460391521453857
+          },
+          "spawn_time": 492,
+          "press_time": 2492,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -1.0161556005477905,
+            "y": 1.0290169715881348
+          },
+          "spawn_time": 1495,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
     },
     {
       "startTime": 28000,
-      "length": 0,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": -1.7879191637039185,
-            "y": 2.0580358505249023
+            "x": 0.8103516697883606,
+            "y": 3.395758867263794
           },
-          "spawn_time": 496,
-          "press_time": 2496,
+          "spawn_time": 492,
+          "press_time": 2492,
           "note_type": 1
         },
         {
           "position": {
-            "x": 1.6592921018600464,
-            "y": 2.0580358505249023
-          },
-          "spawn_time": 1491,
-          "press_time": 3491,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 32000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": 1.7621935606002808,
-            "y": 0.8489388227462769
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": -1.8393698930740356,
-            "y": 0.8489388227462769
-          },
-          "spawn_time": 1491,
-          "press_time": 3491,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 36000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -1.8393698930740356,
-            "y": 2.8040738105773926
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.7364681959152222,
-            "y": 2.8040738105773926
-          },
-          "spawn_time": 1491,
-          "press_time": 3491,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 40000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -1.7621936798095703,
-            "y": 3.807366371154785
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.8650952577590942,
-            "y": 3.8330917358398438
+            "x": -0.9389791488647461,
+            "y": -1.0547447204589844
           },
           "spawn_time": 1487,
           "press_time": 3487,
@@ -169,13 +266,13 @@
       ]
     },
     {
-      "startTime": 44000,
-      "length": 0,
+      "startTime": 30000,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": 0,
-            "y": 0
+            "x": 0.06431341171264648,
+            "y": 2.984151840209961
           },
           "spawn_time": 496,
           "press_time": 2496,
@@ -183,8 +280,200 @@
         },
         {
           "position": {
-            "x": 0,
-            "y": 0
+            "x": -0.7589009404182434,
+            "y": -1.955135464668274
+          },
+          "spawn_time": 1487,
+          "press_time": 3487,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 32000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 1.093332052230835,
+            "y": -1.2862735986709595
+          },
+          "spawn_time": 496,
+          "press_time": 2496,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": 1.0161552429199219,
+            "y": 2.1866626739501953
+          },
+          "spawn_time": 1487,
+          "press_time": 3487,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 34000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 0.9132537841796875,
+            "y": 1.0547429323196411
+          },
+          "spawn_time": 496,
+          "press_time": 2496,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -0.9389791488647461,
+            "y": 2.5982701778411865
+          },
+          "spawn_time": 1487,
+          "press_time": 3487,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 36000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": -1.2476844787597656,
+            "y": 0.951840877532959
+          },
+          "spawn_time": 496,
+          "press_time": 2496,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": 1.2734098434448242,
+            "y": 0.951840877532959
+          },
+          "spawn_time": 1487,
+          "press_time": 3487,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 38000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 0.19294090569019318,
+            "y": 3.112779140472412
+          },
+          "spawn_time": 488,
+          "press_time": 2488,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -1.1447829008102417,
+            "y": -1.3119993209838867
+          },
+          "spawn_time": 1487,
+          "press_time": 3487,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 40000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 0.6045483946800232,
+            "y": -2.1609387397766113
+          },
+          "spawn_time": 488,
+          "press_time": 2488,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -0.8103518486022949,
+            "y": 3.6530137062072754
+          },
+          "spawn_time": 1495,
+          "press_time": 3495,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 42000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": -0.7846264839172363,
+            "y": -0.025726258754730225
+          },
+          "spawn_time": 492,
+          "press_time": 2492,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -0.4759209156036377,
+            "y": 1.9808590412139893
+          },
+          "spawn_time": 1495,
+          "press_time": 3495,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 44000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": -0.4244701862335205,
+            "y": 2.984151840209961
+          },
+          "spawn_time": 492,
+          "press_time": 2492,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": 0.8103516697883606,
+            "y": -0.6688627600669861
+          },
+          "spawn_time": 1487,
+          "press_time": 3487,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 46000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": -0.9389791488647461,
+            "y": -1.3377246856689453
+          },
+          "spawn_time": 488,
+          "press_time": 2488,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": 1.0161552429199219,
+            "y": 3.730189800262451
           },
           "spawn_time": 1487,
           "press_time": 3487,
@@ -194,36 +483,84 @@
     },
     {
       "startTime": 48000,
-      "length": 0,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": 0.21866627037525177,
-            "y": 3.8845431804656982
+            "x": -0.34729358553886414,
+            "y": 2.1866626739501953
           },
-          "spawn_time": 496,
-          "press_time": 2496,
+          "spawn_time": 488,
+          "press_time": 2488,
           "note_type": 1
         },
         {
           "position": {
-            "x": -1.6592918634414673,
-            "y": 1.54352605342865
+            "x": 1.119057059288025,
+            "y": -1.2862735986709595
           },
-          "spawn_time": 1487,
-          "press_time": 3487,
+          "spawn_time": 1491,
+          "press_time": 3491,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 50000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 0.06431341171264648,
+            "y": 0.5916845798492432
+          },
+          "spawn_time": 492,
+          "press_time": 2492,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -0.681724488735199,
+            "y": 3.9874446392059326
+          },
+          "spawn_time": 1491,
+          "press_time": 3491,
           "note_type": 1
         }
       ]
     },
     {
       "startTime": 52000,
-      "length": 0,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": -1.3505865335464478,
-            "y": 3.8845431804656982
+            "x": 0.03858838230371475,
+            "y": 0.668860673904419
+          },
+          "spawn_time": 492,
+          "press_time": 2492,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": 1.32486093044281,
+            "y": 3.0613279342651367
+          },
+          "spawn_time": 1491,
+          "press_time": 3491,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 54000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": -0.7074502110481262,
+            "y": -1.209097146987915
           },
           "spawn_time": 496,
           "press_time": 2496,
@@ -231,32 +568,56 @@
         },
         {
           "position": {
-            "x": 1.7364681959152222,
-            "y": 2.341015338897705
+            "x": 0.8103516697883606,
+            "y": 3.550111770629883
           },
-          "spawn_time": 1495,
-          "press_time": 3495,
+          "spawn_time": 1491,
+          "press_time": 3491,
           "note_type": 1
         }
       ]
     },
     {
       "startTime": 56000,
-      "length": 0,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": 0,
-            "y": 0
+            "x": -1.0933318138122559,
+            "y": -0.2829807996749878
           },
-          "spawn_time": 496,
-          "press_time": 2496,
+          "spawn_time": 488,
+          "press_time": 2488,
           "note_type": 1
         },
         {
           "position": {
-            "x": 0,
-            "y": 0
+            "x": 1.093332052230835,
+            "y": -1.775057315826416
+          },
+          "spawn_time": 1491,
+          "press_time": 3491,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 58000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": 0.8103516697883606,
+            "y": 3.42148494720459
+          },
+          "spawn_time": 488,
+          "press_time": 2488,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": -1.221959114074707,
+            "y": -0.18007904291152954
           },
           "spawn_time": 1495,
           "press_time": 3495,
@@ -266,21 +627,21 @@
     },
     {
       "startTime": 60000,
-      "length": 0,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": 0,
-            "y": 0
+            "x": -1.1190571784973145,
+            "y": 1.697879433631897
           },
-          "spawn_time": 496,
-          "press_time": 2496,
+          "spawn_time": 492,
+          "press_time": 2492,
           "note_type": 1
         },
         {
           "position": {
-            "x": 0,
-            "y": 0
+            "x": 0.9132537841796875,
+            "y": 0.5402332544326782
           },
           "spawn_time": 1495,
           "press_time": 3495,
@@ -289,70 +650,22 @@
       ]
     },
     {
-      "startTime": 64000,
-      "length": 0,
+      "startTime": 62000,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": -1.7879191637039185,
-            "y": 3.8588178157806396
+            "x": -0.9647045135498047,
+            "y": 2.1866626739501953
           },
-          "spawn_time": 496,
-          "press_time": 2496,
+          "spawn_time": 492,
+          "press_time": 2492,
           "note_type": 1
         },
         {
           "position": {
-            "x": -1.7879191637039185,
-            "y": -0.3858828544616699
-          },
-          "spawn_time": 1491,
-          "press_time": 3491,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 68000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": 1.8393698930740356,
-            "y": 3.524386405944824
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.813644528388977,
-            "y": 0.20580291748046875
-          },
-          "spawn_time": 1495,
-          "press_time": 3495,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 72000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -0.11576464027166367,
-            "y": 1.7493295669555664
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": -0.11576464027166367,
-            "y": -0.5402353405952454
+            "x": -0.6559991240501404,
+            "y": -0.12862831354141235
           },
           "spawn_time": 1487,
           "press_time": 3487,
@@ -361,16 +674,40 @@
       ]
     },
     {
-      "startTime": 76000,
-      "length": 0,
+      "startTime": 64000,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": -1.1447829008102417,
-            "y": 2.8040738105773926
+            "x": 0.06431341171264648,
+            "y": 2.0580358505249023
           },
-          "spawn_time": 496,
-          "press_time": 2496,
+          "spawn_time": 488,
+          "press_time": 2488,
+          "note_type": 1
+        },
+        {
+          "position": {
+            "x": 1.2476844787597656,
+            "y": 0.5402332544326782
+          },
+          "spawn_time": 1487,
+          "press_time": 3487,
+          "note_type": 1
+        }
+      ]
+    },
+    {
+      "startTime": 66000,
+      "length": 2000,
+      "json_notes": [
+        {
+          "position": {
+            "x": -0.9389791488647461,
+            "y": 1.646428108215332
+          },
+          "spawn_time": 488,
+          "press_time": 2488,
           "note_type": 1
         },
         {
@@ -378,20 +715,20 @@
             "x": 1.119057059288025,
             "y": 2.8040738105773926
           },
-          "spawn_time": 1491,
-          "press_time": 3491,
+          "spawn_time": 1487,
+          "press_time": 3487,
           "note_type": 1
         }
       ]
     },
     {
-      "startTime": 80000,
-      "length": 0,
+      "startTime": 68000,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": -1.0676064491271973,
-            "y": 3.704464912414551
+            "x": -0.9389791488647461,
+            "y": 0.28297901153564453
           },
           "spawn_time": 496,
           "press_time": 2496,
@@ -399,185 +736,8 @@
         },
         {
           "position": {
-            "x": -0.03858821466565132,
-            "y": 2.0837604999542236
-          },
-          "spawn_time": 1495,
-          "press_time": 3495,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 84000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -1.7364681959152222,
-            "y": 1.7750555276870728
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.3763116598129272,
-            "y": 3.6530137062072754
-          },
-          "spawn_time": 492,
-          "press_time": 2492,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.5306645631790161,
-            "y": 1.7750555276870728
-          },
-          "spawn_time": 736,
-          "press_time": 2736,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 88000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": 0,
-            "y": 0
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 0,
-            "y": 0
-          },
-          "spawn_time": 1491,
-          "press_time": 3491,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 92000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": 0,
-            "y": 0
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 0,
-            "y": 0
-          },
-          "spawn_time": 1491,
-          "press_time": 3491,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 96000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -1.7621936798095703,
-            "y": 1.7236042022705078
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.7879191637039185,
-            "y": 1.697879433631897
-          },
-          "spawn_time": 1495,
-          "press_time": 3495,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 100000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": 0,
-            "y": 0
-          },
-          "spawn_time": 488,
-          "press_time": 2488,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 0,
-            "y": 0
-          },
-          "spawn_time": 1495,
-          "press_time": 3495,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 104000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -1.6592918634414673,
-            "y": -0.437333881855011
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.6335663795471191,
-            "y": -0.4630589485168457
-          },
-          "spawn_time": 1491,
-          "press_time": 3491,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 108000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -1.6592918634414673,
-            "y": 3.935993194580078
-          },
-          "spawn_time": 488,
-          "press_time": 2488,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.7879191637039185,
-            "y": 3.935993194580078
+            "x": 0.8360773921012878,
+            "y": -0.7974901795387268
           },
           "spawn_time": 1487,
           "press_time": 3487,
@@ -586,61 +746,13 @@
       ]
     },
     {
-      "startTime": 112000,
-      "length": 0,
+      "startTime": 70000,
+      "length": 2000,
       "json_notes": [
         {
           "position": {
-            "x": -1.91654634475708,
-            "y": -1.8265080451965332
-          },
-          "spawn_time": 488,
-          "press_time": 2488,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.8908209800720215,
-            "y": -1.775057315826416
-          },
-          "spawn_time": 1495,
-          "press_time": 3495,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 116000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -1.9422719478607178,
-            "y": -0.4887846112251282
-          },
-          "spawn_time": 492,
-          "press_time": 2492,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.9165459871292114,
-            "y": 1.517801284790039
-          },
-          "spawn_time": 1495,
-          "press_time": 3495,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 120000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": 1.9422717094421387,
-            "y": -0.4887846112251282
+            "x": 0.6045483946800232,
+            "y": 3.267132043838501
           },
           "spawn_time": 496,
           "press_time": 2496,
@@ -648,152 +760,8 @@
         },
         {
           "position": {
-            "x": -1.967997431755066,
-            "y": 1.517801284790039
-          },
-          "spawn_time": 1495,
-          "press_time": 3495,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 124000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -1.8393698930740356,
-            "y": 2.701171636581421
-          },
-          "spawn_time": 492,
-          "press_time": 2492,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.8393698930740356,
-            "y": 2.701171636581421
-          },
-          "spawn_time": 1491,
-          "press_time": 3491,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 128000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": 1.813644528388977,
-            "y": 2.701171636581421
-          },
-          "spawn_time": 488,
-          "press_time": 2488,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": -1.813644528388977,
-            "y": -8.940696716308594e-7
-          },
-          "spawn_time": 1487,
-          "press_time": 3487,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 132000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -1.813644528388977,
-            "y": -8.940696716308594e-7
-          },
-          "spawn_time": 488,
-          "press_time": 2488,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.8393698930740356,
-            "y": -8.940696716308594e-7
-          },
-          "spawn_time": 1491,
-          "press_time": 3491,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 136000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": 1.8393698930740356,
-            "y": -8.940696716308594e-7
-          },
-          "spawn_time": 496,
-          "press_time": 2496,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": -1.813644528388977,
-            "y": 2.701171636581421
-          },
-          "spawn_time": 1491,
-          "press_time": 3491,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 140000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -0.03858821466565132,
-            "y": 3.5758371353149414
-          },
-          "spawn_time": 488,
-          "press_time": 2488,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": -0.012862682342529297,
-            "y": 0.7460373640060425
-          },
-          "spawn_time": 1487,
-          "press_time": 3487,
-          "note_type": 1
-        }
-      ]
-    },
-    {
-      "startTime": 144000,
-      "length": 0,
-      "json_notes": [
-        {
-          "position": {
-            "x": -1.865095615386963,
-            "y": -1.594979166984558
-          },
-          "spawn_time": 488,
-          "press_time": 2488,
-          "note_type": 1
-        },
-        {
-          "position": {
-            "x": 1.9422717094421387,
-            "y": -1.6207048892974854
+            "x": -0.9132537841796875,
+            "y": -0.9003916382789612
           },
           "spawn_time": 1491,
           "press_time": 3491,
