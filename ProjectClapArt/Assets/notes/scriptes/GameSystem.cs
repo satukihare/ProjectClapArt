@@ -65,13 +65,13 @@ public class GameSystem : MonoBehaviour {
     protected List<Bar> bars = null;
 
     //現在読んでいるBarの番号
-    protected int bar_counter = 0;
+    [SerializeField]protected int bar_counter = 0;
 
     //現在読んでいるnoteの番号
     protected int note_counter = 0;
 
     //音楽の再生位置を1000倍したものが基準
-    protected int music_time_num = 0;
+    [SerializeField]protected int music_time_num = 0;
 
     //ポップするときに許容できる誤差
     [SerializeField] protected int more_pop_dif_num = 0;
@@ -96,14 +96,6 @@ public class GameSystem : MonoBehaviour {
 
     //スコアデータ
     protected int score = 0;
-
-    //丁度いい時のスコア加算量
-    [SerializeField] float best_timing_add_score = 1.0f;
-
-    //惜しい時のスコア加算量
-    [SerializeField] float normal_timing_add_score = 0.7f;
-
-    [SerializeField] float always_add_score = 0.01f;
 
     //スコア用イメージ？
     [SerializeField] protected Image score_image = null;
@@ -214,11 +206,7 @@ public class GameSystem : MonoBehaviour {
     /// </summary>
     protected void gameNoteSpawn() {
 
-        //描画の不要な桁の切り捨て
-        int msc_time_rud_dgts = 0;
-        //msc_time_rud_dgts = music_time_num / round_digits;
-        //msc_time_rud_dgts = msc_time_rud_dgts * round_digits;
-        msc_time_rud_dgts = music_time_num;
+        int msc_time_rud_dgts = music_time_num;
 
         //小節の書き込みタイミングまでスキップ
         if (bars[bar_counter].StartTime > msc_time_rud_dgts)
@@ -277,13 +265,19 @@ public class GameSystem : MonoBehaviour {
         if (!flick_flg)
             return;
 
+        //何が押されたのかを検出する
+        Note.NOTE_TYPE input_type = this.getInputType();
+        //Unknownなら何もしない
+        if (input_type == Note.NOTE_TYPE.UNKNOWN) return;
+
         //押した時間
         int press_time = music_time_num;
 
         //判定
         foreach (Note note in notes) {
             //クリックされていたNoteは判定しない
-            if (note.ClikFlg)
+            //inputのタイプが一致しなければ飛ばす
+            if ((note.ClikFlg) ||(note.Type != input_type) )
                 continue;
 
             //差分を取る
@@ -321,6 +315,7 @@ public class GameSystem : MonoBehaviour {
                 if (note.NoteInstance != null) {
                     Animator anim = note.NoteInstance.GetComponent<Animator>();
                     anim.SetTrigger("Despawn");
+                    note.ClikFlg = true;
                 }
                 else
                     Debug.Log("Note Instance is NullPtr ! ! ! ");
@@ -392,6 +387,18 @@ public class GameSystem : MonoBehaviour {
     }
 
     /// <summary>
+    /// 何を押したのか検出する
+    /// </summary>
+    /// <returns></returns>
+    protected Note.NOTE_TYPE getInputType() {
+        Note.NOTE_TYPE input_type = Note.NOTE_TYPE.UNKNOWN;
+        if (track_pad_input.Tap) input_type = Note.NOTE_TYPE.TOUCH;
+        else if (track_pad_input.Flick) input_type = Note.NOTE_TYPE.FLICK;
+
+        return input_type;
+    }
+
+    /// <summary>
     /// 譜面が読み終わったか確認する
     /// </summary>
     /// <param name="bars">Barクラスのリスト</param>
@@ -459,7 +466,6 @@ public class GameSystem : MonoBehaviour {
         bool input_flg = track_pad_input.Tap;// | track_pad_input.Flick;
         if (!input_flg) return;
 
-        int a = 0x44;
         //加点システムはここに
         if (ResultData.bonus_score < ResultData.bonus_max)
         ResultData.bonus_score++;
