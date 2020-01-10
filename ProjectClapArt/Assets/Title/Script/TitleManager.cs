@@ -18,11 +18,11 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (Director.state != PlayState.Paused)
-            {
-                Director.time = Director.duration;
-            }
-            else
+           if (Director.state != PlayState.Paused)
+           {
+               Director.time = Director.duration;
+           }
+           else
             {
                 Transition.instance.ChangeScene("DialogScene");
             }
