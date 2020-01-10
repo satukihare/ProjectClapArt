@@ -465,7 +465,8 @@ public class GameSystem : MonoBehaviour {
         ResultData.bonus_score++;
 
         //パーティクルとかの生成もここで
-        Vector2 pos = Camera.main.ScreenToWorldPoint((Vector2)Input.mousePosition);
+        //Vector2 pos = Camera.main.ScreenToWorldPoint((Vector2)Input.mousePosition);
+        Vector2 pos = new Vector2(Random.Range(-2.0f, 2.0f), Random.Range(-2.5f,4.7f));
         Instantiate(free_particle, pos, Quaternion.identity);
     }
 }
