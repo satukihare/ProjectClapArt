@@ -19,7 +19,7 @@
             "y": -0.025726258754730225
           },
           "spawn_time": 1487,
-          "press_time": 2975,
+          "press_time": 3975,
           "note_type": 1
         }
       ]
@@ -43,7 +43,7 @@
             "y": 1.9551336765289307
           },
           "spawn_time": 1487,
-          "press_time": 2975,
+          "press_time": 3487,
           "note_type": 1
         }
       ]
@@ -57,8 +57,8 @@
             "x": 1.6335663795471191,
             "y": 3.112779140472412
           },
-          "spawn_time": 492,
-          "press_time": 984,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -129,8 +129,8 @@
             "x": -1.8393698930740356,
             "y": 2.8040738105773926
           },
-          "spawn_time": 492,
-          "press_time": 984,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -153,8 +153,8 @@
             "x": -1.7621936798095703,
             "y": 3.807366371154785
           },
-          "spawn_time": 492,
-          "press_time": 984,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -163,7 +163,7 @@
             "y": 3.8330917358398438
           },
           "spawn_time": 1487,
-          "press_time": 2975,
+          "press_time": 3487,
           "note_type": 1
         }
       ]
@@ -187,7 +187,7 @@
             "y": 0
           },
           "spawn_time": 1487,
-          "press_time": 2975,
+          "press_time": 3487,
           "note_type": 1
         }
       ]
@@ -201,8 +201,8 @@
             "x": 0.21866627037525177,
             "y": 3.8845431804656982
           },
-          "spawn_time": 492,
-          "press_time": 984,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -211,7 +211,7 @@
             "y": 1.54352605342865
           },
           "spawn_time": 1487,
-          "press_time": 2975,
+          "press_time": 3487,
           "note_type": 1
         }
       ]
@@ -225,8 +225,8 @@
             "x": -1.3505865335464478,
             "y": 3.8845431804656982
           },
-          "spawn_time": 492,
-          "press_time": 984,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -235,7 +235,7 @@
             "y": 2.341015338897705
           },
           "spawn_time": 1495,
-          "press_time": 2991,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
@@ -249,8 +249,8 @@
             "x": 0,
             "y": 0
           },
-          "spawn_time": 492,
-          "press_time": 984,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -259,7 +259,7 @@
             "y": 0
           },
           "spawn_time": 1495,
-          "press_time": 2991,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
@@ -273,8 +273,8 @@
             "x": 0,
             "y": 0
           },
-          "spawn_time": 488,
-          "press_time": 976,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -283,7 +283,7 @@
             "y": 0
           },
           "spawn_time": 1495,
-          "press_time": 2991,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
@@ -297,8 +297,8 @@
             "x": -1.7879191637039185,
             "y": 3.8588178157806396
           },
-          "spawn_time": 488,
-          "press_time": 976,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -331,7 +331,7 @@
             "y": 0.20580291748046875
           },
           "spawn_time": 1495,
-          "press_time": 2991,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
@@ -345,8 +345,8 @@
             "x": -0.11576464027166367,
             "y": 1.7493295669555664
           },
-          "spawn_time": 492,
-          "press_time": 984,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -355,7 +355,7 @@
             "y": -0.5402353405952454
           },
           "spawn_time": 1487,
-          "press_time": 2975,
+          "press_time": 3487,
           "note_type": 1
         }
       ]
@@ -369,8 +369,8 @@
             "x": -1.1447829008102417,
             "y": 2.8040738105773926
           },
-          "spawn_time": 488,
-          "press_time": 976,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -393,8 +393,8 @@
             "x": -1.0676064491271973,
             "y": 3.704464912414551
           },
-          "spawn_time": 492,
-          "press_time": 984,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -403,7 +403,7 @@
             "y": 2.0837604999542236
           },
           "spawn_time": 1495,
-          "press_time": 2991,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
@@ -417,8 +417,8 @@
             "x": -1.7364681959152222,
             "y": 1.7750555276870728
           },
-          "spawn_time": 488,
-          "press_time": 976,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -427,7 +427,7 @@
             "y": 3.6530137062072754
           },
           "spawn_time": 492,
-          "press_time": 984,
+          "press_time": 2492,
           "note_type": 1
         },
         {
@@ -436,7 +436,7 @@
             "y": 1.7750555276870728
           },
           "spawn_time": 736,
-          "press_time": 1472,
+          "press_time": 2736,
           "note_type": 1
         }
       ]
@@ -474,8 +474,8 @@
             "x": 0,
             "y": 0
           },
-          "spawn_time": 492,
-          "press_time": 984,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -498,8 +498,8 @@
             "x": -1.7621936798095703,
             "y": 1.7236042022705078
           },
-          "spawn_time": 488,
-          "press_time": 976,
+          "spawn_time": 496,
+          "press_time": 2496,
           "note_type": 1
         },
         {
@@ -508,7 +508,7 @@
             "y": 1.697879433631897
           },
           "spawn_time": 1495,
-          "press_time": 2991,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
@@ -523,7 +523,7 @@
             "y": 0
           },
           "spawn_time": 488,
-          "press_time": 976,
+          "press_time": 2488,
           "note_type": 1
         },
         {
@@ -532,7 +532,7 @@
             "y": 0
           },
           "spawn_time": 1495,
-          "press_time": 2991,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
@@ -571,7 +571,7 @@
             "y": 3.935993194580078
           },
           "spawn_time": 488,
-          "press_time": 976,
+          "press_time": 2488,
           "note_type": 1
         },
         {
@@ -580,7 +580,7 @@
             "y": 3.935993194580078
           },
           "spawn_time": 1487,
-          "press_time": 2975,
+          "press_time": 3487,
           "note_type": 1
         }
       ]
@@ -595,7 +595,7 @@
             "y": -1.8265080451965332
           },
           "spawn_time": 488,
-          "press_time": 976,
+          "press_time": 2488,
           "note_type": 1
         },
         {
@@ -604,7 +604,7 @@
             "y": -1.775057315826416
           },
           "spawn_time": 1495,
-          "press_time": 2991,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
@@ -628,7 +628,7 @@
             "y": 1.517801284790039
           },
           "spawn_time": 1495,
-          "press_time": 2991,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
@@ -652,7 +652,7 @@
             "y": 1.517801284790039
           },
           "spawn_time": 1495,
-          "press_time": 2991,
+          "press_time": 3495,
           "note_type": 1
         }
       ]
@@ -691,7 +691,7 @@
             "y": 2.701171636581421
           },
           "spawn_time": 488,
-          "press_time": 976,
+          "press_time": 2488,
           "note_type": 1
         },
         {
@@ -700,7 +700,7 @@
             "y": -8.940696716308594e-7
           },
           "spawn_time": 1487,
-          "press_time": 2975,
+          "press_time": 3487,
           "note_type": 1
         }
       ]
@@ -715,7 +715,7 @@
             "y": -8.940696716308594e-7
           },
           "spawn_time": 488,
-          "press_time": 976,
+          "press_time": 2488,
           "note_type": 1
         },
         {
@@ -763,7 +763,7 @@
             "y": 3.5758371353149414
           },
           "spawn_time": 488,
-          "press_time": 976,
+          "press_time": 2488,
           "note_type": 1
         },
         {
@@ -772,7 +772,7 @@
             "y": 0.7460373640060425
           },
           "spawn_time": 1487,
-          "press_time": 2975,
+          "press_time": 3487,
           "note_type": 1
         }
       ]
@@ -787,7 +787,7 @@
             "y": -1.594979166984558
           },
           "spawn_time": 488,
-          "press_time": 976,
+          "press_time": 2488,
           "note_type": 1
         },
         {
