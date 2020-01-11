@@ -7,6 +7,9 @@ public class TitleManager : MonoBehaviour
 {
     [SerializeField]
     PlayableDirector Director;
+
+    [SerializeField]
+    AudioSource TitleBGM;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,16 +19,34 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (Input.GetMouseButtonDown(0))
         {
-           if (Director.state != PlayState.Paused)
+           if (Director.time <= 3.2)
            {
-               Director.time = Director.duration;
+               Director.time = 3.2;
            }
            else
-            {
+           {
                 Transition.instance.ChangeScene("DialogScene");
-            }
+           }
         }
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            ResetBGM();
+        }
+    }
+
+    void ResetBGM()
+    {
+        TitleBGM.time = 0;
+        Invoke("PlayBGM", 0.8f);
+    }
+
+    void PlayBGM()
+    {
+        TitleBGM.Play();
     }
 }
