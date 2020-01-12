@@ -121,6 +121,7 @@ public class DialogManager : MonoBehaviour
     {
         if (!advance) return;
         advance = false;
+        if (currentLine > lines.Length) return;
         while (true)
         {
             Debug.Log("parsing line: " + lines[currentLine]);

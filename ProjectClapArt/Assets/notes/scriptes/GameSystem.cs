@@ -119,6 +119,8 @@ public class GameSystem : MonoBehaviour {
 
     //Particleのオブジェクト
     [SerializeField] protected GameObject free_particle;
+    [SerializeField] protected GameObject good_effect;
+    [SerializeField] protected GameObject perfect_effect;
 
     //--プロパティ--
     public float WholeNote {
@@ -348,6 +350,7 @@ public class GameSystem : MonoBehaviour {
             //    score = (int)(ResultData.score_rate * 16);
 
             score_image.fillAmount = ResultData.score_rate;
+            Instantiate(perfect_effect, set_target_note.Pos, Quaternion.identity);
             //score_image.fillAmount = (float)(score) / 16;
             //
         }
@@ -363,8 +366,9 @@ public class GameSystem : MonoBehaviour {
             //{
             //    score = (int)(ResultData.score_rate * 16);
 
-                score_image.fillAmount = ResultData.score_rate;
-                //score_image.fillAmount = (float)(score) / 16;
+            score_image.fillAmount = ResultData.score_rate;
+            Instantiate(good_effect, set_target_note.Pos, Quaternion.identity);
+            //score_image.fillAmount = (float)(score) / 16;
             //}
         }
         //完全にタイミングを外した場合
