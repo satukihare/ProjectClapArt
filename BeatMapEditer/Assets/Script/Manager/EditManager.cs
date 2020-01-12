@@ -281,7 +281,7 @@ public class EditManager : MonoBehaviour
         var Press = Spown + ToolManager.BarTime;
         //作成したデータをリストに追加
         NoteData.StartTime = (int)(ToolManager.BarTime*Listindex*1000) ;
-        NoteData.Lingth = (int)ToolManager.BarTime*1000;
+        NoteData.Lingth = (int)(ToolManager.BarTime*1000);
         NoteData.Notes.Add(new Note(new Vector2(gameObj.transform.position.x, gameObj.transform.position.y), (int)(Spown * 1000), (int)(Press * 1000),FollowObj.NOTE_TYPE));
         NoteData.Notes.Sort((a,b) => a.SpawnTime - b.SpawnTime );
     }
