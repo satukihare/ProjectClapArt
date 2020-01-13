@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 public static class ScenarioData
 {
     //noteの合計数
-    public static string text_filename = "Text/Prologue";
+    public static string[] text_filename = { "Text/Prologue" , "Text/Tutorial", "Text/Result" };
 }

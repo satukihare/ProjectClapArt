@@ -63,6 +63,9 @@ public class DialogManager : MonoBehaviour
     GameObject fade;
     string text;
 
+    [SerializeField]
+    int ScenarioIndex;
+
     int currentLine;
     int showLength;
     int maxLength;
@@ -75,7 +78,7 @@ public class DialogManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        LoadTextFile(ScenarioData.text_filename);
+        LoadTextFile(ScenarioData.text_filename[ScenarioIndex]);
         currentLine = 0;
         showLength = 0;
         charTime = secsPerChar;
