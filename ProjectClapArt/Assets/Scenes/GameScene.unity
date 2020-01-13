@@ -1288,7 +1288,7 @@ PrefabInstance:
     - target: {fileID: 166390503616602314, guid: cb6fcf3cc0596704a8a0b4e8c1e01740,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 166390503616602314, guid: cb6fcf3cc0596704a8a0b4e8c1e01740,
         type: 3}
@@ -2500,7 +2500,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &542683900
 Mesh:
@@ -2880,18 +2880,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &557157008 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3123263295792974612, guid: 7143945ec7477194887b35419efd7776,
-    type: 3}
-  m_PrefabInstance: {fileID: 1758354223}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &557157009 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4925980566303789721, guid: 7143945ec7477194887b35419efd7776,
-    type: 3}
-  m_PrefabInstance: {fileID: 1758354223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &576847941
 GameObject:
   m_ObjectHideFlags: 0
@@ -3544,7 +3532,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &739986906
 GameObject:
@@ -8046,7 +8034,7 @@ PrefabInstance:
     - target: {fileID: 4607549666382252045, guid: e29d4c887930fa643882173449e91023,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4607549666382252045, guid: e29d4c887930fa643882173449e91023,
         type: 3}
@@ -8420,7 +8408,7 @@ RectTransform:
   - {fileID: 1025465335}
   - {fileID: 7066603229693611154}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9359,6 +9347,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SD02_Nagi
       objectReference: {fileID: 0}
+    - target: {fileID: 4925980566303789721, guid: 7143945ec7477194887b35419efd7776,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c2d3c313cd2ce3f4fa2a5f8687d03b41, type: 2}
     - target: {fileID: 7724951281605839480, guid: 7143945ec7477194887b35419efd7776,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9434,11 +9427,6 @@ PrefabInstance:
       propertyPath: _sortingMode
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4925980566303789721, guid: 7143945ec7477194887b35419efd7776,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c2d3c313cd2ce3f4fa2a5f8687d03b41, type: 2}
     - target: {fileID: 7385375694801065562, guid: 7143945ec7477194887b35419efd7776,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -10409,6 +10397,11 @@ PrefabInstance:
       propertyPath: _sortingMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2058081535964994568, guid: 7143945ec7477194887b35419efd7776,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7143945ec7477194887b35419efd7776, type: 3}
 --- !u!43 &1770972752
@@ -11162,6 +11155,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1974481799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1180510124654075075, guid: 7143945ec7477194887b35419efd7776,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758354223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1975905048
 Mesh:
   m_ObjectHideFlags: 0
@@ -12480,7 +12479,7 @@ RectTransform:
   m_Children:
   - {fileID: 1580822502645296564}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12640,7 +12639,7 @@ PrefabInstance:
     - target: {fileID: 2593640037467481938, guid: 7b1526bab194b5244b5d580ebdb3f263,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2593640037467481938, guid: 7b1526bab194b5244b5d580ebdb3f263,
         type: 3}
@@ -12804,7 +12803,7 @@ PrefabInstance:
     - target: {fileID: 4237143509851127998, guid: e637b0dc82a42404bbcaa50cd617b86b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4237143509851127998, guid: e637b0dc82a42404bbcaa50cd617b86b,
         type: 3}
@@ -12953,7 +12952,7 @@ PrefabInstance:
     - target: {fileID: 7065323529093498038, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7065323529093498038, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
         type: 3}
@@ -13019,7 +13018,7 @@ PrefabInstance:
         type: 3}
       propertyPath: live_2d_models.Array.data[0]
       value: 
-      objectReference: {fileID: 557157008}
+      objectReference: {fileID: 1974481799}
     - target: {fileID: 7065323529093498039, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
         type: 3}
       propertyPath: penlight_mng
@@ -13029,7 +13028,7 @@ PrefabInstance:
         type: 3}
       propertyPath: live_2d_models.Array.data[1]
       value: 
-      objectReference: {fileID: 557157008}
+      objectReference: {fileID: 1974481799}
     - target: {fileID: 7065323529093498039, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
         type: 3}
       propertyPath: more_diff_num
@@ -13039,7 +13038,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Animation
       value: 
-      objectReference: {fileID: 557157009}
+      objectReference: {fileID: 0}
     - target: {fileID: 7065323529093498039, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
         type: 3}
       propertyPath: Fade
@@ -13050,6 +13049,17 @@ PrefabInstance:
       propertyPath: free_particle
       value: 
       objectReference: {fileID: 4793942322832330980, guid: 3e5bf90efc44ea04b89d64d31ccf0857,
+        type: 3}
+    - target: {fileID: 7065323529093498039, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
+        type: 3}
+      propertyPath: good_effect
+      value: 
+      objectReference: {fileID: 100004, guid: 757df604761b8ef42831192c70ee1099, type: 3}
+    - target: {fileID: 7065323529093498039, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
+        type: 3}
+      propertyPath: perfect_effect
+      value: 
+      objectReference: {fileID: 1845240806346120, guid: 173b8d3c3cd05144f836a8438b5e93cc,
         type: 3}
     - target: {fileID: 7065323529093498036, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
         type: 3}
