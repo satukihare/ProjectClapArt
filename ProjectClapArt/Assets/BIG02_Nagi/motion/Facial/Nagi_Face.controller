@@ -93,7 +93,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: fc7ea16bb1654b548a28df4793df0e31, type: 2}
     m_Threshold: 0
-    m_Position: {x: 0, y: 0}
+    m_Position: {x: 0.05, y: -0.03}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Emotion_X

@@ -13,13 +13,18 @@ public class TitleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ResetBGM();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Director.state == PlayState.Paused)
+        {
+            ResetBGM();
+            Director.time = 0.0f;
+            Director.Play();
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -37,12 +42,15 @@ public class TitleManager : MonoBehaviour
         {
             ResetBGM();
         }
+
+
     }
 
     void ResetBGM()
     {
+        TitleBGM.Stop();
         TitleBGM.time = 0;
-        Invoke("PlayBGM", 0.8f);
+        Invoke("PlayBGM", 1.8f);
     }
 
     void PlayBGM()

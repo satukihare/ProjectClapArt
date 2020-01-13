@@ -33,6 +33,10 @@ Nagi/Voice _scenario_01_『ちょっと―』
 [Sound]
 Nagi/Voice _scenario_02_『はじめまして―』
 
+[Face]
+0
+1
+
 [Speech]
 0
 はじめまして！
@@ -97,6 +101,10 @@ Kai/scenario4
 
 [Sound]
 Nagi/Voice _scenario_06_『さっそく―』
+
+[Face]
+1
+0
 
 [Speech]
 0
