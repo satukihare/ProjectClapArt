@@ -137,6 +137,16 @@
 			"Name": "髪揺れ　後"
 		},
 		{
+			"Id": "ParamRibbon",
+			"GroupId": "ParamGroup8",
+			"Name": "リボン揺れ"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "ParamGroup8",
+			"Name": "服揺れ"
+		},
+		{
 			"Id": "ParamCheek",
 			"GroupId": "",
 			"Name": "照れ"
@@ -150,6 +160,11 @@
 			"Id": "ParamNose",
 			"GroupId": "",
 			"Name": "鼻　前後"
+		},
+		{
+			"Id": "ParamShadow",
+			"GroupId": "",
+			"Name": "影"
 		}
 	],
 	"ParameterGroups": [
@@ -187,6 +202,11 @@
 			"Id": "ParamGroup6",
 			"GroupId": "",
 			"Name": "髪"
+		},
+		{
+			"Id": "ParamGroup8",
+			"GroupId": "",
+			"Name": "服"
 		}
 	],
 	"Parts": [
