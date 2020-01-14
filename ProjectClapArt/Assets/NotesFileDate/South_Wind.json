@@ -2,7 +2,7 @@
   "music_file_name": "South_Wind",
   "json_bars": [
     {
-      "startTime": 8000,
+      "startTime": 16000,
       "length": 4000,
       "json_notes": [
         {
@@ -26,7 +26,7 @@
       ]
     },
     {
-      "startTime": 12000,
+      "startTime": 20000,
       "length": 4000,
       "json_notes": [
         {
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "startTime": 16000,
+      "startTime": 24000,
       "length": 4000,
       "json_notes": [
         {
@@ -74,7 +74,7 @@
       ]
     },
     {
-      "startTime": 20000,
+      "startTime": 28000,
       "length": 4000,
       "json_notes": [
         {
@@ -98,7 +98,7 @@
       ]
     },
     {
-      "startTime": 24000,
+      "startTime": 32000,
       "length": 4000,
       "json_notes": [
         {
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "startTime": 28000,
+      "startTime": 36000,
       "length": 4000,
       "json_notes": [
         {
@@ -146,7 +146,7 @@
       ]
     },
     {
-      "startTime": 32000,
+      "startTime": 40000,
       "length": 4000,
       "json_notes": [
         {
@@ -170,7 +170,7 @@
       ]
     },
     {
-      "startTime": 36000,
+      "startTime": 44000,
       "length": 4000,
       "json_notes": [
         {
@@ -194,7 +194,7 @@
       ]
     },
     {
-      "startTime": 40000,
+      "startTime": 48000,
       "length": 4000,
       "json_notes": [
         {
@@ -218,7 +218,7 @@
       ]
     },
     {
-      "startTime": 44000,
+      "startTime": 52000,
       "length": 4000,
       "json_notes": [
         {
@@ -242,7 +242,7 @@
       ]
     },
     {
-      "startTime": 48000,
+      "startTime": 56000,
       "length": 4000,
       "json_notes": [
         {
@@ -266,7 +266,7 @@
       ]
     },
     {
-      "startTime": 52000,
+      "startTime": 60000,
       "length": 4000,
       "json_notes": [
         {
@@ -290,7 +290,7 @@
       ]
     },
     {
-      "startTime": 56000,
+      "startTime": 64000,
       "length": 4000,
       "json_notes": [
         {
@@ -314,7 +314,7 @@
       ]
     },
     {
-      "startTime": 60000,
+      "startTime": 68000,
       "length": 4000,
       "json_notes": [
         {
@@ -338,7 +338,7 @@
       ]
     },
     {
-      "startTime": 64000,
+      "startTime": 72000,
       "length": 4000,
       "json_notes": [
         {
@@ -362,7 +362,7 @@
       ]
     },
     {
-      "startTime": 68000,
+      "startTime": 76000,
       "length": 4000,
       "json_notes": [
         {
@@ -386,7 +386,7 @@
       ]
     },
     {
-      "startTime": 72000,
+      "startTime": 80000,
       "length": 4000,
       "json_notes": [
         {
@@ -410,7 +410,7 @@
       ]
     },
     {
-      "startTime": 76000,
+      "startTime": 84000,
       "length": 4000,
       "json_notes": [
         {
@@ -434,7 +434,7 @@
       ]
     },
     {
-      "startTime": 80000,
+      "startTime": 88000,
       "length": 4000,
       "json_notes": [
         {
@@ -458,7 +458,7 @@
       ]
     },
     {
-      "startTime": 84000,
+      "startTime": 92000,
       "length": 4000,
       "json_notes": [
         {
@@ -482,7 +482,7 @@
       ]
     },
     {
-      "startTime": 88000,
+      "startTime": 96000,
       "length": 4000,
       "json_notes": [
         {
@@ -506,7 +506,7 @@
       ]
     },
     {
-      "startTime": 92000,
+      "startTime": 100000,
       "length": 4000,
       "json_notes": [
         {
@@ -530,7 +530,7 @@
       ]
     },
     {
-      "startTime": 96000,
+      "startTime": 104000,
       "length": 4000,
       "json_notes": [
         {
@@ -554,7 +554,7 @@
       ]
     },
     {
-      "startTime": 100000,
+      "startTime": 108000,
       "length": 4000,
       "json_notes": [
         {
@@ -578,7 +578,7 @@
       ]
     },
     {
-      "startTime": 104000,
+      "startTime": 112000,
       "length": 4000,
       "json_notes": [
         {
@@ -602,7 +602,7 @@
       ]
     },
     {
-      "startTime": 108000,
+      "startTime": 116000,
       "length": 4000,
       "json_notes": [
         {
@@ -626,7 +626,7 @@
       ]
     },
     {
-      "startTime": 112000,
+      "startTime": 120000,
       "length": 4000,
       "json_notes": [
         {
@@ -650,7 +650,7 @@
       ]
     },
     {
-      "startTime": 116000,
+      "startTime": 124000,
       "length": 4000,
       "json_notes": [
         {
@@ -674,7 +674,7 @@
       ]
     },
     {
-      "startTime": 120000,
+      "startTime": 128000,
       "length": 4000,
       "json_notes": [
         {
@@ -698,7 +698,7 @@
       ]
     },
     {
-      "startTime": 124000,
+      "startTime": 132000,
       "length": 4000,
       "json_notes": [
         {
@@ -722,7 +722,7 @@
       ]
     },
     {
-      "startTime": 128000,
+      "startTime": 136000,
       "length": 4000,
       "json_notes": [
         {
@@ -746,7 +746,7 @@
       ]
     },
     {
-      "startTime": 132000,
+      "startTime": 140000,
       "length": 4000,
       "json_notes": [
         {
