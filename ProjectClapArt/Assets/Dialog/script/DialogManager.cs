@@ -17,7 +17,7 @@ public class DialogManager : MonoBehaviour
         "[End]"
     };
 
-    static readonly float[] FaceVecter_X=
+    static readonly float[] FaceVecter_X =
     {
       0f,
       0f,
@@ -71,19 +71,26 @@ public class DialogManager : MonoBehaviour
     int maxLength;
     float charTime;
     bool waitForAnim = false;
+
     bool advance = false;
-    AudioSource audioSource;
+
+
+    [SerializeField]
+    AudioSource[] audioSource;
+
+    int speechchar;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+       // audioSource = GetComponent<AudioSource>();
         LoadTextFile(ScenarioData.text_filename[ScenarioIndex]);
         currentLine = 0;
         showLength = 0;
         charTime = secsPerChar;
         advance = true;
         AdvanceText();
+        speechchar = 0;
     }
 
     // Update is called once per frame
@@ -107,7 +114,7 @@ public class DialogManager : MonoBehaviour
         }
         else if (!waitForAnim)
         {
-            if (!audioSource.isPlaying)
+            if (!audioSource[speechchar].isPlaying)
             {
                 advance = true;
                 Invoke("AdvanceText", 1.0f);
@@ -224,11 +231,16 @@ public class DialogManager : MonoBehaviour
 
     void PlaySound()
     {
+        int chara;
+        chara = int.Parse(lines[++currentLine]);
+    
         string filename;
         filename = lines[++currentLine];
+
+        speechchar = chara;
         AudioClip sound = Resources.Load<AudioClip>("Audio/" + filename);
-        audioSource.clip = sound;
-        audioSource.Play();
+        audioSource[chara].clip = sound;
+        audioSource[chara].Play();
         Debug.Log("play sound " + filename);
     }
 

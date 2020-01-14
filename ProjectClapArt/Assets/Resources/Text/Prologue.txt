@@ -2,6 +2,7 @@
 - 海 日中 - 
 
 [Sound]
+1
 Kai/scenario1
 
 [Face]
@@ -13,7 +14,8 @@ Kai/scenario1
 おーい！そこの人！
 
 [Sound]
-Nagi/Voice _scenario_01_『ちょっと―』
+0
+Nagi/Game_scenario_Nagi_01
 
 [Face]
 0
@@ -31,7 +33,8 @@ Nagi/Voice _scenario_01_『ちょっと―』
 0
 
 [Sound]
-Nagi/Voice _scenario_02_『はじめまして―』
+0
+Nagi/Game_scenario_Nagi_02
 
 [Face]
 0
@@ -43,13 +46,15 @@ Nagi/Voice _scenario_02_『はじめまして―』
 なーちゃんは、ナギっていうの！ＡＩアイドルなの！
 
 [Sound]
-Nagi/Voice _scenario_02_『こっちは―』
+0
+Nagi/Game_scenario_Nagi_03
 
 [Speech]
 0
 こっちはお兄ちゃん！
 
 [Sound]
+1
 Kai/scenario2
 
 [Face]
@@ -62,13 +67,15 @@ Kai/scenario2
 ナギに手を出したら容赦しないからよろしく頼む。
 
 [Sound]
-Nagi/Voice _scenario_04_『ナーちゃんたちね―』
+0
+Nagi/Game_scenario_Nagi_04
 
 [Speech]
 0
 なーちゃんたちね、今日ここでライブするの！
 
 [Sound]
+1
 Kai/scenario3
 
 [Face]
@@ -84,13 +91,15 @@ Kai/scenario3
 3
 
 [Sound]
-Nagi/Voice _scenario_05_『なーちゃんと―』
+0
+Nagi/Game_scenario_Nagi_05
 
 [Speech]
 0
 なーちゃんとお兄ちゃんはＡＩだから、いつも舞台演出がうまくいかないんだよね…。
 
 [Sound]
+1
 Kai/scenario4
 
 [Speech]
@@ -100,7 +109,8 @@ Kai/scenario4
 
 
 [Sound]
-Nagi/Voice _scenario_06_『さっそく―』
+0
+Nagi/Game_scenario_Nagi_06
 
 [Face]
 1

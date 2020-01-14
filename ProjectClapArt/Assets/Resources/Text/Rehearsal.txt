@@ -2,6 +2,7 @@
 - ライブ会場 - 
 
 [Sound]
+1
 Kai/scenario5
 
 [Face]
@@ -13,22 +14,24 @@ Kai/scenario5
 いいね上々だ！
 
 [Sound]
+0
 Nagi/Game_scenario_Nagi_07
 
 [Face]
 0
-2
+1
 
 [Speech]
 0
 すごい！すごい！あなた最高にすごいよ！
 
 [Sound]
+0
 Nagi/Game_scenario_Nagi_08
 
 [Face]
 0
-2
+3
 
 [Speech]
 0
@@ -36,6 +39,7 @@ Nagi/Game_scenario_Nagi_08
 
 
 [Sound]
+1
 Kai/scenario6
 
 [Face]
@@ -47,6 +51,7 @@ Kai/scenario6
 今日は俺たち二人のどちらかの演出を頼みたい
 
 [Sound]
+1
 Kai/scenario7
 
 [Speech]
