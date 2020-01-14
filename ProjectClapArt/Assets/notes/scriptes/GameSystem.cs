@@ -457,7 +457,7 @@ public class GameSystem : MonoBehaviour {
     /// </summary>
     protected void freeTouchDetection() {
         //ゲームが開始されているか
-        if (!game_flg) return;
+        //if (!game_flg) return;
 
         //flickかタップされれば実行される
         bool input_flg = track_pad_input.Tap;// | track_pad_input.Flick;
