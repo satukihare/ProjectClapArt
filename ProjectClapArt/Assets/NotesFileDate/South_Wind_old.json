@@ -768,6 +768,11 @@
           "note_type": 1
         }
       ]
+    },
+    {
+      "startTime": 0,
+      "length": 0,
+      "json_notes": []
     }
   ]
 }
