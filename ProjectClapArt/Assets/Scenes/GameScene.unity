@@ -12870,6 +12870,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4815409141868567619, guid: e637b0dc82a42404bbcaa50cd617b86b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e637b0dc82a42404bbcaa50cd617b86b, type: 3}
 --- !u!1 &6058590331909557599
@@ -13048,13 +13053,13 @@ PrefabInstance:
         type: 3}
       propertyPath: free_particle
       value: 
-      objectReference: {fileID: 4793942322832330980, guid: 3e5bf90efc44ea04b89d64d31ccf0857,
-        type: 3}
+      objectReference: {fileID: 100000, guid: f2dba9e16cd347f44a395b8204544ee5, type: 3}
     - target: {fileID: 7065323529093498039, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
         type: 3}
       propertyPath: good_effect
       value: 
-      objectReference: {fileID: 100004, guid: 757df604761b8ef42831192c70ee1099, type: 3}
+      objectReference: {fileID: 5261405496972377280, guid: 2ded58d5ba0206343aac053e5f9bad38,
+        type: 3}
     - target: {fileID: 7065323529093498039, guid: 85d6d3880e4b8fa4cb8e39965e3b1210,
         type: 3}
       propertyPath: perfect_effect

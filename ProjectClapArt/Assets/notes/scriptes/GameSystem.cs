@@ -341,7 +341,9 @@ public class GameSystem : MonoBehaviour {
         if (set_diff < good_diff_time_num) {
             //フリックフラグを発火
             set_target_note.ClikFlg = true;
-            Destroy(set_target_note.NoteInstance);
+            //Destroy(set_target_note.NoteInstance);
+            Animator anim = set_target_note.NoteInstance.GetComponent<Animator>();
+            anim.SetTrigger("Hit");
             Debug.Log("good timming");
             ResultData.hit_notes += 1;
 
@@ -358,7 +360,9 @@ public class GameSystem : MonoBehaviour {
         else if (set_diff < more_diff_num) {
             //フリックフラグを発火
             set_target_note.ClikFlg = true;
-            Destroy(set_target_note.NoteInstance);
+            //Destroy(set_target_note.NoteInstance);
+            Animator anim = set_target_note.NoteInstance.GetComponent<Animator>();
+            anim.SetTrigger("Hit");
             Debug.Log("miss timming");
             ResultData.hit_notes += 0.7f;
 
