@@ -9,4 +9,4 @@
 これなら大丈夫だな。
 
 [End]
-SelectScene
+RehearsalDialog

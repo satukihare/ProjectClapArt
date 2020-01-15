@@ -30,6 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/DialogScene.unity
     guid: fff0e7cbeadb9454d905515cb7c61d54
   - enabled: 1
-    path: Assets/Scenes/TutorialDialogScene.unity
-    guid: 59d26ce508dc97f45bac13b1ffc6bb0b
+    path: Assets/Scenes/RehearsalDialog.unity
+    guid: ca94e1b191a705b418d2c3ad5d374cab
   m_configObjects: {}

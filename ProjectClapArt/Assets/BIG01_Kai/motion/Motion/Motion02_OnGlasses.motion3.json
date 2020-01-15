@@ -1,0 +1,98 @@
+{
+	"Version": 3,
+	"Meta": {
+		"Duration": 0.667,
+		"Fps": 30.0,
+		"Loop": true,
+		"AreBeziersRestricted": true,
+		"CurveCount": 3,
+		"TotalSegmentCount": 10,
+		"TotalPointCount": 27,
+		"UserDataCount": 0,
+		"TotalUserDataSize": 0
+	},
+	"Curves": [
+		{
+			"Target": "Parameter",
+			"Id": "ParamShoulderR",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.033,
+				0,
+				0.067,
+				4,
+				0.1,
+				4,
+				1,
+				0.233,
+				4,
+				0.367,
+				-6,
+				0.5,
+				-6,
+				0,
+				0.667,
+				-6
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamElbowR",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.033,
+				0,
+				0.067,
+				1,
+				0.1,
+				1,
+				1,
+				0.122,
+				1,
+				0.144,
+				-0.02,
+				0.167,
+				-1,
+				1,
+				0.278,
+				-5.901,
+				0.389,
+				-8,
+				0.5,
+				-8,
+				0,
+				0.667,
+				-8
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "Param",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.033,
+				0,
+				0.067,
+				-10,
+				0.1,
+				-10,
+				1,
+				0.233,
+				-10,
+				0.367,
+				10,
+				0.5,
+				10,
+				0,
+				0.667,
+				10
+			]
+		}
+	]
+}
