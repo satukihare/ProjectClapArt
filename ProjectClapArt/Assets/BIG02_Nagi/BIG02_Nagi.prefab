@@ -3071,7 +3071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unmanagedIndex: 19
-  Value: 0
+  Value: 0.1
 --- !u!1 &3503431773392506324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4282,7 +4282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unmanagedIndex: 23
-  Value: 0
+  Value: 0.7
 --- !u!1 &4551642335530422751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4820,7 +4820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unmanagedIndex: 2
-  Value: 0
+  Value: -0.3
 --- !u!1 &5202792402583258121
 GameObject:
   m_ObjectHideFlags: 0
@@ -8646,7 +8646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Opacity: 1
-  _lastOpacity: 0
+  _lastOpacity: 1
   _sortingLayerId: 0
   _sortingMode: 0
   _sortingOrder: 0
@@ -8666,7 +8666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967223d908bf07b4f90945995bdca68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maskTexture: {fileID: 0}
+  _maskTexture: {fileID: 11400000, guid: 16bf142754640ab4487bb625c30931fd, type: 2}
 --- !u!95 &1333331860562670661
 Animator:
   serializedVersion: 3
