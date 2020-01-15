@@ -17,7 +17,7 @@ public class ButtonManager : MonoBehaviour
     {
         if (notesPage.nowPage < MaxPage.nowPage)
         {
-            PageTime = toolManager.BarTime;
+            PageTime = toolManager.BarTime*2;
 
             notesPage.NextPage();
             timer.addTime(PageTime);
@@ -34,7 +34,7 @@ public class ButtonManager : MonoBehaviour
     {
         if(line.StartPosflug == false && notesPage.nowPage > 1)
         {
-            PageTime = toolManager.BarTime;
+            PageTime = toolManager.BarTime * 2;
 
             notesPage.BeforePage();
 
@@ -59,6 +59,7 @@ public class ButtonManager : MonoBehaviour
           else
           {
               timer.SetPageTime(toolManager.PageEndMusicTimer[toolManager.index]);
+              toolManager.MusicTimer = toolManager.PageEndMusicTimer[toolManager.index];
           }
 
             toolManager.MusicTimer = toolManager.PageEndMusicTimer[editManager.Listindex];
