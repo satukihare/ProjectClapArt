@@ -1239,13 +1239,25 @@ PrefabInstance:
         type: 3}
       propertyPath: free_particle
       value: 
-      objectReference: {fileID: 4793942322832330980, guid: 3e5bf90efc44ea04b89d64d31ccf0857,
+      objectReference: {fileID: 4024088136882688856, guid: ba6c72d2d0d9b9b4eb1b42d8817d6b76,
         type: 3}
     - target: {fileID: 1738998658081099545, guid: d20d53cdc7dbd7748a490269f40687f1,
         type: 3}
       propertyPath: score_image
       value: 
       objectReference: {fileID: 1235505338}
+    - target: {fileID: 1738998658081099545, guid: d20d53cdc7dbd7748a490269f40687f1,
+        type: 3}
+      propertyPath: good_effect
+      value: 
+      objectReference: {fileID: 5261405496972377280, guid: 2ded58d5ba0206343aac053e5f9bad38,
+        type: 3}
+    - target: {fileID: 1738998658081099545, guid: d20d53cdc7dbd7748a490269f40687f1,
+        type: 3}
+      propertyPath: perfect_effect
+      value: 
+      objectReference: {fileID: 711687773269758605, guid: b7e1a93f856360343b3565e7ad1cbb86,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d20d53cdc7dbd7748a490269f40687f1, type: 3}
 --- !u!114 &1738998656753348908 stripped
