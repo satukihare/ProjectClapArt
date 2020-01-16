@@ -168,6 +168,7 @@ public class DialogManager : MonoBehaviour
                 break;
             }
             ++currentLine;
+            if (currentLine > lines.Length) return;
         }
     }
 
