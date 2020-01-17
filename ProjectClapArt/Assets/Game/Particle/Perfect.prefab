@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3825731060800956613}
   - component: {fileID: 8681484284744261070}
   m_Layer: 0
-  m_Name: Perfect2
+  m_Name: Perfect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

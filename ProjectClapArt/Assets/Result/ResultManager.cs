@@ -12,12 +12,21 @@ public class ResultManager : MonoBehaviour
     [SerializeField]
     AudioClip[] voices;
 
+    [SerializeField]
+    GameObject[] rankIcons;
+
     bool ScoreVoice = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        int i = 0;
+        int score_rank = ResultData.rank;
+        foreach (GameObject icon in rankIcons)
+        {
+            icon.SetActive(i == score_rank);    
+            ++i;
+        }
     }
 
     // Update is called once per frame
@@ -37,11 +46,11 @@ public class ResultManager : MonoBehaviour
                 //      ボイスID対照表
                 //
                 //       | スコアランク
-                //キャラ |   C B A S
-                //-------+--------------
-                //ナギ   |   0 1 2 3
-                //カイ   |   4 5 6 7
-                source.clip = voices[chara * 4 + score_rank];
+                //キャラ |    C B A
+                //-------+-------------
+                //ナギ   |    0 1 2
+                //カイ   |    3 4 5
+                source.clip = voices[chara * 3 + score_rank];
                 source.Play();
             }
         }
