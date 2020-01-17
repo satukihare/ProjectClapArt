@@ -32,4 +32,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RehearsalDialog.unity
     guid: ca94e1b191a705b418d2c3ad5d374cab
+  - enabled: 1
+    path: Assets/Scenes/BadEndDialog.unity
+    guid: a9768b9b61bbeb148b7dfe8c3e25c086
+  - enabled: 1
+    path: Assets/Scenes/KaiEndDialog.unity
+    guid: f961dc46487ca9840b5f28b88c4bbd38
+  - enabled: 1
+    path: Assets/Scenes/NagiEndDialog.unity
+    guid: b2493c761553c1a45aca2a290654767b
   m_configObjects: {}

@@ -54,6 +54,28 @@ public class ResultManager : MonoBehaviour
             }
             else
             {
+                if (ResultData.rank > 1)
+                {
+                    if (SelectData.chara_select == 0)
+                    {
+                        //ナギend
+                        Transition.instance.ChangeScene("NagiEndDialog");
+                    }
+                    else
+                    {
+                        //カイend
+                       
+                        Transition.instance.ChangeScene("KaiEndDialog");
+                    }
+                }
+                else
+                {
+                    //バッドエンド
+                    
+                    Transition.instance.ChangeScene("BadEndDialog");
+                }
+
+                //例外処理
                 Transition.instance.ChangeScene("TitleScene");
             }
         }

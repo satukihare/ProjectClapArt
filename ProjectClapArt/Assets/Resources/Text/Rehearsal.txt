@@ -31,7 +31,7 @@ Nagi/Game_scenario_Nagi_08
 
 [Face]
 0
-3
+4
 
 [Speech]
 0
