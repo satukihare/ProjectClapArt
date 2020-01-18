@@ -76,11 +76,17 @@ public class GameSystem : MonoBehaviour {
     //ポップするときに許容できる誤差
     [SerializeField] protected int more_pop_dif_num = 0;
 
+    //ノーツを消す時間を調整する
+    [SerializeField] protected int note_disappear_time = 1000;
+
+    //押した時間を調整する
+    [SerializeField] protected int note_jude_custom_num = 0;
+
     //タップで許容できる誤差
-    [SerializeField] protected int more_diff_num = 100;
+    [SerializeField] protected int more_diff_num = 150;
 
     //goodタイミング
-    [SerializeField] protected int good_diff_time_num = 10;
+    [SerializeField] protected int good_diff_time_num = 80;
 
     //入力Mnger
     [SerializeField] protected InputManager track_pad_input = null;
@@ -272,8 +278,8 @@ public class GameSystem : MonoBehaviour {
         //Unknownなら何もしない
         if (input_type == Note.NOTE_TYPE.UNKNOWN) return;
 
-        //押した時間
-        int press_time = music_time_num;
+        //押した時間 = 押した時間 + 調整用時間
+        int press_time = music_time_num + note_jude_custom_num;
 
         //判定
         foreach (Note note in notes) {
@@ -309,7 +315,7 @@ public class GameSystem : MonoBehaviour {
                 continue;
 
             //タイミングが過ぎているのでTrueをいれる
-            if (bars[bar_counter].StartTime + note.PressTime + 1000 < music_time_num) {
+            if (bars[bar_counter].StartTime + note.PressTime + note_disappear_time < music_time_num) {
                 note.ClikFlg = true;
 
                 //今はタイミングが間違ってもnotesを消している
