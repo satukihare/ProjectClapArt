@@ -33,6 +33,18 @@ public static class ResultData
         }
     }
 
+    public static int voltage_score = 20;
+
+    public static int voltage_max = 100;
+
+    public static float voltage_rate
+    {
+        get
+        {
+            return (float)voltage_score / voltage_max;
+        }
+    }
+
     public static int rank
     {
         get
@@ -40,9 +52,9 @@ public static class ResultData
             //TODO: 3種類目のスコアも計算する
 
             //合計スコア（0~3）
-            float total = bonus_rate + score_rate; //+ rate
+            float total = bonus_rate + score_rate + voltage_rate;
             //平均スコア（0~1）
-            float average = total / 2; // total / 3
+            float average = total / 3;
             //0~1の平均スコアを0・1・2のランク値に変換する
             return (int)(average * 3); 
         }

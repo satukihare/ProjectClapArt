@@ -318,6 +318,9 @@ public class GameSystem : MonoBehaviour {
                     Animator anim = note.NoteInstance.GetComponent<Animator>();
                     anim.SetTrigger("Despawn");
                     note.ClikFlg = true;
+                    ResultData.voltage_score -= 5;
+                    if (ResultData.voltage_score < 0)
+                        ResultData.voltage_score = 0;
                 }
                 else
                     Debug.Log("Note Instance is NullPtr ! ! ! ");
@@ -341,6 +344,9 @@ public class GameSystem : MonoBehaviour {
             anim.SetTrigger("Hit");
             Debug.Log("good timming");
             ResultData.hit_notes += 1;
+            ResultData.voltage_score += 5;
+            if (ResultData.voltage_score > ResultData.voltage_max)
+                ResultData.voltage_score = ResultData.voltage_max;
 
             //if ((int)(ResultData.score_rate * 16) > score)
             //{
@@ -360,6 +366,9 @@ public class GameSystem : MonoBehaviour {
             anim.SetTrigger("Hit");
             Debug.Log("miss timming");
             ResultData.hit_notes += 0.7f;
+            ResultData.voltage_score += 3;
+            if (ResultData.voltage_score > ResultData.voltage_max)
+                ResultData.voltage_score = ResultData.voltage_max;
 
             //if ((int)(ResultData.score_rate * 16) > score)
             //{

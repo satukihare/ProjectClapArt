@@ -58,6 +58,8 @@ public class DialogManager : MonoBehaviour
     [SerializeField]
     GameObject[] characters;
     [SerializeField]
+    RawImage[] canvases;
+    [SerializeField]
     GameObject banner;
     [SerializeField]
     GameObject fade;
@@ -253,8 +255,8 @@ public class DialogManager : MonoBehaviour
         speechBubble[chara  ].gameObject.SetActive(true);
         speechBubble[chara^1].gameObject.SetActive(false);
 
-      //  characters[chara  ].color = Color.white;
-      //  characters[chara^1].color = Color.gray;
+        canvases[chara  ].color = Color.white;
+        canvases[chara^1].color = Color.gray;
 
 
         text = "";

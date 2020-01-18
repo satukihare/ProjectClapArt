@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
+enum GaugeID{
+    Voltage = 0,
+    Rhythm,
+    Bonus
+}
 public class ResultManager : MonoBehaviour
 {
 
@@ -14,6 +20,12 @@ public class ResultManager : MonoBehaviour
 
     [SerializeField]
     GameObject[] rankIcons;
+
+    [SerializeField]
+    Image[] gauges;
+
+    [SerializeField]
+    float fillRate;
 
     bool ScoreVoice = false;
 
@@ -53,6 +65,24 @@ public class ResultManager : MonoBehaviour
                 source.clip = voices[chara * 3 + score_rank];
                 source.Play();
             }
+        }
+        if (gauges[(int)GaugeID.Voltage].fillAmount < ResultData.voltage_rate)
+        {
+            gauges[(int)GaugeID.Voltage].fillAmount += fillRate;
+            if (gauges[(int)GaugeID.Voltage].fillAmount > ResultData.voltage_rate)
+                gauges[(int)GaugeID.Voltage].fillAmount = ResultData.voltage_rate;
+        }
+        if (gauges[(int)GaugeID.Rhythm].fillAmount < ResultData.score_rate)
+        {
+            gauges[(int)GaugeID.Rhythm].fillAmount += fillRate;
+            if (gauges[(int)GaugeID.Rhythm].fillAmount > ResultData.score_rate)
+                gauges[(int)GaugeID.Rhythm].fillAmount = ResultData.score_rate;
+        }
+        if (gauges[(int)GaugeID.Bonus].fillAmount < ResultData.bonus_rate)
+        {
+            gauges[(int)GaugeID.Bonus].fillAmount += fillRate;
+            if (gauges[(int)GaugeID.Bonus].fillAmount > ResultData.bonus_rate)
+                gauges[(int)GaugeID.Bonus].fillAmount = ResultData.bonus_rate;
         }
 
         if (Input.GetMouseButtonDown(0))
