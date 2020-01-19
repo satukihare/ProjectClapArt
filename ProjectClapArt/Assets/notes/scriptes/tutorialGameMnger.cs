@@ -39,11 +39,14 @@ public class tutorialGameMnger : GameSystem {
             gameChose();
         }
         //ゲームでのシナリオ再生
-        else if(game_state == GAME_MODE.GAME_DIALOG) {
+        else if (game_state == GAME_MODE.GAME_DIALOG) {
             gameDialog();
         }
-          //イレギュラー値
-          else Debug.Log("Unknown State");
+        else if (game_state == GAME_MODE.NON_NOTE){
+
+        }
+        //イレギュラー値
+        else Debug.Log("Unknown State");
     }
 
     /// <summary>
