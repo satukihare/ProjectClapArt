@@ -122,7 +122,7 @@ public class GameMnger : GameSystem {
         }
         else if (light_state == LIGHT_MODE.LIGHT_DOWN)
         {
-            Fade_alpha += .75f;
+            Fade_alpha += .65f;
             if (Fade_alpha >= 128)
             {
                 Fade_alpha = 128f;

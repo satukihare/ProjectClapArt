@@ -113,8 +113,8 @@ Kai/scenario4
 Nagi/Game_scenario_Nagi_06
 
 [Face]
-1
 0
+4
 
 [Speech]
 0

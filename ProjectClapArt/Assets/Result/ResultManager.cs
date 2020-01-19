@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
+enum GaugeID{
+    Voltage = 0,
+    Rhythm,
+    Bonus
+}
 public class ResultManager : MonoBehaviour
 {
 
@@ -12,12 +18,27 @@ public class ResultManager : MonoBehaviour
     [SerializeField]
     AudioClip[] voices;
 
+    [SerializeField]
+    GameObject[] rankIcons;
+
+    [SerializeField]
+    Image[] gauges;
+
+    [SerializeField]
+    float fillRate;
+
     bool ScoreVoice = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        int i = 0;
+        int score_rank = ResultData.rank;
+        foreach (GameObject icon in rankIcons)
+        {
+            icon.SetActive(i == score_rank);    
+            ++i;
+        }
     }
 
     // Update is called once per frame
@@ -37,13 +58,31 @@ public class ResultManager : MonoBehaviour
                 //      ボイスID対照表
                 //
                 //       | スコアランク
-                //キャラ |   C B A S
-                //-------+--------------
-                //ナギ   |   0 1 2 3
-                //カイ   |   4 5 6 7
-                source.clip = voices[chara * 4 + score_rank];
+                //キャラ |    C B A
+                //-------+-------------
+                //ナギ   |    0 1 2
+                //カイ   |    3 4 5
+                source.clip = voices[chara * 3 + score_rank];
                 source.Play();
             }
+        }
+        if (gauges[(int)GaugeID.Voltage].fillAmount < ResultData.voltage_rate)
+        {
+            gauges[(int)GaugeID.Voltage].fillAmount += fillRate;
+            if (gauges[(int)GaugeID.Voltage].fillAmount > ResultData.voltage_rate)
+                gauges[(int)GaugeID.Voltage].fillAmount = ResultData.voltage_rate;
+        }
+        if (gauges[(int)GaugeID.Rhythm].fillAmount < ResultData.score_rate)
+        {
+            gauges[(int)GaugeID.Rhythm].fillAmount += fillRate;
+            if (gauges[(int)GaugeID.Rhythm].fillAmount > ResultData.score_rate)
+                gauges[(int)GaugeID.Rhythm].fillAmount = ResultData.score_rate;
+        }
+        if (gauges[(int)GaugeID.Bonus].fillAmount < ResultData.bonus_rate)
+        {
+            gauges[(int)GaugeID.Bonus].fillAmount += fillRate;
+            if (gauges[(int)GaugeID.Bonus].fillAmount > ResultData.bonus_rate)
+                gauges[(int)GaugeID.Bonus].fillAmount = ResultData.bonus_rate;
         }
 
         if (Input.GetMouseButtonDown(0))
