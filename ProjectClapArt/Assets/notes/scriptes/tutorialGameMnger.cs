@@ -74,7 +74,8 @@ public class tutorialGameMnger : GameSystem {
         gameStop();
 
         //左を選択
-        if (Input.GetKey(KeyCode.A)) {
+        if (track_pad_input.Tap)
+        {
             //バーを先にすすめる
             //次に行く
             bar_counter++;
@@ -83,7 +84,8 @@ public class tutorialGameMnger : GameSystem {
             game_state = GAME_MODE.GAME_DIALOG;
         }
         //右を選択
-        else if (Input.GetKey(KeyCode.D)) {
+        else if (track_pad_input.Flick)
+        {
             //もう一回だどん
             List<Note> notes = bars[bar_counter].Notes;
 
