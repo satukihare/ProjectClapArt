@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NagiEndDialog.unity
     guid: b2493c761553c1a45aca2a290654767b
+  - enabled: 1
+    path: Assets/Scenes/KaiGameScene.unity
+    guid: 9b662c806ea7d534d97fb0a585359576
   m_configObjects: {}
