@@ -34,6 +34,8 @@ public class GameMnger : GameSystem {
 
         Light();
 
+
+
         //待機状態
         if (game_state ==  GAME_MODE.GAME_WAIT) {
             GameStand_By();

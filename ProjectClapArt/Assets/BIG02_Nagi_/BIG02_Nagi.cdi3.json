@@ -127,6 +127,51 @@
 			"Name": "体の回転　Z"
 		},
 		{
+			"Id": "ParamArmR",
+			"GroupId": "ParamGroup7",
+			"Name": "右肩　回転"
+		},
+		{
+			"Id": "ParamElbowR",
+			"GroupId": "ParamGroup7",
+			"Name": "右肘　回転"
+		},
+		{
+			"Id": "ParamHandR",
+			"GroupId": "ParamGroup7",
+			"Name": "右手　回転"
+		},
+		{
+			"Id": "ParamArmL",
+			"GroupId": "ParamGroup7",
+			"Name": "左肩　回転"
+		},
+		{
+			"Id": "ParamElbowL",
+			"GroupId": "ParamGroup7",
+			"Name": "左肘　回転"
+		},
+		{
+			"Id": "ParamHandL",
+			"GroupId": "ParamGroup7",
+			"Name": "左手　回転"
+		},
+		{
+			"Id": "ParamLegL",
+			"GroupId": "ParamGroup8",
+			"Name": "左足　回転"
+		},
+		{
+			"Id": "ParamLegR",
+			"GroupId": "ParamGroup8",
+			"Name": "右足　回転"
+		},
+		{
+			"Id": "ParamKneeR",
+			"GroupId": "ParamGroup8",
+			"Name": "右膝　回転"
+		},
+		{
 			"Id": "ParamCheek",
 			"GroupId": "",
 			"Name": "照れ"
@@ -145,6 +190,11 @@
 			"Id": "ParamShadow",
 			"GroupId": "",
 			"Name": "影"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "",
+			"Name": "リボン揺れ"
 		}
 	],
 	"ParameterGroups": [
@@ -177,6 +227,16 @@
 			"Id": "ParamGroup4",
 			"GroupId": "",
 			"Name": "体の角度"
+		},
+		{
+			"Id": "ParamGroup7",
+			"GroupId": "",
+			"Name": "腕"
+		},
+		{
+			"Id": "ParamGroup8",
+			"GroupId": "",
+			"Name": "足"
 		}
 	],
 	"Parts": [

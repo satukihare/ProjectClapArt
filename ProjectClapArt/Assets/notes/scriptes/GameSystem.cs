@@ -264,8 +264,7 @@ public class GameSystem : MonoBehaviour {
         bool flick_flg = track_pad_input.Tap | track_pad_input.Flick | track_pad_input.FlickStart | track_pad_input.FlickEnd;
 
         //トラックパッドを使用したときのみ処理
-        if (!flick_flg)
-            return;
+        if (!flick_flg) return;
 
         //何が押されたのかを検出する
         Note.NOTE_TYPE input_type = this.getInputType();
