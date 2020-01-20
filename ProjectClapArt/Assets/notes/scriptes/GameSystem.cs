@@ -436,7 +436,7 @@ public class GameSystem : MonoBehaviour {
     /// <param name="bars">Barクラスのリスト</param>
     /// <param name="bar_counter">読んでいるBar</param>
     /// <returns>終わったかを返す(Trueなら終わっている)</returns>
-    protected void notesEndCheck(List<Bar> bars , int bar_counter) {
+    protected  virtual void notesEndCheck(List<Bar> bars , int bar_counter) {
 
         //bar_counterがBarの個数を同一以上であれば終わり
         //if (bars.Count <= bar_counter)
@@ -517,14 +517,15 @@ public class GameSystem : MonoBehaviour {
         //nullチェック
         if (note == null)
             return;
-
-        Animator anim = note.NoteInstance.GetComponent<Animator>();
-        anim.SetTrigger("Despawn");
-        note.ClikFlg = true;
-        //安全のためにNullを入れる
-        note.NoteInstance = null;
-        //ポップしたnoteのリストからけす
-        popd_notes.Remove(note);
+        try {
+            Animator anim = note.NoteInstance.GetComponent<Animator>();
+            anim.SetTrigger("Despawn");
+            note.ClikFlg = true;
+            //安全のためにNullを入れる
+            note.NoteInstance = null;
+            //ポップしたnoteのリストからけす
+            popd_notes.Remove(note);
+        } catch { Debug.LogWarning("MissingReferenceException：タイプ 'GameObject'のオブジェクトは破棄されましたが、まだアクセスしようとしています。"); }
 
         ResultData.voltage_score -= 5;
         if (ResultData.voltage_score < 0)

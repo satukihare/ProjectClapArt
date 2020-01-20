@@ -26,14 +26,6 @@ public class tutorialGameMnger : GameSystem {
             game_state = GAME_MODE.GAME_DIALOG;
             gameDialog();
         }
-        //notesスポーン
-        //else if (game_state == GAME_MODE.NOTE_SPAWN) {
-        //    gameNoteSpawn();
-        //
-        //} //touch状態
-        //else if (game_state == GAME_MODE.NOTE_TOUCH) {
-        //    gameNoteTouch();
-        //}
         //選択モード
         else if (game_state == GAME_MODE.GAME_CHOSE) {
             gameChose();
@@ -71,6 +63,19 @@ public class tutorialGameMnger : GameSystem {
     }
 
     /// <summary>
+    /// ゲームの終了確認
+    /// </summary>
+    /// <param name="bars"></param>
+    /// <param name="bar_counter"></param>
+    protected override void notesEndCheck(List<Bar> bars, int bar_counter) {
+
+        //bar_counterがBarの個数を同一以上であれば終わり
+        //if (bars.Count <= bar_counter)
+        if (bars[bars.Count - 1].StartTime + bars[bars.Count - 1].Lingth < music_time_num + 1000)
+            game_state = GAME_MODE.GAME_CHOSE;
+    }
+
+    /// <summary>
     /// 選択状態
     /// </summary>
     private void gameChose() {
@@ -83,7 +88,7 @@ public class tutorialGameMnger : GameSystem {
             //次に行く
             bar_counter++;
 
-            //スポーン状態へ
+            //ダイアログ状態へ
             game_state = GAME_MODE.GAME_DIALOG;
         }
         //右を選択
@@ -98,7 +103,7 @@ public class tutorialGameMnger : GameSystem {
                 Destroy(note.NoteInstance);
             }
             //スポーン状態へ
-            //game_state = GAME_MODE.NOTE_SPAWN;
+            game_state = GAME_MODE.GAME_NOW;
             //音楽を指定の再生位置へ
             music_play_back_pos = bars[bar_counter].StartTime;
             gamePlay();
@@ -146,7 +151,7 @@ public class tutorialGameMnger : GameSystem {
     {
         if (game_state == GAME_MODE.GAME_DIALOG)
         {
-            //game_state = GAME_MODE.NOTE_SPAWN;
+            game_state = GAME_MODE.GAME_NOW;
             gamePlay();
         }
     }

@@ -3,7 +3,7 @@
   "json_bars": [
     {
       "startTime": 0,
-      "length": 0,
+      "length": 4100,
       "json_notes": [
         {
           "position": {
@@ -44,8 +44,8 @@
       ]
     },
     {
-      "startTime": 0,
-      "length": 0,
+      "startTime": 5000,
+      "length": 4100,
       "json_notes": [
         {
           "position": {
@@ -77,8 +77,8 @@
       ]
     },
     {
-      "startTime": 0,
-      "length": 0,
+      "startTime": 10000,
+      "length": 4100,
       "json_notes": [
         {
           "position": {
