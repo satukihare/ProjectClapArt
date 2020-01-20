@@ -15,12 +15,8 @@ public class GameSystem : MonoBehaviour {
     protected enum GAME_MODE {
         //待機状態
         GAME_WAIT = 0,
-        //notes出現状態
-        NOTE_SPAWN,
-        //notesをtouch
-        NOTE_TOUCH,
-        //次のBarに移行するタイミング
-        NEXT_BAR,
+        //ゲーム中
+        GAME_NOW,
         //選択モード
         GAME_CHOSE,
         //ゲーム終了
@@ -50,7 +46,7 @@ public class GameSystem : MonoBehaviour {
     [SerializeField] protected int whole_note;
 
     //ゲームの状態
-    protected GAME_MODE game_state = GAME_MODE.GAME_WAIT;
+    [SerializeField] protected GAME_MODE game_state = GAME_MODE.GAME_WAIT;
 
     //ゲーム開始時の時間(ms)
     protected float start_game_time = 0;
@@ -63,8 +59,11 @@ public class GameSystem : MonoBehaviour {
     //スポーンさせるnotesオブジェクト
     [SerializeField] protected GameObject spawn_note_object = null;
 
-    //notesを入れるリスト
+    //barを入れるリスト
     protected List<Bar> bars = null;
+
+    //ポップしているノーツ
+    [SerializeField] List<Note> popd_notes = new List<Note>(32);
 
     //現在読んでいるBarの番号
     [SerializeField]protected int bar_counter = 0;
@@ -164,6 +163,18 @@ public class GameSystem : MonoBehaviour {
     /// 更新
     /// </summary>
     protected void Update() {
+
+        //ゲームモードのときのみ
+        if (game_state == GAME_MODE.GAME_NOW) {
+            //ノーツSpawn
+            gameNoteSpawn();
+
+            //ノーツを削除
+            gameDestroyNote();
+
+            //タッチ
+            gameNoteTouch();
+        }
         //更新
         gameUpdate();
 
@@ -207,8 +218,8 @@ public class GameSystem : MonoBehaviour {
 
         this.li2dAnimatorPlay();
 
-        //ゲームをスポーン状態へ
-        game_state = GAME_MODE.NOTE_SPAWN;
+        //ゲーム状態へ
+        game_state = GAME_MODE.GAME_NOW;
     }
 
     /// <summary>
@@ -217,10 +228,6 @@ public class GameSystem : MonoBehaviour {
     protected void gameNoteSpawn() {
 
         int msc_time_rud_dgts = music_time_num;
-
-        //小節の書き込みタイミングまでスキップ
-        if (bars[bar_counter].StartTime > msc_time_rud_dgts)
-            return;
 
         //スポーンする小節
         List<Note> notes = bars[bar_counter].Notes;
@@ -235,22 +242,62 @@ public class GameSystem : MonoBehaviour {
             if (( note.SpawnTime + bars[bar_counter].StartTime - this.more_pop_dif_num <= msc_time_rud_dgts) &&
                 ( note.SpawnTime + bars[bar_counter].StartTime + this.more_pop_dif_num >= msc_time_rud_dgts)) {
 
-                GameObject pop_notes = Instantiate(spawn_note_object, note.Pos, Quaternion.identity);
-                
+                //オブジェクトを生成している
+                GameObject pop_note = Instantiate(spawn_note_object, note.Pos, Quaternion.identity);
+
+                //クリックするタイミングを入れている
+                note.PressMusicTime = note.PressTime + bars[bar_counter].StartTime;
+
+                //ポップしているノーツに追加
+                popd_notes.Add(note);
+
                 //notesにinstanceをセット
-                note.NoteInstance = pop_notes;
+                note.NoteInstance = pop_note;
                 //カウント
                 note_counter++;
                 //最後のnotesか判定
                 if (note == notes[notes.Count - 1]) {
-                    //タッチモードへ
-                    game_state = GAME_MODE.NOTE_TOUCH;
 
                     //Counterをゼロに
                     note_counter = 0;
+                    //次のBarへ
+                    bar_counter++;
                 }
-                break;
+                //break;
             }
+        }
+    }
+
+    /// <summary>
+    /// その時間のBarを探す
+    /// </summary>
+    /// <returns></returns>
+    protected Bar searchNowTimeBar() {
+
+        //今のBarを探す
+        foreach(Bar bar in bars) {
+            if(bar.StartTime < this.music_time_num && bar.StartTime + bar.Lingth > music_time_num) {
+                return bar;
+            }
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// 時間が過ぎたノーツを消す
+    /// </summary>
+    protected void gameDestroyNote() {
+
+        for(int cnt = 0;cnt < popd_notes.Count; cnt++) {
+            Note note = popd_notes[cnt];
+
+            if (note == null) continue;
+
+            //押す時間が過ぎていたら消す
+            if (note.PressMusicTime + note_disappear_time < music_time_num) {
+                missNoteDestory(note);
+            }
+
         }
     }
 
@@ -258,21 +305,15 @@ public class GameSystem : MonoBehaviour {
     /// touch状態
     /// </summary>
     protected void gameNoteTouch() {
-        //スポーンした小節リスト
-        List<Note> notes = bars[(bar_counter <= 0 ? 0 : bar_counter)].Notes;
-
-        //notesをチェックする
-        notesTimingCheck(notes);
-
-        //全てのノードがクリックされているなら選択へ遷移する
-        if (checkNoteAllClick(notes))
-            return;
 
         //トラックパッドがtouchされればTrue
         bool flick_flg = track_pad_input.Tap | track_pad_input.Flick | track_pad_input.FlickStart | track_pad_input.FlickEnd;
 
         //トラックパッドを使用したときのみ処理
         if (!flick_flg) return;
+
+        //スポーンした小節リスト
+        List<Note> notes = popd_notes;
 
         //何が押されたのかを検出する
         Note.NOTE_TYPE input_type = this.getInputType();
@@ -290,7 +331,7 @@ public class GameSystem : MonoBehaviour {
                 continue;
 
             //差分を取る
-            int diff = touchAbsDiffCal(press_time, note.PressTime + bars[bar_counter].StartTime);
+            int diff = touchAbsDiffCal(press_time, note.PressMusicTime);
 
             //誤差から判定する
             judgeTouchTimming(diff, note);
@@ -305,35 +346,6 @@ public class GameSystem : MonoBehaviour {
     /// <param name="notes">NoteのList</param>
     /// <returns>全てクリックされているならTrue</returns>
     protected virtual bool checkNoteAllClick(List<Note> notes) { return false; }
-
-    /// <summary>
-    /// notesのタイミングをチェックしタイミングが通り過ぎたものにtrueを入れる
-    /// </summary>
-    /// <param name="notes">NoteのList</param>
-    protected void notesTimingCheck(List<Note> notes) {
-        foreach (Note note in notes) {
-            if (note.ClikFlg)
-                continue;
-
-            //タイミングが過ぎているのでTrueをいれる
-            if (bars[bar_counter].StartTime + note.PressTime + note_disappear_time < music_time_num) {
-                note.ClikFlg = true;
-
-                //今はタイミングが間違ってもnotesを消している
-                //nullならなにもしない
-                if (note.NoteInstance != null) {
-                    Animator anim = note.NoteInstance.GetComponent<Animator>();
-                    anim.SetTrigger("Despawn");
-                    note.ClikFlg = true;
-                    ResultData.voltage_score -= 5;
-                    if (ResultData.voltage_score < 0)
-                        ResultData.voltage_score = 0;
-                }
-                else
-                    Debug.Log("Note Instance is NullPtr ! ! ! ");
-            }
-        }
-    }
 
     /// <summary>
     /// 差分を基に判定を行う
@@ -355,10 +367,6 @@ public class GameSystem : MonoBehaviour {
             if (ResultData.voltage_score > ResultData.voltage_max)
                 ResultData.voltage_score = ResultData.voltage_max;
 
-            //if ((int)(ResultData.score_rate * 16) > score)
-            //{
-            //    score = (int)(ResultData.score_rate * 16);
-
             score_image.fillAmount = ResultData.score_rate;
             Instantiate(perfect_effect, set_target_note.Pos, Quaternion.identity);
             //score_image.fillAmount = (float)(score) / 16;
@@ -377,19 +385,12 @@ public class GameSystem : MonoBehaviour {
             if (ResultData.voltage_score > ResultData.voltage_max)
                 ResultData.voltage_score = ResultData.voltage_max;
 
-            //if ((int)(ResultData.score_rate * 16) > score)
-            //{
-            //    score = (int)(ResultData.score_rate * 16);
-
             score_image.fillAmount = ResultData.score_rate;
             Instantiate(good_effect, set_target_note.Pos, Quaternion.identity);
-            //score_image.fillAmount = (float)(score) / 16;
-            //}
         }
         //完全にタイミングを外した場合
         else {
             Debug.Log("out");
-            //break;
         }
     }
 
@@ -498,5 +499,25 @@ public class GameSystem : MonoBehaviour {
         //Vector2 pos = Camera.main.ScreenToWorldPoint((Vector2)Input.mousePosition);
         Vector2 pos = new Vector2(Random.Range(-2.0f, 2.0f), Random.Range(-2.5f,4.7f));
         Instantiate(free_particle, pos, Quaternion.identity);
+    }
+
+    /// <summary>
+    /// ミスしたノーツを消してボルテージも減らす？
+    /// </summary>
+    /// <param name="note"></param>
+    protected void missNoteDestory( Note note ) {
+        //nullチェック
+        if (note == null)
+            return;
+
+        Animator anim = note.NoteInstance.GetComponent<Animator>();
+        anim.SetTrigger("Despawn");
+        note.ClikFlg = true;
+        //ポップしたnoteのリストからけす
+        popd_notes.Remove(note);
+
+        ResultData.voltage_score -= 5;
+        if (ResultData.voltage_score < 0)
+            ResultData.voltage_score = 0;
     }
 }

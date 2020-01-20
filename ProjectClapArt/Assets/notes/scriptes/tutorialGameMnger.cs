@@ -27,13 +27,13 @@ public class tutorialGameMnger : GameSystem {
             gameDialog();
         }
         //notesスポーン
-        else if (game_state == GAME_MODE.NOTE_SPAWN) {
-            gameNoteSpawn();
-
-        } //touch状態
-        else if (game_state == GAME_MODE.NOTE_TOUCH) {
-            gameNoteTouch();
-        }
+        //else if (game_state == GAME_MODE.NOTE_SPAWN) {
+        //    gameNoteSpawn();
+        //
+        //} //touch状態
+        //else if (game_state == GAME_MODE.NOTE_TOUCH) {
+        //    gameNoteTouch();
+        //}
         //選択モード
         else if (game_state == GAME_MODE.GAME_CHOSE) {
             gameChose();
@@ -98,7 +98,7 @@ public class tutorialGameMnger : GameSystem {
                 Destroy(note.NoteInstance);
             }
             //スポーン状態へ
-            game_state = GAME_MODE.NOTE_SPAWN;
+            //game_state = GAME_MODE.NOTE_SPAWN;
             //音楽を指定の再生位置へ
             music_play_back_pos = bars[bar_counter].StartTime;
             gamePlay();
@@ -146,7 +146,7 @@ public class tutorialGameMnger : GameSystem {
     {
         if (game_state == GAME_MODE.GAME_DIALOG)
         {
-            game_state = GAME_MODE.NOTE_SPAWN;
+            //game_state = GAME_MODE.NOTE_SPAWN;
             gamePlay();
         }
     }

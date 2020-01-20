@@ -41,19 +41,19 @@ public class GameMnger : GameSystem {
             GameStand_By();
         }
         //スポーン状態
-        else if (game_state == GAME_MODE.NOTE_SPAWN) {
-            gameNoteSpawn();
-        }
-        //touch状態
-        else if (game_state == GAME_MODE.NOTE_TOUCH) {
-            gameNoteTouch();
-        }
-        //次のBarへ行く際の準備
-        else if (game_state == GAME_MODE.NEXT_BAR) {
-            gameNextBar();
-        }
+        ///else if (game_state == GAME_MODE.NOTE_SPAWN) {
+        ///    gameNoteSpawn();
+        ///}
+        /////touch状態
+        ///else if (game_state == GAME_MODE.NOTE_TOUCH) {
+        ///    gameNoteTouch();
+        ///}
+        /////次のBarへ行く際の準備
+        ///else if (game_state == GAME_MODE.NEXT_BAR) {
+        ///    gameNextBar();
+        ///}
         //イレギュラー値
-        else Debug.Log("Unknown State");
+        //else Debug.Log("Unknown State");
 
 
     }
@@ -163,7 +163,7 @@ public class GameMnger : GameSystem {
 
         //一回でもくりっくされているなら選択へ遷移しない
         if (note_click_ch) {
-            game_state = GAME_MODE.NEXT_BAR;
+            //game_state = GAME_MODE.NEXT_BAR;
         }
         return note_click_ch;
     }
@@ -173,6 +173,6 @@ public class GameMnger : GameSystem {
     /// </summary>
     void gameNextBar() {
         bar_counter++;
-        game_state = GAME_MODE.NOTE_SPAWN;
+        //game_state = GAME_MODE.NOTE_SPAWN;
     }
 }
