@@ -24,6 +24,8 @@ public class Note {
     bool clickFlg = false;
     //生成したNoteのinstance
     GameObject note_instance = null;
+    //クリックするタイミング
+    int pressMusicTimeNum = 0;
 
     /// <summary>
     /// パラメータ
@@ -63,6 +65,11 @@ public class Note {
     public GameObject NoteInstance {
         get { return note_instance; }
         set { note_instance = value; }
+    }
+
+    public int PressMusicTime {
+        get { return this.pressMusicTimeNum; }
+        set { pressMusicTimeNum = value; }
     }
 
 }
