@@ -229,24 +229,30 @@ public class GameSystem : MonoBehaviour {
 
         int msc_time_rud_dgts = music_time_num;
 
+        Bar now_bar = searchNowTimeBar();
+        if (now_bar == null) return;
+
         //スポーンする小節
-        List<Note> notes = bars[bar_counter].Notes;
+        List<Note> notes = now_bar.Notes;
+        if (notes == null) return;
 
         //スポーンする
         foreach (Note note in notes) {
             //対象のnoteまでスキップ
-            if (notes[note_counter] != note)
-                continue;
+            //if (notes[note_counter] != note)
+            //    continue;
+            if (note.PopFlg) continue;
 
             //スポーンするnotesがあればだす
-            if (( note.SpawnTime + bars[bar_counter].StartTime - this.more_pop_dif_num <= msc_time_rud_dgts) &&
-                ( note.SpawnTime + bars[bar_counter].StartTime + this.more_pop_dif_num >= msc_time_rud_dgts)) {
+            if (( note.SpawnTime + now_bar.StartTime - this.more_pop_dif_num <= msc_time_rud_dgts) &&
+                ( note.SpawnTime + now_bar.StartTime + this.more_pop_dif_num >= msc_time_rud_dgts)) {
 
                 //オブジェクトを生成している
                 GameObject pop_note = Instantiate(spawn_note_object, note.Pos, Quaternion.identity);
 
                 //クリックするタイミングを入れている
-                note.PressMusicTime = note.PressTime + bars[bar_counter].StartTime;
+                note.PressMusicTime = note.PressTime + now_bar.StartTime;
+                note.PopFlg = true;
 
                 //ポップしているノーツに追加
                 popd_notes.Add(note);
@@ -263,7 +269,7 @@ public class GameSystem : MonoBehaviour {
                     //次のBarへ
                     bar_counter++;
                 }
-                //break;
+                break;
             }
         }
     }
@@ -424,6 +430,7 @@ public class GameSystem : MonoBehaviour {
     }
 
     /// <summary>
+    /// ゲームの終了確認
     /// 譜面が読み終わったか確認する
     /// </summary>
     /// <param name="bars">Barクラスのリスト</param>
@@ -432,7 +439,8 @@ public class GameSystem : MonoBehaviour {
     protected void notesEndCheck(List<Bar> bars , int bar_counter) {
 
         //bar_counterがBarの個数を同一以上であれば終わり
-        if (bars.Count <= bar_counter)
+        //if (bars.Count <= bar_counter)
+        if(bars[ bars.Count - 1 ].StartTime + bars[bars.Count -1 ].Lingth < music_time_num + 1000)
             game_state = GAME_MODE.GAME_END;
     }
 
@@ -513,6 +521,8 @@ public class GameSystem : MonoBehaviour {
         Animator anim = note.NoteInstance.GetComponent<Animator>();
         anim.SetTrigger("Despawn");
         note.ClikFlg = true;
+        //安全のためにNullを入れる
+        note.NoteInstance = null;
         //ポップしたnoteのリストからけす
         popd_notes.Remove(note);
 

@@ -20,6 +20,8 @@ public class Note {
     int pressTime;
     //タイプ
     NOTE_TYPE type;
+    //popフラグ
+    bool popFlg = false;
     //クリック判定
     bool clickFlg = false;
     //生成したNoteのinstance
@@ -70,6 +72,11 @@ public class Note {
     public int PressMusicTime {
         get { return this.pressMusicTimeNum; }
         set { pressMusicTimeNum = value; }
+    }
+
+    public bool PopFlg {
+        get { return popFlg; }
+        set { popFlg = value; }
     }
 
 }
