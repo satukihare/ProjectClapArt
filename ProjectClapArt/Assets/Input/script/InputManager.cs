@@ -52,19 +52,23 @@ public class InputManager : MonoBehaviour
     {
         tap = false;
 
+        //if (Input.GetMouseButton(0)) tap = true;
+        
         if (Input.GetMouseButtonDown(0))
         {
-            pressTime = Time.time;
+            tap = true;
+            //pressTime = Time.time;
         }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            float heldTime = Time.time - pressTime;
-            if (heldTime < maxTapTime)
-            {
-                tap = true;
-                //Debug.Log("detected as tap");
-            }
-        }
+
+        //else if (Input.GetMouseButtonUp(0))
+        //{
+        //    float heldTime = Time.time - pressTime;
+        //    if (heldTime < maxTapTime)
+        //    {
+        //        tap = true;
+        //        //Debug.Log("detected as tap");
+        //    }
+        //}
 
         Vector2 mov = (Vector2)Input.mousePosition - curPos;
         prevFlick = flick;
