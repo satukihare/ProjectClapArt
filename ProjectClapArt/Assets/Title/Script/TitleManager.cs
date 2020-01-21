@@ -6,10 +6,13 @@ using UnityEngine.Playables;
 public class TitleManager : MonoBehaviour
 {
     [SerializeField]
-    PlayableDirector Director;
+    PlayableDirector Director =null;
 
     [SerializeField]
-    AudioSource TitleBGM;
+    AudioSource TitleBGM = null;
+
+    [SerializeField]
+    TitleAnimeScripts TitleAnimeScripts = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,10 +55,16 @@ public class TitleManager : MonoBehaviour
         TitleBGM.Stop();
         TitleBGM.time = 0;
         Invoke("PlayBGM", 1.8f);
+        Invoke("playVoice", 0.2f);
     }
 
     void PlayBGM()
     {
         TitleBGM.Play();
+    }
+
+    void playVoice()
+    {
+        TitleAnimeScripts.GroupLogoAnnounce();
     }
 }

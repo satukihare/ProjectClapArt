@@ -137,12 +137,12 @@
 			"Name": "髪揺れ　後"
 		},
 		{
-			"Id": "ParamRibbon",
+			"Id": "Param2",
 			"GroupId": "ParamGroup8",
 			"Name": "リボン揺れ"
 		},
 		{
-			"Id": "Param2",
+			"Id": "ParamSkirt",
 			"GroupId": "ParamGroup8",
 			"Name": "服揺れ"
 		},

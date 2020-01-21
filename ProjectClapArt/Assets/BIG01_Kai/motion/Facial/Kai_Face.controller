@@ -51,7 +51,7 @@ BlendTree:
     m_DirectBlendParameter: ' Emotion_X'
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: a920a785ca85b4549922e15310bd33f8, type: 2}
+    m_Motion: {fileID: 7400000, guid: f06c1a78c3dd0814195b906046c0ed67, type: 2}
     m_Threshold: 0.5
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -59,7 +59,7 @@ BlendTree:
     m_DirectBlendParameter: ' Emotion_X'
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f06c1a78c3dd0814195b906046c0ed67, type: 2}
+    m_Motion: {fileID: 7400000, guid: 11d374989470eeb4ca7d911046e319fa, type: 2}
     m_Threshold: 0.75
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -67,7 +67,7 @@ BlendTree:
     m_DirectBlendParameter: ' Emotion_X'
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 4b2d1d2bfaa9b44448addbcf9a9a251f, type: 2}
+    m_Motion: {fileID: 7400000, guid: d9a828ebeb7d01f4e9b01b31920354e6, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1

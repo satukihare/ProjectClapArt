@@ -11,7 +11,11 @@ public class TutorialDialogManager : MonoBehaviour
         "[Sound]",
         "[Speech]",
         "[Pause]",
-        "[End]"
+        "[End]",
+        "[Tutorial_1]",
+        "[Tutorial_2]",
+        "[Tutorial_3]",
+        "[Tutorial_4]"
     };
 
     enum CodeID

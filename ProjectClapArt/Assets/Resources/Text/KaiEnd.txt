@@ -7,7 +7,7 @@ Nagi/Game_scenario_Nagi_09
 
 [Face]
 0
-1
+4
 
 [Speech]
 0
@@ -19,7 +19,7 @@ Kai/scenario8
 
 [Face]
 1
-4
+3
 
 [Speech]
 1
@@ -32,7 +32,7 @@ Kai/scenario9
 
 [Face]
 1
-0
+1
 
 [Speech]
 1
@@ -44,7 +44,7 @@ Nagi/Game_scenario_Nagi_10
 
 [Face]
 0
-1
+3
 
 [Speech]
 0
@@ -56,7 +56,7 @@ Kai/scenario10
 
 [Face]
 1
-1
+4
 
 [Speech]
 1
@@ -68,9 +68,14 @@ Kai/scenario10
 0
 Nagi/Game_scenario_Nagi_11
 
+
+[Face]
+1
+1
+
 [Face]
 0
-1
+4
 
 [Speech]
 0

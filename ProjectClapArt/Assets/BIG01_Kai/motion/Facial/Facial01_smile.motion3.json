@@ -28,10 +28,10 @@
 			"Id": "ParamEyeLOpen",
 			"Segments": [
 				0,
-				0,
+				1,
 				0,
 				0.033,
-				0
+				1
 			]
 		},
 		{
@@ -39,10 +39,10 @@
 			"Id": "ParamEyeROpen",
 			"Segments": [
 				0,
-				0,
+				1,
 				0,
 				0.033,
-				0
+				1
 			]
 		},
 		{
@@ -116,10 +116,10 @@
 			"Id": "ParamMouthForm",
 			"Segments": [
 				0,
-				0,
+				1,
 				0,
 				0.033,
-				0
+				1
 			]
 		}
 	]

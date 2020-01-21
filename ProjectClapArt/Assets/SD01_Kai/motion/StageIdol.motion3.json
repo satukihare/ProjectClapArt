@@ -1,0 +1,148 @@
+{
+	"Version": 3,
+	"Meta": {
+		"Duration": 1,
+		"Fps": 30.0,
+		"Loop": true,
+		"AreBeziersRestricted": true,
+		"CurveCount": 6,
+		"TotalSegmentCount": 12,
+		"TotalPointCount": 42,
+		"UserDataCount": 0,
+		"TotalUserDataSize": 0
+	},
+	"Curves": [
+		{
+			"Target": "Parameter",
+			"Id": "ParamShoulderR",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.167,
+				0,
+				0.333,
+				-0.5,
+				0.5,
+				-0.5,
+				1,
+				0.667,
+				-0.5,
+				0.833,
+				0,
+				1,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamShoulderL",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.167,
+				0,
+				0.333,
+				-0.5,
+				0.5,
+				-0.5,
+				1,
+				0.667,
+				-0.5,
+				0.833,
+				0,
+				1,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamStpping",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.167,
+				0,
+				0.333,
+				0.6,
+				0.5,
+				0.6,
+				1,
+				0.667,
+				0.6,
+				0.833,
+				0,
+				1,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamHairFront",
+			"Segments": [
+				0,
+				0.2,
+				1,
+				0.167,
+				0.2,
+				0.333,
+				0,
+				0.5,
+				0,
+				1,
+				0.667,
+				0,
+				0.833,
+				0.2,
+				1,
+				0.2
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamHairSideUp",
+			"Segments": [
+				0,
+				0.2,
+				1,
+				0.167,
+				0.2,
+				0.333,
+				0,
+				0.5,
+				0,
+				1,
+				0.667,
+				0,
+				0.833,
+				0.2,
+				1,
+				0.2
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamHairBackUp",
+			"Segments": [
+				0,
+				0.2,
+				1,
+				0.167,
+				0.2,
+				0.333,
+				0,
+				0.5,
+				0,
+				1,
+				0.667,
+				0,
+				0.833,
+				0.2,
+				1,
+				0.2
+			]
+		}
+	]
+}

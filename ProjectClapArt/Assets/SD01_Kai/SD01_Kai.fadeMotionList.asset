@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ae2dd693bb1d4b924f6b8d206b053, type: 3}
   m_Name: SD01_Kai.fadeMotionList
   m_EditorClassIdentifier: 
-  MotionInstanceIds: 80dcffff
+  MotionInstanceIds: 80dcffff1ab1fbff12b1fbff34300000
   CubismFadeMotionObjects:
+  - {fileID: 11400000, guid: 8ddb7447433ac1f408af1d4d0e6d6bd1, type: 2}
+  - {fileID: 11400000, guid: 24b8aa65f2e379941b5f39409a97dacb, type: 2}
+  - {fileID: 11400000, guid: 4ddea0b68847a4b46978fcb8468c774c, type: 2}
   - {fileID: 11400000, guid: 8ddb7447433ac1f408af1d4d0e6d6bd1, type: 2}

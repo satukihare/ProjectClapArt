@@ -172,8 +172,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990caf2985393e0439bdfa541cf9d123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroupLogo_Announce: {fileID: 8300000, guid: d2745b809f9f25d44a3cf74643038e2c, type: 3}
-  Title_Announce: {fileID: 8300000, guid: 275dc5f62e0bf764598b1f0e9b9bf4c0, type: 3}
+  GroupLogo_Announce_Kai: {fileID: 8300000, guid: d2745b809f9f25d44a3cf74643038e2c,
+    type: 3}
+  GroupLogo_Announce_Nagi: {fileID: 8300000, guid: c7901432e311bfb4a93d25e65867b6ae,
+    type: 3}
+  Title_Announce_Kai: {fileID: 8300000, guid: 275dc5f62e0bf764598b1f0e9b9bf4c0, type: 3}
+  Title_Announce_Nagu: {fileID: 8300000, guid: d12ded6292773134880fe95a5fc67fda, type: 3}
   TitleBGM: {fileID: 1946024993}
 --- !u!114 &54727792
 MonoBehaviour:
@@ -1428,6 +1432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Director: {fileID: 1177093469}
   TitleBGM: {fileID: 1946024993}
+  TitleAnimeScripts: {fileID: 54727791}
 --- !u!4 &1946024992
 Transform:
   m_ObjectHideFlags: 0
@@ -1658,7 +1663,7 @@ PrefabInstance:
     - target: {fileID: 6144879558593824328, guid: f3542b65658b7ba408ddd1dce697f994,
         type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6144879558593824328, guid: f3542b65658b7ba408ddd1dce697f994,
         type: 3}
@@ -1707,6 +1712,12 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[9].key
       value: 
       objectReference: {fileID: -5598651770460693319, guid: 7d39b13b9bf686b4dba4f5da3213b430,
+        type: 2}
+    - target: {fileID: 6144879558593824328, guid: f3542b65658b7ba408ddd1dce697f994,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[10].key
+      value: 
+      objectReference: {fileID: 3032699280712501379, guid: fd0fb201b7ed01d40b85f3ed3c51e512,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3542b65658b7ba408ddd1dce697f994, type: 3}

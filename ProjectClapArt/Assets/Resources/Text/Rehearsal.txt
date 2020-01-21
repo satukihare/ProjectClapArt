@@ -18,8 +18,12 @@ Kai/scenario5
 Nagi/Game_scenario_Nagi_07
 
 [Face]
-0
 1
+0
+
+[Face]
+0
+4
 
 [Speech]
 0
@@ -31,7 +35,7 @@ Nagi/Game_scenario_Nagi_08
 
 [Face]
 0
-4
+3
 
 [Speech]
 0
@@ -44,7 +48,7 @@ Kai/scenario6
 
 [Face]
 1
-1
+0
 
 [Speech]
 1
@@ -53,6 +57,10 @@ Kai/scenario6
 [Sound]
 1
 Kai/scenario7
+
+[Face]
+1
+1
 
 [Speech]
 1
